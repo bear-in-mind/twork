@@ -7,6 +7,19 @@ class User < ApplicationRecord
    mount_uploader :avatar, AvatarUploader
    mount_uploader :banner, BannerUploader
 
-   has_many :talents
-   has_many :skills, through: :talents
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :banner, BannerUploader
+
+  has_many :messages
+  has_many :projects
+  has_many :talents
+  has_many :skills, through: :talents
+
+  GENRES = %w[Pop R&B Hip-Hop Rap Rock Electronic EDM Funk Disco House Techno Classical Jazz Folk Soundtrack Traditional]
+  validates :genre, inclusion: { in: GENRES, allow_blank: true }
+>>>>>>> master
 end
+
+# Pour les views:
+# User::GENRES
+# f.select as collection
