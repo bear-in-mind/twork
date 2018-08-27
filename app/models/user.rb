@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
    mount_uploader :avatar, AvatarUploader
    mount_uploader :banner, BannerUploader
+
+   has_many :talents
+   has_many :skills, through: :talents
 end
