@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_130156) do
+ActiveRecord::Schema.define(version: 2018_08_27_162728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_130156) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "In progress"
     t.bigint "track_id"
     t.bigint "talent_id"
     t.datetime "created_at", null: false
@@ -102,8 +102,9 @@ ActiveRecord::Schema.define(version: 2018_08_27_130156) do
     t.string "avatar"
     t.string "banner"
     t.text "bio"
-    t.string "genres"
     t.string "main_occupation"
+    t.string "city"
+    t.text "genres", default: [], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -4,3 +4,4 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:edit, :update, :destroy]
   resources :projects, only: [:index, :show, :new, :create, :edit, :update]
+end
