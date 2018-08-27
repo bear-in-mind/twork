@@ -1,20 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-#
 
 puts "Deleting db..."
+Session.destroy_all
 Track.destroy_all
 Project.destroy_all
 Talent.destroy_all
 Skill.destroy_all
 User.destroy_all
 
-GENRES = %w(Pop R&B Hip-Hop Rap Rock Electronic EDM Funk Disco House Techno Classical Jazz Folk Soundtrack Traditional)
 puts "Creating seeds..."
 # Instrument Skills
 Skill.create!(name: "Bass")
@@ -128,11 +120,11 @@ a = User.new(
   email: "max@twork.xyz",
   password: "123456",
   main_occupation: "Drummer",
-  genres: 'Pop, Funk, Disco',
+  # genres: User::GENRES.sample,
   bio: "I'm a French drummer with deep roots in 80s american culture. I was very influenced by artists like Peter Gabriel, Toto, Michael Jackson and Price. My band is called Venice!"
 )
-a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/maxime.jpg"
-a.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/max_banner.jpg"
+a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/35082803_772381303151861_9123527924262109184_o.jpg"
+a.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/venice_banner.jpg"
 a.save!
 
 b = User.new(
@@ -143,11 +135,11 @@ b = User.new(
   password: "123456",
   main_occupation: "Guitarist",
   bio: "I'm a French guitar player. I play all guitars, all genres: I'm as much a fan of Michael Jackson as AC/DC !",
-  genres: 'Funk, Disco, Rock, Pop'
+  genres: User::GENRES.sample
 )
 
-b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855650/profile_pictures/bogue.jpg"
-b.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/bogue_banner.jpg"
+b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/10900237_10152801343043025_955411608168163016_o.jpg"
+b.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386501/banner_images/nico_banner.jpg"
 b.save!
 
 c = User.new(
@@ -157,12 +149,12 @@ c = User.new(
   email: 'louis.sommer@gmail.com',
   password: "123456",
   main_occupation: "Producer",
-  genres: "Pop, Disco, Electro, RnB, Classical",
+  genres: User::GENRES.sample,
   bio: "I'm a musician, arranger and producer from Paris. Deeply influenced by black music, jazz, and electronic music, I will adapt to any project, in any genre, provided I'll have the right to make it groove!"
 )
 
-c.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/louis.jpg"
-c.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/max_banner.jpg"
+c.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/23592023_10210478946039138_4604273126648435503_o.jpg"
+c.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/venice_banner.jpg"
 c.save!
 
 d = User.new(
@@ -173,10 +165,10 @@ d = User.new(
   password: "123456",
   main_occupation: "Artist",
   bio: "I'm a songwriter, composer, producer and vocalist. Got famous with my band Stardust with Thomas Bangalter. Open to any vocals featuring mostly on Electronic tracks.",
-  genres: "Electro, House, Pop"
+  genres: User::GENRES.sample
 )
 
-d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855842/profile_pictures/BenjaminDiamond.jpg"
+d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386178/profile_pictures/BenjaminDiamond.jpg"
 d.save!
 
 e = User.new(
@@ -186,12 +178,12 @@ e = User.new(
   email: "johann@twork.xyz",
   password: "123456",
   main_occupation: "Keyboardist",
-  genres: "Pop, Blues, Rock, Funk",
+  genres: User::GENRES.sample,
   bio: "Hey ! I'm a keyboard player from Denmark. I'm a huge blues fan, and am quite skilled with the organ. I can ply any style and love pop as well!"
 )
 
-e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855790/profile_pictures/johan.jpg"
-e.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/johan_banner.jpg"
+e.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/13174054_10153837541604145_7560661546128707137_n.jpg"
+e.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/johann_banner.jpg"
 e.save!
 
 f = User.new(
@@ -201,12 +193,12 @@ f = User.new(
   email: "seb@twork.xyz",
   password: "123456",
   main_occupation: "Mixing Engineer",
-  genres: "Electro, Pop",
+  genres: User::GENRES.sample,
   bio: "I'm a front-of-house engineer, as well as a very skilled mixer. I especially like electronic music."
 )
 
-f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1534855789/profile_pictures/sebastien.jpg"
-f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591/banner_images/seb_banner.jpg"
+f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/11055352_10154133769018636_7975568259011370824_o.jpg"
+f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/seb_banner.jpg"
 f.save!
 
 # Talents
@@ -225,13 +217,16 @@ Talent.create!(skill: Skill.find_by(name: "Bass Clarinet"), user: louis)
 Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: louis)
 Talent.create!(skill: Skill.find_by(name: "Ableton Programmer"), user: louis)
 Talent.create!(skill: Skill.find_by(name: "Drums"), user: max)
+max_drums = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Percussions"), user: max)
 Talent.create!(skill: Skill.find_by(name: "Producer"), user: max)
 Talent.create!(skill: Skill.find_by(name: "Electric Guitar"), user: nico)
+nico_guitar = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Acoustic Guitar"), user: nico)
 Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: nico)
 Talent.create!(skill: Skill.find_by(name: "Producer"), user: nico)
 Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: johann)
+johann_keys = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Arranger"), user: johann)
 Talent.create!(skill: Skill.find_by(name: "Vocals"), user: benj)
 Talent.create!(skill: Skill.find_by(name: "Producer"), user: benj)
@@ -255,6 +250,7 @@ Track.create!(project: venice, name: "If You")
 Track.create!(project: venice, name: "Slow Down")
 Track.create!(project: luce, name: "La Vague Amour")
 Track.create!(project: luce, name: "Ciao")
+ciao = Track.find_by(name: "Ciao")
 Track.create!(project: luce, name: "L'Ilot Paradis")
 Track.create!(project: malca, name: "Saudi Palace")
 Track.create!(project: malca, name: "Ivory Tower")
@@ -262,6 +258,8 @@ Track.create!(project: malca, name: "Casablanca Jungle")
 Track.create!(project: remix, name: "Aveou Doudou")
 
 # Sessions
-
+Session.create!(track: ciao, talent: max_drums)
+Session.create!(track: ciao, talent: nico_guitar)
+Session.create!(track: ciao, talent: johann_keys)
 
 puts "Seeding done!"
