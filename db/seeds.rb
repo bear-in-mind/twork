@@ -8,6 +8,8 @@
 #
 
 puts "Deleting db..."
+Track.destroy_all
+Project.destroy_all
 Talent.destroy_all
 Skill.destroy_all
 User.destroy_all
@@ -208,25 +210,57 @@ f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1534930591
 f.save!
 
 # Talents
-Talent.create!(skill: Skill.find_by(name: "Bass"), user: User.find_by(first_name: "Louis"))
-Talent.create!(skill: Skill.find_by(name: "Arranger"), user: User.find_by(first_name: "Louis"))
-Talent.create!(skill: Skill.find_by(name: "Clarinet"), user: User.find_by(first_name: "Louis"))
-Talent.create!(skill: Skill.find_by(name: "Bass Clarinet"), user: User.find_by(first_name: "Louis"))
-Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: User.find_by(first_name: "Louis"))
-Talent.create!(skill: Skill.find_by(name: "Ableton Programmer"), user: User.find_by(first_name: "Louis"))
-Talent.create!(skill: Skill.find_by(name: "Drums"), user: User.find_by(first_name: "Maxime"))
-Talent.create!(skill: Skill.find_by(name: "Percussions"), user: User.find_by(first_name: "Maxime"))
-Talent.create!(skill: Skill.find_by(name: "Producer"), user: User.find_by(first_name: "Maxime"))
-Talent.create!(skill: Skill.find_by(name: "Electric Guitar"), user: User.find_by(first_name: "Nicolas"))
-Talent.create!(skill: Skill.find_by(name: "Acoustic Guitar"), user: User.find_by(first_name: "Nicolas"))
-Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: User.find_by(first_name: "Nicolas"))
-Talent.create!(skill: Skill.find_by(name: "Producer"), user: User.find_by(first_name: "Nicolas"))
-Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: User.find_by(first_name: "Johann"))
-Talent.create!(skill: Skill.find_by(name: "Arranger"), user: User.find_by(first_name: "Johann"))
-Talent.create!(skill: Skill.find_by(name: "Vocals"), user: User.find_by(first_name: "Benjamin"))
-Talent.create!(skill: Skill.find_by(name: "Producer"), user: User.find_by(first_name: "Benjamin"))
-Talent.create!(skill: Skill.find_by(name: "FOH Engineer"), user: User.find_by(first_name: "Sebastien"))
-Talent.create!(skill: Skill.find_by(name: "Recording Engineer"), user: User.find_by(first_name: "Sebastien"))
 
+louis = User.find_by(first_name: "Louis")
+max = User.find_by(first_name: "Maxime")
+nico = User.find_by(first_name: "Nicolas")
+johann = User.find_by(first_name: "Johann")
+benj = User.find_by(first_name: "Benjamin")
+seb = User.find_by(first_name: "Sebastien")
+
+Talent.create!(skill: Skill.find_by(name: "Bass"), user: louis)
+Talent.create!(skill: Skill.find_by(name: "Arranger"), user: louis)
+Talent.create!(skill: Skill.find_by(name: "Clarinet"), user: louis)
+Talent.create!(skill: Skill.find_by(name: "Bass Clarinet"), user: louis)
+Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: louis)
+Talent.create!(skill: Skill.find_by(name: "Ableton Programmer"), user: louis)
+Talent.create!(skill: Skill.find_by(name: "Drums"), user: max)
+Talent.create!(skill: Skill.find_by(name: "Percussions"), user: max)
+Talent.create!(skill: Skill.find_by(name: "Producer"), user: max)
+Talent.create!(skill: Skill.find_by(name: "Electric Guitar"), user: nico)
+Talent.create!(skill: Skill.find_by(name: "Acoustic Guitar"), user: nico)
+Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: nico)
+Talent.create!(skill: Skill.find_by(name: "Producer"), user: nico)
+Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: johann)
+Talent.create!(skill: Skill.find_by(name: "Arranger"), user: johann)
+Talent.create!(skill: Skill.find_by(name: "Vocals"), user: benj)
+Talent.create!(skill: Skill.find_by(name: "Producer"), user: benj)
+Talent.create!(skill: Skill.find_by(name: "FOH Engineer"), user: seb)
+Talent.create!(skill: Skill.find_by(name: "Recording Engineer"), user: seb)
+
+
+# Projects
+Project.create!(project_owner: louis, name: "Venice", deadline: Date.new(2018,10,1))
+venice = Project.last
+Project.create!(project_owner: louis, name: "Luce", deadline: Date.new(2019,1,1))
+luce = Project.last
+Project.create!(project_owner: louis, name: "Malca", deadline: Date.new(2018,11,16))
+malca = Project.last
+Project.create!(project_owner: louis, name: "Remix JC Naimro", deadline: Date.new(2018,9,15))
+remix = Project.last
+
+# Tracks
+Track.create!(project: venice, name: "Sandy")
+Track.create!(project: venice, name: "If You")
+Track.create!(project: venice, name: "Slow Down")
+Track.create!(project: luce, name: "La Vague Amour")
+Track.create!(project: luce, name: "Ciao")
+Track.create!(project: luce, name: "L'Ilot Paradis")
+Track.create!(project: malca, name: "Saudi Palace")
+Track.create!(project: malca, name: "Ivory Tower")
+Track.create!(project: malca, name: "Casablanca Jungle")
+Track.create!(project: remix, name: "Aveou Doudou")
+
+# Sessions
 
 puts "Seeding done!"
