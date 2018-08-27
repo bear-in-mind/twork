@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :skills, through: :talents
 
   GENRES = %w[Pop R&B Hip-Hop Rap Rock Electronic EDM Funk Disco House Techno Classical Jazz Folk Soundtrack Traditional]
-  validates :genre, inclusion: { in: GENRES, allow_blank: true }
 end
 
 # Pour les views:
