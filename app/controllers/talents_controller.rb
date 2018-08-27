@@ -1,7 +1,8 @@
 class TalentsController < ApplicationController
   def new
     # authorize @talent
-    @talent = Talent.find(params[:id])
+    @profile = Profile.find(params[:profile_id])
+    @talent = Talent.new
   end
 
   def create
