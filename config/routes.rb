@@ -3,4 +3,4 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :profiles, only: [:edit, :update, :destroy]
-  resources :projects
+  resources :projects, only: [:index, :show, :edit, :update, :new, :create]
