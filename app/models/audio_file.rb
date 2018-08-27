@@ -1,5 +1,5 @@
 class AudioFile < ApplicationRecord
-  belongs_to :user
+  belongs_to :uploaded_by, class_name: 'User', foreign_key: :user_id
   belongs_to :session
 
   mount_uploader :audio, AudioUploader
