@@ -120,7 +120,7 @@ a = User.new(
   email: "max@twork.xyz",
   password: "123456",
   main_occupation: "Drummer",
-  # genres: User::GENRES.sample,
+  genres: ["Funk", "Disco", "Pop"],
   bio: "I'm a French drummer with deep roots in 80s american culture. I was very influenced by artists like Peter Gabriel, Toto, Michael Jackson and Price. My band is called Venice!"
 )
 a.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/35082803_772381303151861_9123527924262109184_o.jpg"
@@ -135,7 +135,7 @@ b = User.new(
   password: "123456",
   main_occupation: "Guitarist",
   bio: "I'm a French guitar player. I play all guitars, all genres: I'm as much a fan of Michael Jackson as AC/DC !",
-  genres: User::GENRES.sample
+  genres: ["Funk", "Pop", "Electronic", "Rock"]
 )
 
 b.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159/profile_pictures/10900237_10152801343043025_955411608168163016_o.jpg"
@@ -149,7 +149,7 @@ c = User.new(
   email: 'louis.sommer@gmail.com',
   password: "123456",
   main_occupation: "Producer",
-  genres: User::GENRES.sample,
+  genres: ["Funk", "Disco", "Pop", "R&B", "Electronic"],
   bio: "I'm a musician, arranger and producer from Paris. Deeply influenced by black music, jazz, and electronic music, I will adapt to any project, in any genre, provided I'll have the right to make it groove!"
 )
 
@@ -165,7 +165,7 @@ d = User.new(
   password: "123456",
   main_occupation: "Artist",
   bio: "I'm a songwriter, composer, producer and vocalist. Got famous with my band Stardust with Thomas Bangalter. Open to any vocals featuring mostly on Electronic tracks.",
-  genres: User::GENRES.sample
+  genres: ["Funk", "Pop", "Electronic"],
 )
 
 d.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386178/profile_pictures/BenjaminDiamond.jpg"
@@ -178,7 +178,7 @@ e = User.new(
   email: "johann@twork.xyz",
   password: "123456",
   main_occupation: "Keyboardist",
-  genres: User::GENRES.sample,
+  genres: ["Pop", "Funk"],
   bio: "Hey ! I'm a keyboard player from Denmark. I'm a huge blues fan, and am quite skilled with the organ. I can ply any style and love pop as well!"
 )
 
@@ -193,7 +193,7 @@ f = User.new(
   email: "seb@twork.xyz",
   password: "123456",
   main_occupation: "Mixing Engineer",
-  genres: User::GENRES.sample,
+  genres: ["Pop", "Electronic", "Rock"],
   bio: "I'm a front-of-house engineer, as well as a very skilled mixer. I especially like electronic music."
 )
 
