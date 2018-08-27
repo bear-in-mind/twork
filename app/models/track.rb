@@ -1,3 +1,3 @@
 class Track < ApplicationRecord
-  belongs_to :project_id
+  belongs_to :project
 end

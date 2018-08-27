@@ -8,5 +8,3 @@ Rails.application.routes.draw do
   end
   resources :projects, only: [:index, :show, :new, :create, :edit, :update]
 end
-
-
