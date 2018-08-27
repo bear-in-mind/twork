@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :project_owner, class_name: 'User', foreign_key: :user_id
-  has_many :tracks, dependent: :destroy
+  has_many :tracks
 
-  validates :name, :deadline, presence: true
+  validates :name, presence: true
 end
