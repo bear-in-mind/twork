@@ -1,1 +1,46 @@
 // Specific CSS for your home-page
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.results {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.element {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.title {
+  width: 300px;
+}
+
+.name {
+  width: 100px;
+}
+
+.year {
+  width: 100px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 14px;
+}
