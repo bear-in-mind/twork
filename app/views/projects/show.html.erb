@@ -12,9 +12,9 @@
       <div>
         <%= link_to profile_path(@owner) do %>
           <% if @owner.avatar.nil? %>
-          <%= image_tag "noprofilepicture.png", height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
           <% else  %>
-          <%= cl_image_tag @owner.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
           <% end  %>
         <% end %>
       </div>
@@ -45,6 +45,7 @@
                         <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar" %>
                       <% end  %>
                   <% end %>
+                  <p><%= pluralize(track.talents.size, "session") %></p>
                 </div>
 
               </div>
@@ -52,7 +53,17 @@
 
         <%# end %>
 
+        <div class="dropdown-divider"></div>
       <% end %>
+
+      <% if @owner == current_user %>
+        <%= link_to new_project_track_path(@project), class: "card-link-new" do %>
+          <div class="track-card-new">
+            <h3>Add a new track</h3>
+          </div>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
 
