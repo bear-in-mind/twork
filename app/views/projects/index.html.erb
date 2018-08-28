@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="container">
+    <div>
+      <h3> Projects you own </h3>
+      <% if @my_projects_as_owner.empty? %>
+        <h3> You don't own any project yet!</h3>
+      <% else %>
+        <% @my_projects_as_owner.each do |project| %>
+              <p><%= project.name %></p>
+              <p><%= project.user.first_name %></p>
+              <p><%= project.user.last_name %></p>
+              <% project.tracks.each do |track| %>
+                <%= track.name %>
+              <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div>
+      <h3> Projects you're participating to </h3>
+      <% if @my_projects_as_talent == [] %>
+        <h3> You're not participating to any project yet!</h3>
+      <% else %>
+        <% @my_projects_as_talent.each do |project| %>
+              <p><%= project.name %></p>
+              <p><%= project.user.first_name %></p>
+              <p><%= project.user.last_name %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -3,13 +3,13 @@ before_action :set_project, only: [:show, :edit, :update]
   def index
     @my_projects_as_talent = []
     @my_projects_as_owner = current_user.projects
-    @my_sessions = []    
+    @my_sessions = []
     @my_talents = current_user.talents
-    
+
     @my_talents.each do |talent|
       @my_sessions << talent.sessions
     end
-    
+
     @my_sessions.flatten.each do |session|
       @my_projects_as_talent << session.track.project
     end
@@ -37,14 +37,14 @@ before_action :set_project, only: [:show, :edit, :update]
   def update
     if @project.update(project_params)
       @project.updated_at = Time.now
-      redirect_to project_path(@project)    
+      redirect_to project_path(@project)
     else
       render :edit
     end
   end
 
   private
-  
+
   def set_project
     @project = Project.find(params[:id])
   end
