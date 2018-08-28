@@ -211,6 +211,7 @@ benj = User.find_by(first_name: "Benjamin")
 seb = User.find_by(first_name: "Sebastien")
 
 Talent.create!(skill: Skill.find_by(name: "Bass"), user: louis)
+louis_bass = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Arranger"), user: louis)
 Talent.create!(skill: Skill.find_by(name: "Clarinet"), user: louis)
 Talent.create!(skill: Skill.find_by(name: "Bass Clarinet"), user: louis)
@@ -244,6 +245,7 @@ malca = Project.last
 Project.create!(project_owner: louis, name: "Remix JC Naimro", deadline: Date.new(2018,9,15))
 remix = Project.last
 Project.create!(project_owner: johann, name: "Aske Jacoby", deadline: Date.new(2018,9,15))
+aske = Project.last
 
 # Tracks
 Track.create!(project: venice, name: "Sandy")
@@ -259,6 +261,8 @@ Track.create!(project: malca, name: "Saudi Palace")
 Track.create!(project: malca, name: "Ivory Tower")
 Track.create!(project: malca, name: "Casablanca Jungle")
 Track.create!(project: remix, name: "Aveou Doudou")
+Track.create!(project: aske, name: "Sequoias")
+sequoias = Track.last
 
 # Sessions
 Session.create!(track: ciao, talent: max_drums)
@@ -266,5 +270,6 @@ Session.create!(track: ciao, talent: nico_guitar)
 Session.create!(track: ciao, talent: johann_keys)
 Session.create!(track: ilot, talent: max_drums)
 Session.create!(track: vague, talent: nico_guitar)
+Session.create!(track: sequoias, talent: louis_bass)
 
 puts "Seeding done!"
