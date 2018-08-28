@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="banner-profile">
-    <% if @profile.banner.filename.nil? %>
-      <%= image_tag "noprofilepicture.png", height: 350, width: 1065%>
-    <% else  %>
-      <%= cl_image_tag @profile.banner.url(:banner_image)%>
-    <% end %>
+  <% if @profile.banner.filename.nil? %>
+    <% url = "noprofilepicture.png" %>
+  <% else  %>
+    <% url = cl_image_path @profile.banner.url(:banner_image) %>
+  <% end %>
+  <div class="banner-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url %>');">
   </div>
 
   <div class="profile-page">
@@ -57,6 +57,7 @@
         <div class="box text-center album-box">
           <h2>Albums</h2>
           <div class="albums">
+            <!-- test files - to be removed when Discogs album cover available -->
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/malca.jpg", height: 170, width: 170, border: '2px_solid_black') %>
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/jk.jpg", height: 170, width: 170, border: '2px_solid_black' ) %>
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 170, width: 170, border: '2px_solid_black') %>
