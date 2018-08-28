@@ -26,35 +26,31 @@
 
     <div class="track-index">
       <% @project.tracks.each do |track| %>
-        <div>
-          <% if track.project.project_owner == current_user || track.talents.user.include?(current_user) %>
-            <div>
-              <%= link_to project_track_path(@project, track) do %>
-                <div class="track-card">
 
-                  <div class="track-infos">
-                    <h3><%= track.name %></h3>
-                    <p><%= track.created_at.strftime("Started on %d/%m/%Y") %></p>
-                  </div>
+        <%# if track.project.project_owner == current_user || track.talents.user.include?(current_user) %>
+            <%= link_to project_track_path(@project, track), class: "card-link" do %>
+              <div class="track-card">
 
-                  <div class="collaborators">
-                    <% track.talents.each do |talent| %>
-                      <%= link_to profile_path(talent) do %>
-                        <% if @owner.avatar.nil? %>
-                         <%= image_tag "noprofilepicture.png", height: 70, width: 70, crop: :fill, class: "avatar" %>
-                        <% else  %>
-                          <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar" %>
-                        <% end  %>
-                      <% end %>
-                    <% end %>
-                  </div>
-
+                <div class="track-infos">
+                  <h3><%= track.name %></h3>
+                  <p><%= track.created_at.strftime("Started on %d/%m/%Y") %></p>
                 </div>
-              <% end %>
-            </div>
 
-          <% end %>
-        </div>
+                <div class="collaborators">
+                  <% track.talents.each do |talent| %>
+                    <%#= link_to profile_path(talent) do %>
+                      <% if @owner.avatar.nil? %>
+                       <%= image_tag "noprofilepicture.png", height: 70, width: 70, crop: :fill, class: "avatar" %>
+                      <% else  %>
+                        <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar" %>
+                      <% end  %>
+                  <% end %>
+                </div>
+
+              </div>
+            <% end %>
+
+        <%# end %>
 
       <% end %>
     </div>
