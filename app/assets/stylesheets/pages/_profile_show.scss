@@ -3,9 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  h6 {
+    font-size: 14px;
+  }
 }
 
 .project-owner-div {
   display: flex;
   align-items: center;
+}
+
+a.track-index {
+  text-decoration: none;
 }
