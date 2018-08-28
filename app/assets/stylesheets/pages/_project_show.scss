@@ -54,10 +54,12 @@
   margin: auto;
 }
 
-.track-card-new > h3 {
-  color: $green !important;
+.track-index button:hover {
+  h3 {
+    color: white;
+  }
 }
 
-.track-card-new > a:hover h3 {
-  color: $green !important;
+.track-card-new button:hover h3 {
+  color: white !important;
 }

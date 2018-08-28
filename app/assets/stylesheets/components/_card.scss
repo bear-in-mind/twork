@@ -41,12 +41,12 @@
   border: solid 1px $green;
   h3 {
     font-size: 24px;
-    color: $green !important;
+    color: $green;
   }
   width: 50%;
   &:hover {
     background-color: $green;
-  transition: color .15s linear ;
-  transition: background-color .15s linear ;
+    transition: color .15s linear ;
+    transition: background-color .15s linear ;
   }
 }
