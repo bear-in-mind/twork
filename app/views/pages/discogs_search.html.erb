@@ -1,0 +1,19 @@
+<h1>Pages#home</h1>
+<div class="container">
+  <div class="flexbox">
+    <% @results.each do |album| %>
+      <div class="results">
+        <div class="element artist">
+          <h1><%= album.artist %></h1>
+        </div>
+        <div class="element title">
+          <h2><%= album.title %></h2>
+        </div>
+        <div class="element year">
+          <h5><%= album.year %></h5>
+        </div>
+        <%= image_tag album.thumb %>
+      </div>
+    <% end %>
+  </div>
+</div>
