@@ -6,7 +6,7 @@ class AudioFilesController < ApplicationController
 
   def create
     @audio_file = AudioFile.new(audio_file_params)
-    timestamp = Date.now.strftime(%y-%l-%e-%m-%M)
+    timestamp = Date.now.strftime("%y-%l-%e-%m-%M")
     @audio_file.session = Session.find_by(params[:id])
     @audio_file.user = current_user
     @audio_file.name = "#{@audio_file.session.track.name} - #{@audio_file.session.talent} - #{timestamp} "
