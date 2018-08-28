@@ -6,7 +6,10 @@
         <h6><i class="far fa-calendar"></i><%= @project.deadline.strftime("  Due on %d/%m/%Y") %></h6>
       <% end %>
     </div>
-    <h1>Project : <%= @project.name %></h1>
+    <div class="project-titles">
+      <h2>Project</h2>
+      <h1><%= @project.name.capitalize %></h1>
+    </div>
     <div class="project-owner-div">
       <h2> Owner :</h2>
       <div>
@@ -61,15 +64,15 @@
             <h3>Add a new track</h3>
           </button>
           <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <div class="modal-header text-center">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel">Add a new Track</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                   <%= simple_form_for [@project, @track] do |f| %>
-                    <%= f.input :name  %>
+                    <%= f.input :name, label: "Track Name", required: false %>
                     <%= f.submit "Add track", class: "btn btn-success" %>
                   <% end %>
                 </div>
@@ -86,3 +89,9 @@
   </div>
 
 </div>
+
+<script>
+  $('.modal').on('shown.bs.modal', function() {
+    $(this).find('[autofocus]').focus();
+  });
+</script>
