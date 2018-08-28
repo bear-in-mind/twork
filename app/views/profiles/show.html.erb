@@ -1,0 +1,82 @@
+<div class="container">
+  <% if @profile.banner.filename.nil? %>
+    <% url = "noprofilepicture.png" %>
+  <% else  %>
+    <% url = cl_image_path @profile.banner.url(:banner_image) %>
+  <% end %>
+  <div class="banner-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url %>');">
+  </div>
+
+  <div class="profile-page">
+    <div class="profile-bar">
+      <% if @profile.avatar.filename.nil? %>
+      <%= image_tag "noprofilepicture.png", height: 206, width: 206, class: "profile-pic" %>
+      <% else  %>
+      <%= cl_image_tag @profile.avatar.url(:profile_picture), class: "profile-pic" %>
+      <% end  %>
+
+      <div class="profile-details">
+        <h1 class="profile-name"><%= "#{@profile.first_name.capitalize} #{@profile.last_name.capitalize}"%></h1>
+        <p>
+          <span class="values"><%= @profile.main_occupation if @profile.main_occupation %></span> -
+
+          <span class="values">
+            <%=  @profile.genres.join(", ") %>
+          </span>
+        </p>
+      </div>
+
+      <% if current_user.id == @profile.id %>
+      <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-success btn-lg request" %>
+      <% else %>
+      <%= link_to "Send a request", new_profile_job_path(@profile), class: "btn btn-success btn-lg request" %>
+      <% end %>
+    </div>
+
+    <div class="row profile-content">
+
+      <div class="col-xs-12 col-md-8">
+        <div class="box bio">
+          <h2 class="box-title">Bio</h2>
+          <p>"<%= @profile.bio %>"</p>
+        </div>
+      </div>
+
+      <div class=" col-xs-12 col-md-4">
+        <div class="box skills">
+          <h2>Skills</h2>
+          <ul class="skills-list">
+            <% @profile.talents.each do |talent| %>
+            <li><h4><%= talent.skill.name %></h4></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="box text-center album-box">
+          <h2>Albums</h2>
+          <div class="albums">
+            <!-- test files - to be removed when Discogs album cover available -->
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/malca.jpg", height: 170, width: 170, border: '2px_solid_black') %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/jk.jpg", height: 170, width: 170, border: '2px_solid_black' ) %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 170, width: 170, border: '2px_solid_black') %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/malca.jpg", height: 170, width: 170, border: '2px_solid_black') %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/jk.jpg", height: 170, width: 170, border: '2px_solid_black' ) %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 170, width: 170, border: '2px_solid_black') %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/malca.jpg", height: 170, width: 170, border: '2px_solid_black') %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/jk.jpg", height: 170, width: 170, border: '2px_solid_black' ) %>
+            <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 170, width: 170, border: '2px_solid_black') %>
+          </div>
+        </div>
+      </div>
+
+      <div class=" col-xs-12">
+        <div class="box map">
+          <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
