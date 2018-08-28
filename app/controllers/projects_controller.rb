@@ -4,6 +4,7 @@ before_action :set_project, only: [:show, :edit, :update]
     @my_projects_as_talent = []
     @my_projects_as_owner = current_user.projects
     @my_sessions = []
+    @my_tracks = []
     @my_talents = current_user.talents
 
     @my_talents.each do |talent|
@@ -12,6 +13,7 @@ before_action :set_project, only: [:show, :edit, :update]
 
     @my_sessions.flatten.each do |session|
       @my_projects_as_talent << session.track.project
+      @my_tracks << session.track
     end
   end
 
