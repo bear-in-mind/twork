@@ -2,8 +2,11 @@
 
   <div class="project-header">
     <div class= "project-name-div">
-      <h2>Project : <strong> <%= @project.name %></h2> </strong>
+      <% if @project.deadline %>
+        <h6><%= @project.deadline.strftime("Due on %d/%m/%Y") %></h6>
+      <% end %>
     </div>
+    <h1>Project : <%= @project.name %></h1>
     <div class="project-owner-div">
       <h2> Owner :</h2>
       <div>
@@ -18,9 +21,35 @@
     </div>
   </div>
 
-  <div class="track-index">
-  <h1> Tracks </h1>
+  <div class="project-tracks">
+    <h1> Tracks </h1>
 
+    <div class="track-index">
+      <% @project.tracks.each do |track| %>
+
+        <%= link_to project_track_path(@project, track) do %>
+          <div class="track-card">
+            <div class="track-infos">
+              <h3><%= track.name %></h3>
+              <p><%= track.created_at.strftime("Started on %d/%m/%Y") %></p>
+            </div>
+
+            <div class="collaborators">
+              <% track.talents.each do |talent| %>
+                <%= link_to profile_path(@owner) do %>
+                  <% if @owner.avatar.nil? %>
+                  <%= image_tag "noprofilepicture.png", height: 70, width: 70, crop: :fill, class: "avatar" %>
+                  <% else  %>
+                  <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar" %>
+                  <% end  %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
   </div>
 
 </div>
