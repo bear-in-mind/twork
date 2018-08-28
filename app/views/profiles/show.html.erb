@@ -5,7 +5,7 @@
     <% if @profile.banner.filename.nil? %>
       <%= image_tag "noprofilepicture.png", height: 350, width: 1065%>
     <% else  %>
-      <%= cl_image_tag @user.banner.url(:banner_image)%>
+      <%= cl_image_tag @profile.banner.url(:banner_image)%>
     <% end %>
 
   </div>
