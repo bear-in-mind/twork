@@ -1,15 +1,16 @@
 class TalentsController < ApplicationController
   def new
     # authorize @talent
-    @profile = Profile.find(params[:profile_id])
+    @profile = current_user
     @talent = Talent.new
   end
 
   def create
     # authorize @talent
     @talent = Talent.New(talent_params)
+    @talent.user = current_user
     if @talent.save
-      redirect_to user_path(@talent)
+      redirect_to profile_path(current_user)
     else
       render :new
     end
@@ -22,8 +23,12 @@ class TalentsController < ApplicationController
 
   def update
     # authorize current_user
-    current_user.update(user_params)
-    redirect_to user_path(params[:id])
+    if current_user.update(user_params)
+      redirect_to profile_path(current_user)
+    else
+      render :edit
+    end
+
   end
 
   def destroy
