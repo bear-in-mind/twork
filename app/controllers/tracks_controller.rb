@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:index, :new, :create, :edit, :update]
+  before_action :set_project, only: [:index, :create, :update]
 
   def index
     @tracks = @project.tracks
