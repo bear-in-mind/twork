@@ -5,10 +5,10 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @talent.user = current_user
-    @message.content = Track.find(params[:id]) # Supposes that message routes are nested in tracks
+    @message.user = current_user
+    @message.track = params[:id] #à vérifier
     if @message.save
-      redirect_to track_path(@message.track)
+      redirect_to track_path(@message.track) #à vérifier
     else
       render :new
     end
