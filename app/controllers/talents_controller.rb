@@ -1,12 +1,12 @@
 class TalentsController < ApplicationController
   def new
-    authorize @talent
+    # authorize @talent
     @profile = current_user
     @talent = Talent.new
   end
 
   def create
-    authorize @talent
+    # authorize @talent
     @talent = Talent.New(talent_params)
     @talent.user = current_user
     if @talent.save

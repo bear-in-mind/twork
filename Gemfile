@@ -21,7 +21,6 @@ gem 'discogs-wrapper'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 
-gem 'pundit'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
