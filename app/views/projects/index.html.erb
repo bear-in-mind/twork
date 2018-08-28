@@ -6,25 +6,16 @@
         <h3> You don't own any project yet!</h3>
       <% else %>
         <% @my_projects_as_owner.each do |project| %>
-              <p><%= project.name %></p>
-              <p><%= project.user.first_name %></p>
-              <p><%= project.user.last_name %></p>
+              <p><strong><%= project.name %></strong></p>
+              <p> Due for <%= project.deadline %></p>
+              <p><%= User.find(project.user_id).first_name %></p>
+              <p><%= User.find(project.user_id).last_name %></p>
               <% project.tracks.each do |track| %>
-                <%= track.name %>
+                <%= track.name %><br>
+                <% track.sessions.each do |session| %>
+                  <%= cl_image_tag session.talent.user.avatar %>
+                <% end %>
               <% end %>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div>
-      <h3> Projects you're participating to </h3>
-      <% if @my_projects_as_talent == [] %>
-        <h3> You're not participating to any project yet!</h3>
-      <% else %>
-        <% @my_projects_as_talent.each do |project| %>
-              <p><%= project.name %></p>
-              <p><%= project.user.first_name %></p>
-              <p><%= project.user.last_name %></p>
         <% end %>
       <% end %>
     </div>
