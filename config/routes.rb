@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'projects#index'
 
-  resources :profiles, only: [:edit, :update, :destroy]
+  resources :profiles, only: [:index, :show, :edit, :update, :destroy]
   resources :talents, only: [:new, :create, :edit, :update, :destroy]
   resources :comments
 
