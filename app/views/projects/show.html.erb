@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="project-header">
+    <div class= "project-name-div">
+      <h2>Project : <strong> <%= @project.name %></h2> </strong>
+    </div>
+    <div class="project-owner-div">
+      <h2> Owner :</h2>
+      <div>
+        <%= link_to profile_path(@owner) do %>
+          <% if @owner.avatar.nil? %>
+          <%= image_tag "noprofilepicture.png", height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <% else  %>
+          <%= cl_image_tag @owner.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <% end  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="track-index">
+  <h1> Tracks </h1>
+
+  </div>
+
+</div>

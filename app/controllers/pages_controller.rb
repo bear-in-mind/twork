@@ -2,12 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @results = search_discogs("louis sommer")
   end
 
   private
 
   def search_discogs(query)
+    # @results = search_discogs("louis sommer")
     token = "" # see .env file
     # token = ENV['DISCOGS_TOKEN']
     auth_wrapper = Discogs::Wrapper.new(

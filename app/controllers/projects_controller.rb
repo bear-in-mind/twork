@@ -15,7 +15,9 @@ before_action :set_project, only: [:show, :edit, :update]
     end
   end
 
-  def show; end
+  def show
+    @owner = @project.project_owner
+  end
 
   def new
     @project = Project.new
