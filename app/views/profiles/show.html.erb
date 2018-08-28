@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="banner-profile">
+    <h1 class="profile-name"><%= "#{@profile.first_name.capitalize} #{@profile.last_name.capitalize}"%></h1>
+
+    <% if @profile.banner.filename.nil? %>
+      <%= image_tag "noprofilepicture.png", height: 350, width: 1065%>
+    <% else  %>
+      <%= cl_image_tag @user.banner.url(:banner_image)%>
+    <% end %>
+
+  </div>
+</div>

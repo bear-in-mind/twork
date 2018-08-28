@@ -5,5 +5,5 @@ class Talent < ApplicationRecord
   has_many :musicsessions # note: no "presence: true" since a Talent may have not sessions
 
   validates :user_id, presence: true # referring to user profile
-  validates :talent_id, presence: true
+  validates :skill_id, presence: true
 end
