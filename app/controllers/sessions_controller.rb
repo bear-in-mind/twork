@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.new(session_params)
-    @session.track = Track.find(params[:id])
+    @session.track = Track.find(params[:id]) # Supposes that session routes are nested in tracks
     if @session.save
-      redirect_to track_path(?)
+      redirect_to track_path(@session.track)
     else
       render :new
     end
