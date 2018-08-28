@@ -250,9 +250,11 @@ Track.create!(project: venice, name: "Sandy")
 Track.create!(project: venice, name: "If You")
 Track.create!(project: venice, name: "Slow Down")
 Track.create!(project: luce, name: "La Vague Amour")
+vague = Track.last
 Track.create!(project: luce, name: "Ciao")
-ciao = Track.find_by(name: "Ciao")
+ciao = Track.last
 Track.create!(project: luce, name: "L'Ilot Paradis")
+ilot = Track.last
 Track.create!(project: malca, name: "Saudi Palace")
 Track.create!(project: malca, name: "Ivory Tower")
 Track.create!(project: malca, name: "Casablanca Jungle")
@@ -262,5 +264,7 @@ Track.create!(project: remix, name: "Aveou Doudou")
 Session.create!(track: ciao, talent: max_drums)
 Session.create!(track: ciao, talent: nico_guitar)
 Session.create!(track: ciao, talent: johann_keys)
+Session.create!(track: ilot, talent: max_drums)
+Session.create!(track: vague, talent: nico_guitar)
 
 puts "Seeding done!"
