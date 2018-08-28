@@ -15,10 +15,6 @@ class AudioFilesController < ApplicationController
     redirect_to_track_path(@audio_file.track)
   end
 
-  def destroy
-    @audio_file = AudioFile.find_by(params[:id])
-  end
-
   private
 
   def audio_file_params
