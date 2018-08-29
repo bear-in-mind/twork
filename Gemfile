@@ -16,6 +16,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'popper_js', '~> 1.14.3'
 
 gem 'discogs-wrapper'
 gem 'cloudinary'
