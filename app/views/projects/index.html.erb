@@ -2,23 +2,12 @@
   <div class="container">
     <div class = "own-projects">
       <h3 class="main-title"> Projects you own </h3>
-      <% if @my_projects_as_owner.empty? %>
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-4 project-box">
-            <%= link_to '', new_project_path, class: "project-link" %>
-            <div class="project-detail">
-              <div class="link-create-project">
-                <h4>Create a new project</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% else %>
         <div class="row">
           <% @my_projects_as_owner.each do |project| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="project-box project-detail">
                 <div class="project-main">
+                  <div class="project-main-layer"></div>
                   <%= link_to '', project_path(project.id), class: "project-link" %>
                   <div class="project-title">
                     <h3><%= project.name %></h3>
@@ -39,24 +28,63 @@
                   </div>
                 </div>
                 <div class="button-add-track">
-                  <%= link_to 'Add a track', new_project_track_path(project.id), class: "track-button-add"%>
+                  <%= link_to 'Add a track', "#", data:{toggle:"modal", target: "#addTrack"}, class: "track-button-add"%>
+                  <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header text-center">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="new-track-modal-title">Add a new Track</h4>
+                        </div>
+                        <div class="modal-body text-center">
+                          <%= simple_form_for [project, @track] do |f| %>
+                            <%= f.input :name, label: "Track Name", required: false %>
+                            <%= f.submit "Add track", class: "btn btn-success" %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="project-date">
                 <p>Due for: <%= project.deadline %></p>
+                <div class="fontawesome-buttons">
+                    <i class="far fa-trash-alt">
+                    </i>
+                    <%= link_to edit_project_path(project.id) do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                </div>
               </div>
             </div>
           <% end %>
           <div class="col-xs-12 col-sm-6 col-md-4 project-box">
-            <%= link_to '', new_project_path, class: "project-link" %>
             <div class="project-detail">
               <div class="link-create-project">
-                <h4>Create a new project</h4>
+                <%= link_to '', "#", data:{toggle:"modal", target: "#addProject"}, id:"new-project"%>
+                <h4 class = "create-title">Create a new project</h4>
+                <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Create a new project</h4>
+                      </div>
+                      <div class="modal-body text-center">
+                        <%= simple_form_for [@project] do |f| %>
+                          <%= f.input :name, label: "Project Name", required: true %>
+                          <%= f.input :deadline, label: "Deadline", required: false %>
+                          <%= f.submit "Add project", class: "btn btn-success" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
     </div>
     <div>
       <% if @my_projects_as_talent != [] %>

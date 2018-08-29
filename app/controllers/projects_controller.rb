@@ -1,6 +1,9 @@
 class ProjectsController < ApplicationController
 before_action :set_project, only: [:show, :edit, :update]
   def index
+    @project = Project.new
+    @track = Track.new
+
     @my_projects_as_talent = []
     @my_projects_as_owner = current_user.projects
     @my_sessions = []
@@ -20,6 +23,10 @@ before_action :set_project, only: [:show, :edit, :update]
   def show
     @owner = @project.project_owner
     @track = Track.new
+    @test_session = Session.find(21)
+    @test_audio_1 = AudioFile.find(2)
+    @test_audio_2 = AudioFile.find(1)
+    @array_test = [@test_audio_1, @test_audio_2]
   end
 
   def new
@@ -28,7 +35,7 @@ before_action :set_project, only: [:show, :edit, :update]
 
   def create
     @project = Project.new(project_params)
-    @project.user = current_user
+    @project.user_id = current_user.id
     @project.updated_at = Time.now
     if @project.save
       redirect_to project_path(@project)
@@ -46,6 +53,10 @@ before_action :set_project, only: [:show, :edit, :update]
     else
       render :edit
     end
+  end
+
+  def destroy
+    @project.destroy
   end
 
   private

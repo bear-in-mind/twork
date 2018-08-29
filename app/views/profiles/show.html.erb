@@ -41,15 +41,37 @@
           <p>"<%= @profile.bio %>"</p>
         </div>
       </div>
-
       <div class=" col-xs-12 col-md-4">
         <div class="box skills">
-          <h2>Skills</h2>
-          <ul class="skills-list">
-            <% @profile.talents.each do |talent| %>
-            <li><h4><%= talent.skill.name %></h4></li>
-            <% end %>
-          </ul>
+          <div class="skills">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+              <% @profile.talents.each do |talent| %>
+              <li><h4><%= talent.skill.name %></h4></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="skill-select-button">
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#skillsModal">
+              <i class='fas fa-pencil-alt'></i>
+            </button>
+          </div>
+          <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="skillsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="skillsModalLabel">Select your skills</h2>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @profile, url: profile_path(@profile) do |f| %>
+                    <%= f.input :skills, collection: Skill.all, input_html: { multiple: true, class: "select2" } %>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <%= f.submit class: "btn btn-success" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
