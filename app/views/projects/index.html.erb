@@ -1,32 +1,66 @@
 <div class="wrapper">
   <div class="container">
-    <div>
-      <h3> Projects you own </h3>
+    <div class = "own-projects">
+      <h3 class="main-title"> Projects you own </h3>
       <% if @my_projects_as_owner.empty? %>
-        <h3> You don't own any project yet!</h3>
-      <% else %>
-        <% @my_projects_as_owner.each do |project| %>
-          <div class="project-box">
-            <%= link_to '', project_path(project.id), class: "project-link"%>
-            <p><strong><%= project.name %></strong></p>
-            <p> Due for <%= project.deadline %></p>
-            <p><%= User.find(project.user_id).first_name %></p>
-            <p><%= User.find(project.user_id).last_name %></p>
-            <% project.tracks.each do |track| %>
-              <%= track.name %>
-              <% track.sessions.each do |session| %>
-                <%= cl_image_tag session.talent.user.avatar, height: 50, width: 50, class: "avatar"%>
-              <% end %><br>
-            <% end %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 project-box">
+            <%= link_to '', new_project_path, class: "project-link" %>
+            <div class="project-detail">
+              <div class="link-create-project">
+                <h4>Create a new project</h4>
+              </div>
+            </div>
           </div>
-        <% end %>
+        </div>
+      <% else %>
+        <div class="row">
+          <% @my_projects_as_owner.each do |project| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="project-box project-detail">
+                <div class="project-main">
+                  <%= link_to '', project_path(project.id), class: "project-link" %>
+                  <div class="project-title">
+                    <h3><%= project.name %></h3>
+                  </div>
+                  <div class="project-tracklist">
+                    <% project.tracks.each do |track| %>
+                      <div class="project-track">
+                        <div class="track-name">
+                          <%= track.name %>
+                        </div>
+                        <div class="track-musicians">
+                          <% track.sessions.each do |session| %>
+                            <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar"%>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="button-add-track">
+                  <%= link_to 'Add a track', new_project_track_path(project.id), class: "track-button-add"%>
+                </div>
+              </div>
+              <div class="project-date">
+                <p>Due for: <%= project.deadline %></p>
+              </div>
+            </div>
+          <% end %>
+          <div class="col-xs-12 col-sm-6 col-md-4 project-box">
+            <%= link_to '', new_project_path, class: "project-link" %>
+            <div class="project-detail">
+              <div class="link-create-project">
+                <h4>Create a new project</h4>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
     <div>
-      <h3> Projects you're participating to </h3>
-      <% if @my_projects_as_talent == [] %>
-        <h3> You're not participating to any project yet!</h3>
-      <% else %>
+      <% if @my_projects_as_talent != [] %>
+        <h3 class="main-title"> Projects you're participating to </h3>
         <% @my_projects_as_talent.each do |project| %>
           <p><%= project.name %></p>
           <p><%= User.find(project.user_id).first_name %></p>
@@ -35,7 +69,7 @@
             <% if project.tracks.include?(track) %>
               <%= track.name %>
               <% track.sessions.each do |session| %>
-                <%= cl_image_tag session.talent.user.avatar, height: 50, width: 50, class: "avatar"%>
+                <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar"%>
               <% end %><br>
             <% end %>
           <% end %>
