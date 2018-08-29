@@ -41,7 +41,6 @@
           <p>"<%= @profile.bio %>"</p>
         </div>
       </div>
-
       <div class=" col-xs-12 col-md-4">
         <div class="box skills">
           <div class="skills">
@@ -52,23 +51,16 @@
               <% end %>
             </ul>
           </div>
-          <!-- Modal-button -->
           <div class="skill-select-button">
             <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#skillsModal">
               <i class='fas fa-pencil-alt'></i>
             </button>
           </div>
-
-
-          <!-- Start-modal -->
           <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="skillsModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h2 class="modal-title" id="skillsModalLabel">Select your skills</h2>
-<!--                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button> -->
                 </div>
                 <div class="modal-body">
                   <%= simple_form_for @profile, url: profile_path(@profile) do |f| %>
@@ -77,14 +69,9 @@
                     <%= f.submit class: "btn btn-success" %>
                   <% end %>
                 </div>
-                <!-- <div class="modal-footer"> -->
-                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                  <!-- <button type="button" class="btn btn-success">Save skills</button> -->
-                <!-- </div> -->
               </div>
             </div>
           </div>
-          <!-- End-Modal -->
         </div>
       </div>
 
