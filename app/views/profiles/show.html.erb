@@ -4,8 +4,6 @@
   <% else  %>
     <% url = cl_image_path @profile.banner.url(:banner_image) %>
   <% end %>
-<!--   <div class="banner-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url %>');">
-  </div> -->
    <div class="banner-profile" style="background-image: url('<%= url %>');">
   </div>
 
@@ -91,13 +89,6 @@
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/malca.jpg", height: 170, width: 170, border: '2px_solid_black') %>
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1535119703/album_covers/jk.jpg", height: 170, width: 170, border: '2px_solid_black' ) %>
             <%= cl_image_tag("https://res.cloudinary.com/twerk/image/upload/v1534936367/album_covers/ours.jpg", height: 170, width: 170, border: '2px_solid_black') %>
-          </div>
-        </div>
-      </div>
-
-      <div class=" col-xs-12">
-        <div class="box map">
-          <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>">
           </div>
         </div>
       </div>
