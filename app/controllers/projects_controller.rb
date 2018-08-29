@@ -23,10 +23,10 @@ before_action :set_project, only: [:show, :edit, :update]
   def show
     @owner = @project.project_owner
     @track = Track.new
-    @test_session = Session.find(21)
-    @test_audio_1 = AudioFile.find(2)
-    @test_audio_2 = AudioFile.find(1)
-    @array_test = [@test_audio_1, @test_audio_2]
+    # @test_session = Session.find(21)
+    # @test_audio_1 = AudioFile.find(2)
+    # @test_audio_2 = AudioFile.find(1)
+    # @array_test = [@test_audio_1, @test_audio_2]
   end
 
   def new
