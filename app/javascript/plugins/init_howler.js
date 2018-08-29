@@ -13,7 +13,7 @@ function initPlayer() {
    */
   let session_tracks = []
 
-  const tracksFromHtml = document.querySelectorAll(".track");
+  const tracksFromHtml = document.querySelectorAll(".file");
   tracksFromHtml.forEach((track)=> {
     session_tracks.push({
       title: track.dataset.title,
@@ -139,7 +139,7 @@ function initPlayer() {
       // Get the Howl we want to manipulate.
       var sound = self.playlist[self.index].howl;
 
-      // Puase the sound.
+      // Pause the sound.
       sound.pause();
 
       // Show the play button.

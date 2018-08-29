@@ -8,10 +8,10 @@
 }
 
 .session-box {
+  border-radius: 3px;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background-color: $light-gray;
   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.4);
   margin-bottom: 16px;
 }
@@ -22,6 +22,7 @@
     height: 160px;
     width: 160px;
     margin-right: 5px;
+    border-radius: 3px;
   }
 }
 
@@ -31,14 +32,14 @@
   flex-direction: column;
   justify-content: space-between;
   .player {
+    margin-bottom: 5px;
     height: 100%;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.3);
+    // padding: 5px;
+    // background-color: rgba(0, 0, 0, 0.3);
   }
 }
 
 .controls {
-  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

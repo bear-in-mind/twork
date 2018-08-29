@@ -1,16 +1,10 @@
 #player-container {
   position: relative;
-  width: 80%;
-  height: 170px;
+  width: 100%;
+  height: 100%;
   padding: 0;
-  margin: 40px;
   overflow: hidden;
-/*  background: #bb71f3;
-  background: #1f4037;
-  background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);
-  background: linear-gradient(to right, #99f2c8, #1f4037);*/
   background-color: white;
-  border: solid 1px $green;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bb71f3', endColorstr='#3d4d91', GradientType=1);
   -webkit-user-select: none;
   user-select: none;
@@ -53,7 +47,6 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 
-/* Controls */
 .controlsOuter {
   position: absolute;
   width: 100%;
@@ -83,8 +76,6 @@
 }
 
 #playBtn {
-/*  width: 69px;
-  height: 70px;*/
   left: 50%;
   margin: auto -34.5px;
 }
@@ -110,7 +101,6 @@
   margin: -17.5px auto;
 }
 
-/* Progress */
 #waveform {
   width: 100%;
   height: 60%;
@@ -231,7 +221,6 @@
   cursor: pointer;
 }
 
- /*Volume*/
 #volume {
   width: 100%;
   height: 100%;
@@ -274,8 +263,6 @@
   border-radius: 25px;
   cursor: pointer;
 }
-
-/* Fade-In*/
 
 .fadeout {
   webkit-animation: fadeout 0.5s;
