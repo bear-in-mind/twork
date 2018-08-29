@@ -13,6 +13,18 @@
   margin-top: -60px;
 }
 
+.skills{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.skill-select-button{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 .skill-genre {
   font-weight: normal;
   em {
@@ -142,6 +154,10 @@ p {
 ul.skills-list {
   list-style: none;
   padding: 0;
+}
+
+input.select2-search__field {
+  min-width: 250px !important;
 }
 
 .reviews {
