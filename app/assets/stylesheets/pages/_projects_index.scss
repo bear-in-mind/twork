@@ -1,0 +1,84 @@
+.project-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: white;
+}
+
+.project-box {
+  position: relative;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  &:hover {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.project-detail {
+  position: relative;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  height: 300px;
+}
+
+.project-title {
+  text-align:center;
+  color: $green;
+}
+
+.link-create-project {
+  text-align:center;
+  color: $green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.project-tracklist {
+  color: rgba(0,0,0,0.6);
+  padding: 0px 20px 0px 20px;
+}
+
+.project-track {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-title {
+  margin-bottom: 25px;
+}
+
+.link-create-project h1 {
+  margin-top: 12.5px;
+}
+
+.button-add-track {
+  background-color: $green;
+  text-decoration: none;
+  color: white;
+  height: 45px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  text-align:center;
+}
+
+.track-button-add {
+  margin: auto;
+  color: white;
+}
+
+.project-main {
+  position: relative;
+}

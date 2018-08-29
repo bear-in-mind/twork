@@ -41,12 +41,10 @@ class TracksController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
-    authorize @project
   end
 
   def set_track
     @track = Track.find(params[:id])
-    authorize @track
   end
 
   def track_params

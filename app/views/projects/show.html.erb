@@ -3,18 +3,21 @@
   <div class="project-header">
     <div class= "project-name-div">
       <% if @project.deadline %>
-        <h6><%= @project.deadline.strftime("Due on %d/%m/%Y") %></h6>
+        <h6><i class="far fa-calendar"></i><%= @project.deadline.strftime("  Due on %d/%m/%Y") %></h6>
       <% end %>
     </div>
-    <h1>Project : <%= @project.name %></h1>
+    <div class="project-titles">
+      <h2>Project</h2>
+      <h1><%= @project.name.capitalize %></h1>
+    </div>
     <div class="project-owner-div">
       <h2> Owner :</h2>
       <div>
         <%= link_to profile_path(@owner) do %>
           <% if @owner.avatar.nil? %>
-          <%= image_tag "noprofilepicture.png", height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
           <% else  %>
-          <%= cl_image_tag @owner.avatar, height: 104, width: 104, crop: :fill, class: "avatar" %>
+          <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
           <% end  %>
         <% end %>
       </div>
@@ -27,29 +30,68 @@
     <div class="track-index">
       <% @project.tracks.each do |track| %>
 
-        <%= link_to project_track_path(@project, track) do %>
-          <div class="track-card">
-            <div class="track-infos">
-              <h3><%= track.name %></h3>
-              <p><%= track.created_at.strftime("Started on %d/%m/%Y") %></p>
-            </div>
+        <%# if track.project.project_owner == current_user || track.talents.user.include?(current_user) %>
+            <%= link_to project_track_path(@project, track), class: "card-link" do %>
+              <div class="track-card">
 
-            <div class="collaborators">
-              <% track.talents.each do |talent| %>
-                <%= link_to profile_path(@owner) do %>
-                  <% if @owner.avatar.nil? %>
-                  <%= image_tag "noprofilepicture.png", height: 70, width: 70, crop: :fill, class: "avatar" %>
-                  <% else  %>
-                  <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar" %>
-                  <% end  %>
-                <% end %>
-              <% end %>
+                <div class="track-infos">
+                  <h3><%= track.name %></h3>
+                  <p><%= track.created_at.strftime("Started on %d/%m/%Y") %></p>
+                </div>
+
+                <div class="collaborators">
+                  <% track.talents.each do |talent| %>
+                    <%#= link_to profile_path(talent) do %>
+                      <% if @owner.avatar.nil? %>
+                       <%= image_tag "noprofilepicture.png", height: 70, width: 70, crop: :fill, class: "avatar" %>
+                      <% else  %>
+                        <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar" %>
+                      <% end  %>
+                  <% end %>
+                  <p><%= pluralize(track.talents.size, "session") %></p>
+                </div>
+
+              </div>
+            <% end %>
+
+        <%# end %>
+
+        <div class="dropdown-divider"></div>
+      <% end %>
+
+      <% if @owner == current_user %>
+          <button class="track-card-new" data-toggle="modal" data-target="#addTrack" id="new-track">
+            <h3>Add a new track</h3>
+          </button>
+          <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Add a new Track</h4>
+                </div>
+                <div class="modal-body text-center">
+                  <%= simple_form_for [@project, @track] do |f| %>
+                    <%= f.input :name, label: "Track Name", required: false %>
+                    <%= f.submit "Add track", class: "btn btn-success" %>
+                  <% end %>
+                </div>
+<!--                 <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+              </div>
             </div>
           </div>
-        <% end %>
-
       <% end %>
+
     </div>
   </div>
 
 </div>
+
+<script>
+  $('.modal').on('shown.bs.modal', function() {
+    $(this).find('[autofocus]').focus();
+  });
+</script>

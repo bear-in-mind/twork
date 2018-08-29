@@ -19,6 +19,7 @@ before_action :set_project, only: [:show, :edit, :update]
 
   def show
     @owner = @project.project_owner
+    @track = Track.new
   end
 
   def new
