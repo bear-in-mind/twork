@@ -21,9 +21,9 @@ class ProfilesController < ApplicationController
         Talent.create(user: @profile, skill: skill_iter)
       end
     else
-      update = profile_params[:main_occupation].capitalize
-      current_user.update(update)
-      raise
+      @user  = User.new
+      current_user.main_occupation = profile_params[:main_occupation].capitalize
+      current_user.save
     end
     redirect_to profile_path(@profile)
   end
