@@ -45,7 +45,7 @@
                       <% if @owner.avatar.nil? %>
                        <%= image_tag "noprofilepicture.png", height: 70, width: 70, crop: :fill, class: "avatar" %>
                       <% else  %>
-                        <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar", data: { toggle: "tooltip" }, title: "#{talent.user.first_name} #{talent.user.last_name}" %>
+                        <%= cl_image_tag talent.user.avatar, height: 70, width: 70, crop: :fill, class: "avatar", data: { toggle: "tooltip" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
                       <% end  %>
                   <% end %>
                   <p><%= pluralize(track.talents.size, "session") %></p>
@@ -83,54 +83,6 @@
             </div>
           </div>
       <% end %>
-
-<!-- Player code, to paste in tracks#view -->
-
-      <% @array_test.each do |track| %>
-        <div class='track'
-          data-title="<%= track.name %>"
-          data-url="<%= track.audio %>">
-        </div>
-      <% end %>
-
-      <div id="player-container">
-        <!-- Top Info -->
-        <div id="title">
-          <span id="track"></span>
-          <div id="timer">0:00</div>
-          <div id="duration">0:00</div>
-        </div>
-
-        <!-- Controls -->
-        <div class="controlsOuter">
-          <div class="controlsInner">
-            <div id="loading"></div>
-            <i class="fas fa-play btn-player" id="playBtn"></i>
-            <i class="fas fa-pause btn-player" id="pauseBtn"></i>
-          </div>
-          <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
-          <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
-        </div>
-
-        <!-- Progress -->
-        <div id="waveform"></div>
-        <div id="bar"></div>
-        <div id="progress"></div>
-
-        <!-- Playlist -->
-        <div id="playlist">
-          <div id="list"></div>
-        </div>
-
-        <!-- Volume -->
-        <div id="volume" class="fadeout">
-          <div id="barFull" class="bar"></div>
-          <div id="barEmpty" class="bar"></div>
-          <div id="sliderBtn"></div>
-        </div>
-      </div>
-
-<!-- END PLAYER CODE -->
 
     </div>
   </div>

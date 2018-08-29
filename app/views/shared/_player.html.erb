@@ -1,0 +1,47 @@
+<!-- CODE TO POST IN TRACK#VIEW -->
+
+<%# @array_test.each do |track| %>
+  <div class='track'
+    data-title="<%#= track.name %>"
+    data-url="<%#= track.audio %>">
+  </div>
+<%# end %>
+
+<!-- STARTS HERE -->
+
+<div id="player-container">
+  <!-- Top Info -->
+  <div id="title">
+    <span id="track"></span>
+    <div id="timer">0:00</div>
+    <div id="duration">0:00</div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controlsOuter">
+    <div class="controlsInner">
+      <div id="loading"></div>
+      <i class="fas fa-play btn-player" id="playBtn"></i>
+      <i class="fas fa-pause btn-player" id="pauseBtn"></i>
+    </div>
+    <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
+    <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
+  </div>
+
+  <!-- Progress -->
+  <div id="waveform"></div>
+  <div id="bar"></div>
+  <div id="progress"></div>
+
+  <!-- Playlist -->
+  <div id="playlist">
+    <div id="list"></div>
+  </div>
+
+  <!-- Volume -->
+  <div id="volume" class="fadeout">
+    <div id="barFull" class="bar"></div>
+    <div id="barEmpty" class="bar"></div>
+    <div id="sliderBtn"></div>
+  </div>
+</div>
