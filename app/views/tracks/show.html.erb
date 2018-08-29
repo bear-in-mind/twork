@@ -1,2 +1,41 @@
-<h1>Tracks#show</h1>
-<p>Find me in app/views/tracks/show.html.erb</p>
+<div class="container text-center sessions-list">
+  <div class="brief box text-left">
+    <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
+    <!-- BONUS add pin icon -->
+    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos officia quae eum id corporis ex ipsam omnis ut, odio accusantium doloremque, voluptatem sapiente cumque culpa hic dignissimos saepe pariatur. Laudantium?"</p>
+  </div>
+  <% @sessions.each do |session| %>
+    <% last_uploaded = session.audio_files.last %>
+    <div class="session-box">
+
+      <div class="img-item">
+        <!-- ce if devrait être plus large car tu en auras besoin après: dans le player et le dropdown -->
+        <% if last_uploaded %>
+        <%= cl_image_tag last_uploaded.uploaded_by.avatar, class: 'avatar-sq'%>
+        <% else %>
+        <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
+        <% end %>
+      </div>
+
+      <div class="audio-item">
+        <div class="player">
+          <!-- code de ton player  -->
+        </div>
+        <div class="controls">
+          <div class="up-down text-left">
+            <button type="button" class="upload-btn btn btn-success">
+              <!-- TO DO créer une modal d'upload -->
+              <i class="fas fa-upload"></i>
+            </button>
+            <button type="button" class="download-btn btn btn-success">
+              <!-- TO DO implémenter le download -->
+              <i class="fa fa-download" aria-hidden="true"></i>
+            </button>
+          </div>
+          <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
+          <button type="button" class="comments-btn btn btn-success"><span class="caret"></span></button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

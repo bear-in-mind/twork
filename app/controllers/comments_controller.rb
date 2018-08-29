@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # TO DO comment rattacher le comment à sa track_instant ?
 
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_audio_file, only: [:index, :create, :update]
+  before_action :set_audio_file, only: [:index, :new, :create, :edit, :update]
 
   def index
     @comments = @audio_file.comments

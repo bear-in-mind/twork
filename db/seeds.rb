@@ -1,4 +1,3 @@
-
 puts "Deleting db..."
 Session.destroy_all
 Track.destroy_all
@@ -202,7 +201,6 @@ f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502
 f.save!
 
 # Talents
-
 louis = User.find_by(first_name: "Louis")
 max = User.find_by(first_name: "Maxime")
 nico = User.find_by(first_name: "Nicolas")
