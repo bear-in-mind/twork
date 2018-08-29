@@ -7,7 +7,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @sessions = @track.sessions
+    @sessions = @track.sessions.includes(:audio_files)
   end
 
   def new

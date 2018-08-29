@@ -1,40 +1,58 @@
-.sessions-lits {
-  background-color: rgba(255, 255, 255, 0.9);
+// TO DO: retirer toutes les background-color de placeholders
+
+.sessions-list {
+  background-color: rgba(255, 255, 255, 1);
+  .brief {
+    position: relative;
+  }
 }
 
 .session-box {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   background-color: $light-gray;
-  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.4);
   margin-bottom: 16px;
 }
 
 .img-item {
   background-color: rgba(0, 0, 0, 0.1);
-  // .avatar-sq {
+  .avatar-sq {
     height: 160px;
     width: 160px;
-  // }
+    margin-right: 5px;
+  }
 }
 
 .audio-item {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   .player {
-    background-color: rgba(0, 0, 0, 0.1);
-
+    height: 100%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
 
 .controls {
   background-color: rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .upload-btn {}
-  .download-btn {}
-  .comments-dropdown-btn {}
+  justify-content: space-between;
+  align-items: flex-end;
+  .up-down {
+    flex-grow: 1;
+  }
+  .upload-btn, .download-btn, .comments-btn {
+    padding: 2px 13px;
+    height: 22px;
+    font-size: 13px;
+    border: none;
+  }
 }
+
 
 
 
