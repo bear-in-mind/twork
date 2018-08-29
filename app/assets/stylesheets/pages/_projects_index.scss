@@ -8,9 +8,23 @@
   color: $green;
 }
 
+.musician-avatar {
+  margin: 1px;
+}
+
 .fontawesome-buttons {
-  color: rgba(0,0,0,0.6);
   font-size: 22px;
+  display: flex;
+  a {
+    color: rgba(0,0,0,0.6);
+    &:hover {
+    color: rgba(0,0,0,0.4);
+    }
+  }
+}
+
+.delete-button {
+  margin-right: 3px;
 }
 
 .create-title {
@@ -81,7 +95,8 @@
 }
 
 .button-add-track {
-  background-color: $green;
+  background-color: rgba(50, 183, 150, 0.7);
+  opacity: 0,6;
   text-decoration: none;
   color: white;
   height: 45px;
@@ -91,6 +106,9 @@
   right: 0px;
   text-align:center;
   font-weight: bold;
+  &:hover {
+    background-color: rgba(50, 183, 150, 1.0);
+  }
 }
 
 .track-button-add {
@@ -130,4 +148,10 @@
   right: 0;
   background-color: red;
   background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+
+.owner-avatar {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }

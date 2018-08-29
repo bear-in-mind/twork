@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-before_action :set_project, only: [:show, :edit, :update]
+before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
     @project = Project.new
     @track = Track.new
@@ -53,6 +53,7 @@ before_action :set_project, only: [:show, :edit, :update]
 
   def destroy
     @project.destroy
+    redirect_to projects_path
   end
 
   private
