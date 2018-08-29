@@ -4,7 +4,9 @@
   <% else  %>
     <% url = cl_image_path @profile.banner.url(:banner_image) %>
   <% end %>
-  <div class="banner-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url %>');">
+<!--   <div class="banner-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url %>');">
+  </div> -->
+   <div class="banner-profile" style="background-image: url('<%= url %>');">
   </div>
 
   <div class="profile-page">
