@@ -1,0 +1,40 @@
+.sessions-lits {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.session-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light-gray;
+  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.img-item {
+  background-color: rgba(0, 0, 0, 0.1);
+  // .avatar-sq {
+    height: 160px;
+    width: 160px;
+  // }
+}
+
+.audio-item {
+  .player {
+    background-color: rgba(0, 0, 0, 0.1);
+
+  }
+}
+
+.controls {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .upload-btn {}
+  .download-btn {}
+  .comments-dropdown-btn {}
+}
+
+
+

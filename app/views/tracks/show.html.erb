@@ -1,2 +1,24 @@
-<h1>Tracks#show</h1>
-<p>Find me in app/views/tracks/show.html.erb</p>
+
+<div class="container text-center sessions-list">
+  <h1>Tracks#show</h1>
+  <p>Find me in app/views/tracks/show.html.erb</p>
+  <% @sessions.each do |session| %>
+  <% @audio_files = session.audio_files %>
+  <% @last_uploaded = @audio_files.last %>
+
+  <div class="session-box">
+    <div class="img-item">
+      <%= cl_image_tag @last_uploaded.uploaded_by.avatar, class: 'avatar-sq' %>
+    </div>
+    <div class="audio-item">
+      <div class="player"></div>
+      <div class="controls">
+        <button type="button" class="upload-btn btn btn-default">Upload</button>
+        <button type="button" class="download-btn btn btn-default">Download</button>
+        <button type="button" class="comments-btn btn btn-default"><span class="caret"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+</div>

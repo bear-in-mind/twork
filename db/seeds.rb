@@ -1,4 +1,3 @@
-
 puts "Deleting db..."
 Session.destroy_all
 Track.destroy_all
@@ -202,7 +201,6 @@ f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502
 f.save!
 
 # Talents
-
 louis = User.find_by(first_name: "Louis")
 max = User.find_by(first_name: "Maxime")
 nico = User.find_by(first_name: "Nicolas")
@@ -266,10 +264,23 @@ sequoias = Track.last
 
 # Sessions
 Session.create!(track: ciao, talent: max_drums)
+drum_rec = Session.last
 Session.create!(track: ciao, talent: nico_guitar)
 Session.create!(track: ciao, talent: johann_keys)
 Session.create!(track: ilot, talent: max_drums)
 Session.create!(track: vague, talent: nico_guitar)
 Session.create!(track: sequoias, talent: louis_bass)
+bass_rec = Session.last
+
+# Audio_files
+# dark_wagon = AudioFile.new(name: 'Dark Wagon', user_id: louis.id, session_id: bass_rec.id)
+# dark_wagon.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a"
+# dark_wagon.save!
+
+ciao_drums = AudioFile.new(name: 'Ciao Drums', user_id: max.id, session_id: drum_rec.id)
+ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535539370/audio/Ciao_BASS-BATT-RHODES.mp3"
+
+puts "bugs here"
+ciao_drums.save!
 
 puts "Seeding done!"
