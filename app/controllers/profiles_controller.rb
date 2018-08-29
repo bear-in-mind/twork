@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -19,10 +20,10 @@ class ProfilesController < ApplicationController
       @skills.each do |skill_iter|
         Talent.create(user: @profile, skill: skill_iter)
       end
-
-
     else
-      @profile.update(profile_params)
+      update = profile_params[:main_occupation].capitalize
+      current_user.update(update)
+      raise
     end
     redirect_to profile_path(@profile)
   end
@@ -38,7 +39,7 @@ class ProfilesController < ApplicationController
     # authorize @profile
   end
 
-  # def profile_params
-  #   params.require(:profile).permit(:avatar, :banner, :bio, :genres, :main_occupation)
-  # end
+  def profile_params
+    params.require(:user).permit(:main_occupation)
+  end
 end
