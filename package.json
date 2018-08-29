@@ -4,8 +4,8 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
-    "jquery": "^3.3.1",
-    "soundmanager2": "^2.97.20170602"
+    "howler": "^2.0.15",
+    "jquery": "^3.3.1"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
