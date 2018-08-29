@@ -7,4 +7,5 @@ class Talent < ApplicationRecord
 
   validates :user_id, presence: true # referring to user profile
   validates :skill_id, presence: true
+  validates_uniqueness_of :skill_id, :scope => :user_id
 end

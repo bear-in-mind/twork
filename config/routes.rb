@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'projects#index'
 
   resources :profiles, only: [:index, :show, :edit, :update, :destroy]
-  resources :talents, only: [:new, :create, :edit, :update, :destroy]
+  resources :talents, only: [:destroy]
+
   resources :comments
 
   resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
