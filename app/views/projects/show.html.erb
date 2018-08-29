@@ -84,6 +84,15 @@
           </div>
       <% end %>
 
+<!-- Player code, to paste in tracks#view -->
+
+      <% @array_test.each do |track| %>
+        <div class='track'
+          data-title="<%= track.name %>"
+          data-url="<%= track.audio %>">
+        </div>
+      <% end %>
+
       <div id="player-container">
         <!-- Top Info -->
         <div id="title">
@@ -122,6 +131,8 @@
           <div id="sliderBtn"></div>
         </div>
       </div>
+
+<!-- END PLAYER CODE -->
 
     </div>
   </div>
