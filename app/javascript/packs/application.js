@@ -1,5 +1,6 @@
 import "bootstrap";
 import $ from "jquery";
+import '../components/select2';
 
 import { initPlayer } from '../plugins/init_howler';
 
@@ -21,3 +22,4 @@ initPlayer();
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
