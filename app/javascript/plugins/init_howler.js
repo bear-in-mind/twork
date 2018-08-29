@@ -1,7 +1,7 @@
 import 'howler';
 import SiriWave from './siriwave';
 
-function initPlayer(session_tracks) {
+function initPlayer() {
   /*!
    *  Howler.js Audio Player Demo
    *  howlerjs.com
@@ -11,8 +11,18 @@ function initPlayer(session_tracks) {
    *
    *  MIT License
    */
+  let session_tracks = []
 
-   // let session_tracks = []
+  const tracksFromHtml = document.querySelectorAll(".track");
+  tracksFromHtml.forEach((track)=> {
+    session_tracks.push({
+      title: track.dataset.title,
+      howl: null,
+      url: track.dataset.url
+    });
+  })
+
+  console.log(session_tracks)
 
   // Cache references to DOM elements.
   var elms = ['track', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
