@@ -31,7 +31,7 @@ function initPlayer(sessionName) {
   console.log(sessionTracks)
 
   // Cache references to DOM elements.
-  var elms = ['track', 'waveform', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+  var elms = [`track`, `waveform`, `timer`, `duration`, `playBtn`, `pauseBtn`, `prevBtn`, `nextBtn`, `playlistBtn`, `volumeBtn`, `progress`, `bar`, `wave`, `loading`, `playlist`, `list`, `volume`, `barEmpty`, `barFull`, `sliderBtn`];
   elms.forEach(function(elm) {
     window[elm] = document.getElementById(elm);
   });

@@ -44,6 +44,7 @@
             <% else %>
               <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
             <% end %>
+
           </div>
           <div class="audio-item">
             <div class="player">
@@ -53,40 +54,41 @@
                   data-url="<%= file.audio %>">
                 </div>
               <% end %>
-              <div id="player-container">
-                <!-- Top Info -->
-                <div id="title">
-                  <span id="track"></span>
-                  <div id="timer">0:00</div>
-                  <div id="duration">0:00</div>
-                </div>
-                <!-- Controls -->
-                <div class="controlsOuter">
-                  <div class="controlsInner">
-                    <div id="loading"></div>
-                    <i class="fas fa-play btn-player" id="playBtn"></i>
-                    <i class="fas fa-pause btn-player" id="pauseBtn"></i>
-                  </div>
-                  <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
-                  <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
-                </div>
 
-                <!-- Progress -->
-                <div id="waveform"></div>
-                <div id="bar"></div>
-                <div id="progress"></div>
+            <div id="player-container">
+              <!-- Top Info -->
+              <div id="title_<%= session.id %>">
+                <span id="track_<%= session.id %>"></span>
+                <div id="timer_<%= session.id %>">0:00</div>
+                <div id="duration_<%= session.id %>">0:00</div>
+              </div>
 
-                <!-- Playlist -->
-                <div id="playlist">
-                  <div id="list"></div>
+              <!-- Controls -->
+              <div class="controlsOuter">
+                <div class="controlsInner">
+                  <div id="loading_<%= session.id %>"></div>
+                  <i class="fas fa-play btn-player" id="playBtn_<%= session.id %>"></i>
+                  <i class="fas fa-pause btn-player" id="pauseBtn_<%= session.id %>"></i>
                 </div>
+                <i class="fas fa-volume-down btn-player" id="volumeBtn_<%= session.id %>"></i>
+                <i class="fas fa-list-ul btn-player" id="playlistBtn_<%= session.id %>"></i>
+              </div>
 
-                <!-- Volume -->
-                <div id="volume" class="fadeout">
-                  <div id="barFull" class="bar"></div>
-                  <div id="barEmpty" class="bar"></div>
-                  <div id="sliderBtn"></div>
-                </div>
+              <!-- Progress -->
+              <div id="waveform_<%= session.id %>"></div>
+              <div id="bar_<%= session.id %>"></div>
+              <div id="progress_<%= session.id %>"></div>
+
+              <!-- Playlist -->
+              <div id="playlist_<%= session.id %>">
+                <div id="list_<%= session.id %>"></div>
+              </div>
+
+              <!-- Volume -->
+              <div id="volume_<%= session.id %>" class="fadeout">
+                <div id="barFull_<%= session.id %>" class="bar"></div>
+                <div id="barEmpty_<%= session.id %>" class="bar"></div>
+                <div id="sliderBtn_<%= session.id %>"></div>
               </div>
             </div>
           </div>
