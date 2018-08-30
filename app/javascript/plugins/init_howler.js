@@ -25,7 +25,7 @@ function initPlayer() {
   console.log(session_tracks)
 
   // Cache references to DOM elements.
-  var elms = ['track', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
+  var elms = ['track', 'waveform', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
   elms.forEach(function(elm) {
     window[elm] = document.getElementById(elm);
   });
@@ -280,25 +280,6 @@ function initPlayer() {
       return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
   };
-
-  // Setup our new audio player class and pass it the playlist.
-  // var player = new Player([
-    // {
-    //   title: 'Dark Wagon - Basic Track',
-    //   howl: null,
-    //   url: 'https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a'
-    // },
-    // {
-    //   title: 'Dark Wagon - Drums',
-    //   howl: null,
-    //   url: 'https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a'
-    // },
-    // {
-    //   title: 'Dark Wagon - Bass',
-    //   howl: null,
-    //   url: 'https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a'
-    // }
-  // ]);
 
     var player = new Player(session_tracks);
 
