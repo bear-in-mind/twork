@@ -28,8 +28,8 @@
                 </div>
               </div>
               <div class="button-add-track">
-                <%= link_to 'Add a track', "#", data:{toggle:"modal", target: "#addTrack"}, class: "track-button-add"%>
-                <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <%= link_to 'Add a track', "#", data:{toggle:"modal", target: "#addTrack#{project.id}"}, class: "track-button-add"%>
+                <div class="modal fade" id="addTrack<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                       <div class="modal-header text-center">
@@ -37,8 +37,8 @@
                         <h4 class="modal-title" id="new-track-modal-title">Add a new Track</h4>
                       </div>
                       <div class="modal-body text-center">
-                        <%= simple_form_for [project, @track] do |f| %>
-                          <%= f.input :name, label: "Track Name", required: false %>
+                        <%= simple_form_for [project, @track], url: project_tracks_path(project), method: :post do |f| %>
+                          <%= f.input :name, label: "Track Name", required: true %>
                           <%= f.submit "Add track", class: "btn btn-success" %>
                         <% end %>
                       </div>
@@ -50,11 +50,6 @@
             <div class="project-date">
               <p>Due for: <%= project.deadline %></p>
               <div class="fontawesome-buttons">
-                <div class = "delete-button">
-                  <%= link_to project_path(project), method: :delete do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                </div>
                 <div class="edit-button">
                   <%= link_to "#", data:{toggle:"modal", target: "#editProject#{project.id}"}, id:"edit-project" do %>
                     <i class="far fa-edit"></i>
@@ -69,7 +64,7 @@
                         <div class="modal-body text-center">
                           <%= simple_form_for project, url: project_path(project) do |f| %>
                             <%= f.input :name, label: "Project Name", required: true %>
-                            <%= f.input :deadline, label: "Deadline", required: false %>
+                            <%= f.input :deadline, label: "Deadline", required: false, include_blank: true %>
                             <%= f.submit "Edit", class: "btn btn-success" %>
                           <% end %>
                         </div>
@@ -96,7 +91,7 @@
                     <div class="modal-body text-center">
                       <%= simple_form_for [@project] do |f| %>
                         <%= f.input :name, label: "Project Name", required: true %>
-                        <%= f.input :deadline, label: "Deadline", required: false %>
+                        <%= f.input :deadline, label: "Deadline", required: false, include_blank: true %>
                         <%= f.submit "Add project", class: "btn btn-success" %>
                       <% end %>
                     </div>
@@ -111,44 +106,46 @@
     <div class = "project-participate">
       <% if @my_projects_as_talent_sorted != [] %>
         <h3 class="main-title"> Projects you're participating to </h3>
-        <% @my_projects_as_talent_sorted.each do |project| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="project-box project-detail">
-              <div class="project-main">
-                <div class="project-main-layer"></div>
-                <div class="project-title">
-                  <h3><%= project.name %></h3>
-                </div>
-                <div class="owner-avatar">
-                  <%= cl_image_tag User.find(project.user_id).avatar, height: 50, width: 50, class: "avatar"%>
-                </div>
-                <div class="project-tracklist">
-                  <% @my_tracks.each do |track| %>
-                    <% if project.tracks.include?(track) %>
-                      <div class="project-track">
-                        <div class="track-name">
-                          <%= track.name %>
-                        </div>
-                        <div class="track-musicians">
-                          <% track.sessions.each do |session| %>
-                            <% if session.talent.user != current_user %>
-                              <div class="musician-avatar">
-                                <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar"%>
-                              </div>
+        <div class="row">
+          <% @my_projects_as_talent_sorted.each do |project| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="project-box project-detail">
+                <div class="project-main">
+                  <div class="project-main-layer"></div>
+                  <div class="project-title">
+                    <h3><%= project.name %></h3>
+                  </div>
+                  <div class="owner-avatar">
+                    <%= cl_image_tag User.find(project.user_id).avatar, height: 50, width: 50, class: "avatar"%>
+                  </div>
+                  <div class="project-tracklist">
+                    <% @my_tracks.each do |track| %>
+                      <% if project.tracks.include?(track) %>
+                        <div class="project-track">
+                          <div class="track-name">
+                            <%= track.name %>
+                          </div>
+                          <div class="track-musicians">
+                            <% track.sessions.each do |session| %>
+                              <% if session.talent.user != current_user %>
+                                <div class="musician-avatar">
+                                  <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar"%>
+                                </div>
+                              <% end %>
                             <% end %>
-                          <% end %>
+                          </div>
                         </div>
-                      </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
                 </div>
               </div>
               <div class="project-due-date">
                 <p>Due for: <%= project.deadline %></p>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

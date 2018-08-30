@@ -5,7 +5,17 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
     @track = Track.new
 
     @my_projects_as_talent = []
-    @my_projects_as_owner = current_user.projects.sort_by {|project| project.deadline }
+    @my_projects_as_owner = []
+    no_deadline = []
+    with_deadline = []
+    current_user.projects.each do |project|
+      if project.deadline.nil?
+        no_deadline << project
+      else
+        with_deadline << project
+      end
+    end
+    @my_projects_as_owner = with_deadline.sort_by {|project| project.deadline} + no_deadline
     @my_sessions = []
     @my_tracks = []
     @my_talents = current_user.talents
