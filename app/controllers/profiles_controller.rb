@@ -15,21 +15,20 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    # raise
     if params[:user][:skills].present?
       @skills = Skill.where(id: params[:user][:skills])
       @skills.each do |skill_iter|
         Talent.create(user: @profile, skill: skill_iter)
       end
     else
-      @user  = User.new
-      current_user.main_occupation = profile_params[:main_occupation].capitalize
-      current_user.save
+      current_user.update(profile_params)
     end
     redirect_to profile_path(@profile)
   end
 
   def destroy
-    # what do we do ?
+    # what do we do ? Do we want to delete profiles?
   end
 
   private
@@ -40,6 +39,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit(:main_occupation)
+    params.require(:user).permit(:main_occupation, genres:[])
   end
 end
