@@ -1,41 +1,115 @@
-<div class="container text-center sessions-list">
-  <div class="brief box text-left">
-    <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
-    <!-- BONUS add pin icon -->
-    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos officia quae eum id corporis ex ipsam omnis ut, odio accusantium doloremque, voluptatem sapiente cumque culpa hic dignissimos saepe pariatur. Laudantium?"</p>
-  </div>
-  <% @sessions.each do |session| %>
-    <% last_uploaded = session.audio_files.last %>
-    <div class="session-box">
+<div class="container sessions-list">
 
-      <div class="img-item">
-        <!-- ce if devrait être plus large car tu en auras besoin après: dans le player et le dropdown -->
-        <% if last_uploaded %>
-        <%= cl_image_tag last_uploaded.uploaded_by.avatar, class: 'avatar-sq'%>
-        <% else %>
-        <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
+  <div class="track-header">
+    <div class= "project-name-div">
+      <% if @project.deadline %>
+        <h6><i class="far fa-calendar"></i><%= @project.deadline.strftime("  Due on %d/%m/%Y") %></h6>
+      <% end %>
+    </div>
+    <div class="project-titles">
+      <h2>Project</h2>
+      <h1><%= @project.name.capitalize %></h1>
+    </div>
+    <div class="project-owner-div">
+      <h2> Owner :</h2>
+      <div>
+        <%= link_to profile_path(@owner) do %>
+          <% if @owner.avatar.nil? %>
+          <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
+          <% else  %>
+          <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+          <% end  %>
         <% end %>
       </div>
+    </div>
+  </div>
 
-      <div class="audio-item">
-        <div class="player">
-          <!-- code de ton player  -->
+  <div class="brief-wrapper">
+      <h1>Brief</h1>
+      <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
+      <!-- BONUS add pin icon -->
+      <p><%= @track.brief %></p>
+  </div>
+
+  <div class="session-index">
+    <% @sessions.each do |session| %>
+
+      <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
+
+      <div class="session-box">
+
+        <div class="img-item">
+          <% if session.talent.user.avatar %>
+            <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
+          <% else %>
+            <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
+          <% end %>
         </div>
-        <div class="controls">
-          <div class="up-down text-left">
-            <button type="button" class="upload-btn btn btn-success">
-              <!-- TO DO créer une modal d'upload -->
-              <i class="fas fa-upload"></i>
-            </button>
-            <button type="button" class="download-btn btn btn-success">
-              <!-- TO DO implémenter le download -->
-              <i class="fa fa-download" aria-hidden="true"></i>
-            </button>
+
+        <div class="audio-item">
+
+          <div class="player">
+            <% session.audio_files.each do |file| %>
+              <div class='file'
+                data-title="<%= file.name %>"
+                data-url="<%= file.audio %>">
+              </div>
+            <% end %>
+
+            <div id="player-container">
+              <!-- Top Info -->
+              <div id="title">
+                <span id="track"></span>
+                <div id="timer">0:00</div>
+                <div id="duration">0:00</div>
+              </div>
+
+              <!-- Controls -->
+              <div class="controlsOuter">
+                <div class="controlsInner">
+                  <div id="loading"></div>
+                  <i class="fas fa-play btn-player" id="playBtn"></i>
+                  <i class="fas fa-pause btn-player" id="pauseBtn"></i>
+                </div>
+                <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
+                <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
+              </div>
+
+              <!-- Progress -->
+              <div id="waveform"></div>
+              <div id="bar"></div>
+              <div id="progress"></div>
+
+              <!-- Playlist -->
+              <div id="playlist">
+                <div id="list"></div>
+              </div>
+
+              <!-- Volume -->
+              <div id="volume" class="fadeout">
+                <div id="barFull" class="bar"></div>
+                <div id="barEmpty" class="bar"></div>
+                <div id="sliderBtn"></div>
+              </div>
+            </div>
+
           </div>
-          <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
-          <button type="button" class="comments-btn btn btn-success"><span class="caret"></span></button>
+          <div class="controls">
+            <div class="up-down text-left">
+              <button type="button" class="upload-btn btn btn-primary">
+                <!-- TO DO créer une modal d'upload -->
+                <i class="fas fa-upload"></i>
+              </button>
+              <button type="button" class="download-btn btn btn-primary">
+                <!-- TO DO implémenter le download -->
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
+            <button type="button" class="comments-btn btn btn-primary"><span class="caret"></span></button>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
