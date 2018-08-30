@@ -37,7 +37,7 @@
                         <h4 class="modal-title" id="new-track-modal-title">Add a new Track</h4>
                       </div>
                       <div class="modal-body text-center">
-                        <%= simple_form_for [project, @track], url: project_tracks_path(project), method: :post do |f| %>
+                        <%= simple_form_for [project, @track], url: project_tracks_path(project) do |f| %>
                           <%= f.input :name, label: "Track Name", required: true %>
                           <%= f.submit "Add track", class: "btn btn-success" %>
                         <% end %>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="modal-body text-center">
                           <%= simple_form_for project, url: project_path(project) do |f| %>
-                            <%= f.input :name, label: "Project Name", required: true %>
+                            <%= f.input :name, label: "Project Name", required: false %>
                             <%= f.input :deadline, label: "Deadline", required: false, include_blank: true %>
                             <%= f.submit "Edit", class: "btn btn-success" %>
                           <% end %>

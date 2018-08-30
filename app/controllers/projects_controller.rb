@@ -50,7 +50,7 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
     @project.user_id = current_user.id
     @project.updated_at = Time.now
     if @project.save
-      redirect_to project_path(@project)
+      redirect_back(fallback_location: root_path)
     else
       render :new
     end
@@ -61,7 +61,7 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
   def update
     if @project.update(project_params)
       @project.updated_at = Time.now
-      redirect_to project_path(@project)
+      redirect_back(fallback_location: root_path)
     else
       render :edit
     end
