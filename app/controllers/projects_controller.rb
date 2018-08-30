@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
-before_action :set_project, only: [:show, :edit, :update]
+before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
     @project = Project.new
     @track = Track.new
 
     @my_projects_as_talent = []
-    @my_projects_as_owner = current_user.projects
+    @my_projects_as_owner = current_user.projects.sort_by {|project| project.deadline }
     @my_sessions = []
     @my_tracks = []
     @my_talents = current_user.talents
@@ -18,6 +18,8 @@ before_action :set_project, only: [:show, :edit, :update]
       @my_projects_as_talent << session.track.project
       @my_tracks << session.track
     end
+
+    @my_projects_as_talent_sorted = @my_projects_as_talent.sort_by {|project| project.deadline}
   end
 
   def show
@@ -57,6 +59,7 @@ before_action :set_project, only: [:show, :edit, :update]
 
   def destroy
     @project.destroy
+    redirect_to projects_path
   end
 
   private
