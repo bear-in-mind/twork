@@ -9,23 +9,20 @@
   <div class="profile-page">
     <div class="profile-bar">
       <% if @profile.avatar.filename.nil? %>
-      <%= image_tag "noprofilepicture.png", height: 206, width: 206, class: "profile-pic" %>
+        <%= image_tag "noprofilepicture.png", height: 206, width: 206, class: "profile-pic" %>
       <% else  %>
-      <%= cl_image_tag @profile.avatar.url(:profile_picture), class: "profile-pic" %>
+        <%= cl_image_tag @profile.avatar.url(:profile_picture), class: "profile-pic" %>
       <% end  %>
 
       <div class="profile-details">
         <h1 class="profile-name"><%= "#{@profile.first_name.capitalize} #{@profile.last_name.capitalize}"%></h1>
         <p>
           <span class="values"><%= @profile.main_occupation if @profile.main_occupation %></span> -
-
-          <span class="values">
-            <%=  @profile.genres.join(", ") %>
-          </span>
+          <span class="values"><%= @profile.genres.join(", ") %></span>
         </p>
       </div>
       <% if current_user.id == @profile.id %>
-        <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-success btn-lg request", data:{toggle: "modal", target: "#profileEditModal"} %>
+        <%= link_to "Edit Profile", "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#profileEditModal"} %>
         <div class="modal fade" id="profileEditModal" tabindex="-1" role="dialog" aria-labelledby="profileEditModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -48,15 +45,45 @@
     <div class="row profile-content">
 
       <div class="col-xs-12 col-md-8">
-        <div class="box bio">
-          <h2 class="box-title">Bio</h2>
-          <p>"<%= @profile.bio %>"</p>
+        <div class="box">
+          <div class="bio">
+            <h2 class="box-title">Bio</h2>
+            <p>"<%= @profile.bio %>"</p>
+          </div>
+          <% if current_user.id == @profile.id %>
+            <div class="bio-select-button">
+<!--               <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#bioModal">
+                <i class='fas fa-pencil-alt'></i>
+              </button>
+ -->
+            <%= link_to "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#bioModal"} do %>
+              <i class='fas fa-pencil-alt'></i>
+            <% end %>
+
+            </div>
+            <div class="modal fade" id="bioModal" tabindex="-1" role="dialog" aria-labelledby="bioModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="bioModalLabel">Modify your Bio</h2>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for @profile, url: profile_path(@profile) do |f| %>
+                      <%= f.input :bio %>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <%= f.submit class: "btn btn-success" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class=" col-xs-12 col-md-4">
-        <div class="box skills">
+        <div class="box">
           <div class="skills">
-            <h2>Skills</h2>
+            <h2 class="box-title">Skills</h2>
             <ul class="skills-list">
               <% @profile.talents.each do |talent| %>
               <li><h4><%= talent.skill.name %></h4></li>
@@ -64,10 +91,17 @@
             </ul>
           </div>
           <% if current_user.id == @profile.id %>
-            <div class="skill-select-button">
+            <!-- START old -->
+<!--             <div class="skill-select-button">
               <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#skillsModal">
                 <i class='fas fa-pencil-alt'></i>
               </button>
+            </div> -->
+            <!-- old END -->
+            <div class="skill-select-button">
+              <%= link_to "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#skillsModal"} do %>
+                <i class='fas fa-pencil-alt'></i>
+              <% end %>
             </div>
             <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="skillsModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -77,7 +111,7 @@
                   </div>
                   <div class="modal-body">
                     <%= simple_form_for @profile, url: profile_path(@profile) do |f| %>
-                      <%= f.input :skills, collection: Skill.all, input_html: { multiple: true, class: "select2" } %>
+                      <%= f.input :skills, collection: @remaining_skills, input_html: { multiple: true, class: "select2" } %>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <%= f.submit class: "btn btn-success" %>
                     <% end %>
