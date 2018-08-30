@@ -280,6 +280,10 @@ dark_wagon = AudioFile.new(name: 'Dark Wagon', user_id: louis.id, session_id: ba
 dark_wagon.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a"
 dark_wagon.save!
 
+dark_wagon = AudioFile.new(name: 'Dark Zouk', user_id: louis.id, session_id: drum_rec.id)
+dark_wagon.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a"
+dark_wagon.save!
+
 ciao_drums = AudioFile.new(name: 'Drums', user_id: max.id, session_id: drum_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535539370/audio/Ciao_BASS-BATT-RHODES.mp3"
 ciao_drums.save!

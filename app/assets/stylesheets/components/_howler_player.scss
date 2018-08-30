@@ -94,10 +94,11 @@
 }
 
 #playlistBtn {
+  z-index: 3;
   top: 50%;
   margin: -17.5px auto;
   font-size: 30px;
-  display: none;
+  // display: none;
   left: 3%;
 }
 

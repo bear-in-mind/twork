@@ -2,28 +2,22 @@ import 'howler';
 import SiriWave from './siriwave';
 
 function initPlayers() {
-  const sessionInstances = document.querySelectorAll(".session-instances");
-  if (sessionInstances) {
-    sessionInstances.forEach((session) => {
-      initPlayer(session.dataset.title);
-    })
-  }
+//   const sessionInstances = document.querySelectorAll(".session-instances");
+//   if (sessionInstances) {
+//     sessionInstances.forEach((session) => {
+//       initPlayer(session.dataset.title);
+//     })
+//   }
+  initPlayer();
 }
 
 
 function initPlayer(sessionName) {
-  /*!
-   *  Howler.js Audio Player Demo
-   *  howlerjs.com
-   *
-   *  (c) 2013-2018, James Simpson of GoldFire Studios
-   *  goldfirestudios.com
-   *
-   *  MIT License
-   */
+
   let sessionTracks = []
 
-  const audioFromHtml = document.querySelectorAll(`.session-${sessionName} .file`);
+  // const audioFromHtml = document.querySelectorAll(`.session-${sessionName} .file`);
+  const audioFromHtml = document.querySelectorAll(`.file`);
   audioFromHtml.forEach((track) => {
     if (track.dataset.title) {
       sessionTracks.push({
@@ -48,7 +42,7 @@ function initPlayer(sessionName) {
 
     // Display the title of the first track.
     // if (track.innerHTML) {
-      track.innerHTML = playlist[0].title + ' v1';
+      track.innerHTML = playlist[0].title;
     // }
 
     // Setup the playlist display.
@@ -77,6 +71,7 @@ function initPlayer(sessionName) {
 
       // If we already loaded this track, use the current one.
       // Otherwise, setup and load a new Howl.
+
       if (data.howl) {
         sound = data.howl;
       } else {
@@ -122,9 +117,6 @@ function initPlayer(sessionName) {
 
       // Begin playing the sound.
       sound.play();
-
-      // Update the track display.
-      track.innerHTML = data.title + ' v' + (index + 1);
 
       // Show the pause button.
       if (sound.state() === 'loaded') {
