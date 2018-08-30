@@ -16,7 +16,7 @@ class TracksController < ApplicationController
     @track = Track.new(track_params)
     @track.project = @project
     if @track.save
-      redirect_to project_path(@project)
+      redirect_back(fallback_location: root_path)
     else
       render :new
     end

@@ -1,6 +1,7 @@
 import "bootstrap";
 import $ from "jquery";
 import '../components/select2';
+import "../plugins/flatpickr"
 
 import { initPlayer } from '../plugins/init_howler';
 

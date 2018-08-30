@@ -6,5 +6,5 @@ class Track < ApplicationRecord
   has_many :audio_files, through: :sessions
   has_many :messages
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
 end
