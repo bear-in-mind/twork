@@ -81,7 +81,7 @@
 }
 
 .playBtn {
-  top: 40%;
+  top: 10%;
   left: 50%;
   margin: auto -34.5px;
   z-index: 5;
@@ -107,7 +107,7 @@
 .volumeBtn {
   width: 35px;
   height: 35px;
-  top: 50%;
+  top: 30%;
   right: 3%;
   margin: -17.5px auto;
   z-index: 3;
@@ -192,7 +192,7 @@
   left: 0;
   background-color: rgba(147, 159, 179, 0.3);
   display: none;
-  z-index: 2;
+  z-index: 10;
 }
 
 .player-list {
@@ -245,6 +245,7 @@
   -webkit-user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   display: none;
+  z-index: 4;
 }
 .bar {
   position: absolute;
@@ -254,6 +255,7 @@
   height: 10px;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  z-index: 4;
 }
 
 .barEmpty {
@@ -261,10 +263,12 @@
   opacity: 0.5;
   box-shadow: none;
   cursor: pointer;
+  z-index: 4;
 }
 
 .barFull {
   width: 90%;
+  z-index: 4;
 }
 .sliderBtn {
   width: 50px;
@@ -277,6 +281,8 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.33);
   border-radius: 25px;
   cursor: pointer;
+  color: $green;
+  z-index: 4;
 }
 
 .fadeout {

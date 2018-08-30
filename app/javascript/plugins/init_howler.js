@@ -44,7 +44,7 @@ function initPlayer(sessionId) {
 
     // Display the title of the first track.
     // if (track.innerHTML) {
-      // console.log(playlist[0].title)
+    //   console.log(playlist[0].title)
       let track = document.getElementById(`track_${sessionId}`)
       //  choper tous les elms dont .id commence par track_
       // iterer dessus pour refinir innerHTML
@@ -130,6 +130,10 @@ function initPlayer(sessionId) {
 
       // Begin playing the sound.
       sound.play();
+
+      let track = document.getElementById(`track_${sessionId}`)
+      track.innerHTML = data.title;
+
 
       // Show the pause button.
       if (sound.state() === 'loaded') {
@@ -219,6 +223,7 @@ function initPlayer(sessionId) {
 
       // Update the display on the slider.
       var barWidth = (val * 90) / 100;
+      let barFull = document.getElementById(`barFull_${sessionId}`)
       barFull.style.width = (barWidth * 100) + '%';
       sliderBtn.style.left = (window.innerWidth * barWidth + window.innerWidth * 0.05 - 25) + 'px';
     },
@@ -264,6 +269,7 @@ function initPlayer(sessionId) {
     /**
      * Toggle the playlist display on/off.
      */
+
     togglePlaylist: function() {
       var self = this;
       var display = (playlist.style.display === 'block') ? 'none' : 'block';
@@ -405,6 +411,7 @@ function initPlayer(sessionId) {
     wave.container.style.margin = -(height / 2) + 'px auto';
 
     // Update the position of the slider.
+    let playlist = document.getElementById(`playlist_${sessionId}`)
     if (playlist[player.index]) {
       var sound = player.playlist[player.index].howl;
     }

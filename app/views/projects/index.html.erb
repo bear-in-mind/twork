@@ -28,7 +28,12 @@
                 </div>
               </div>
               <div class="button-add-track">
-                <%= link_to 'Add a track', "#", data:{toggle:"modal", target: "#addTrack"}, class: "track-button-add"%>
+
+                <%= link_to 'Add a file', "#", data:{toggle:"modal", target: "#addTrack"}, class: "track-button-add" do %>
+                  <button class="">
+                <% end %>
+
+
                 <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
@@ -39,6 +44,8 @@
                       <div class="modal-body text-center">
                         <%= simple_form_for [project, @track] do |f| %>
                           <%= f.input :name, label: "Track Name", required: false %>
+                          <%= f.input :audio %>
+                          <%= f.input :audio_cache, as: :hidden %>
                           <%= f.submit "Add track", class: "btn btn-success" %>
                         <% end %>
                       </div>

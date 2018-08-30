@@ -10,6 +10,7 @@ class TracksController < ApplicationController
     @sessions = @track.sessions.includes(:audio_files)
     @project = @track.project
     @owner = @project.project_owner
+    @audio_file = AudioFile.new
   end
 
   def new
