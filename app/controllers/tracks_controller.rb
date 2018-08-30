@@ -1,10 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:index, :new, :create, :edit, :update]
-
-  def index
-    @tracks = @project.tracks
-  end
+  before_action :set_project, only: [:new, :create, :edit, :update]
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
