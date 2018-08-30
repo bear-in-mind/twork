@@ -2,22 +2,23 @@ import 'howler';
 import SiriWave from './siriwave';
 
 function initPlayers() {
-//   const sessionInstances = document.querySelectorAll(".session-instances");
-//   if (sessionInstances) {
-//     sessionInstances.forEach((session) => {
-//       initPlayer(session.dataset.title);
-//     })
-//   }
-  initPlayer();
+  const sessionInstances = document.querySelectorAll(".session-instances");
+  if (sessionInstances) {
+    console.log(sessionInstances)
+    sessionInstances.forEach((session) => {
+      initPlayer(session.dataset.id);
+    })
+  }
+  // initPlayer();
 }
 
 
-function initPlayer(sessionName) {
+function initPlayer(sessionId) {
 
   let sessionTracks = []
 
-  // const audioFromHtml = document.querySelectorAll(`.session-${sessionName} .file`);
-  const audioFromHtml = document.querySelectorAll(`.file`);
+  const audioFromHtml = document.querySelectorAll(`.session-${sessionId} .file`);
+  // const audioFromHtml = document.querySelectorAll(`.file`);
   audioFromHtml.forEach((track) => {
     if (track.dataset.title) {
       sessionTracks.push({
@@ -31,7 +32,8 @@ function initPlayer(sessionName) {
   console.log(sessionTracks)
 
   // Cache references to DOM elements.
-  var elms = [`track`, `waveform`, `timer`, `duration`, `playBtn`, `pauseBtn`, `prevBtn`, `nextBtn`, `playlistBtn`, `volumeBtn`, `progress`, `bar`, `wave`, `loading`, `playlist`, `list`, `volume`, `barEmpty`, `barFull`, `sliderBtn`];
+  // var elms = [`track_${sessionId}`, `waveform_${sessionId}`, `timer_${sessionId}`, `duration_${sessionId}`, `playBtn_${sessionId}`, `pauseBtn_${sessionId}`, `prevBtn_${sessionId}`, `nextBtn_${sessionId}`, `playlistBtn_${sessionId}`, `volumeBtn_${sessionId}`, `progress_${sessionId}`, `bar_${sessionId}`, `wave_${sessionId}`, `loading_${sessionId}`, `playlist_${sessionId}`, `list_${sessionId}`, `volume_${sessionId}`, `barEmpty_${sessionId}`, `barFull_${sessionId}`, `sliderBtn_${sessionId}`];
+  var elms = [`track_${sessionId}`, `waveform_${sessionId}`, `timer_${sessionId}`, `duration_${sessionId}`, `playBtn_${sessionId}`, `pauseBtn_${sessionId}`, `prevBtn_${sessionId}`, `nextBtn_${sessionId}`, `playlistBtn_${sessionId}`, `volumeBtn_${sessionId}`, `progress_${sessionId}`, `bar_${sessionId}`, `wave_${sessionId}`, `loading_${sessionId}`, `playlist_${sessionId}`, `list_${sessionId}`, `volume_${sessionId}`, `barEmpty_${sessionId}`, `barFull_${sessionId}`, `sliderBtn_${sessionId}`];
   elms.forEach(function(elm) {
     window[elm] = document.getElementById(elm);
   });
@@ -42,7 +44,13 @@ function initPlayer(sessionName) {
 
     // Display the title of the first track.
     // if (track.innerHTML) {
+      // console.log(playlist[0].title)
+      let track = document.getElementById(`track_${sessionId}`)
+      //  choper tous les elms dont .id commence par track_
+      // iterer dessus pour refinir innerHTML
+      // elms.    .id = `track_${sessionId}`
       track.innerHTML = playlist[0].title;
+
     // }
 
     // Setup the playlist display.
@@ -53,6 +61,7 @@ function initPlayer(sessionName) {
       div.onclick = function() {
         player.skipTo(playlist.indexOf(song));
       };
+      let list = document.getElementById(`list_${sessionId}`)
       list.appendChild(div);
     });
   };
@@ -71,6 +80,10 @@ function initPlayer(sessionName) {
 
       // If we already loaded this track, use the current one.
       // Otherwise, setup and load a new Howl.
+
+      let loading = document.getElementById(`loading_${sessionId}`)
+      let bar = document.getElementById(`bar_${sessionId}`)
+      let duration = document.getElementById(`duration_${sessionId}`)
 
       if (data.howl) {
         sound = data.howl;
@@ -123,6 +136,7 @@ function initPlayer(sessionName) {
         playBtn.style.display = 'none';
         pauseBtn.style.display = 'block';
       } else {
+
         loading.style.display = 'block';
         playBtn.style.display = 'none';
         pauseBtn.style.display = 'none';
@@ -186,6 +200,7 @@ function initPlayer(sessionName) {
       }
 
       // Reset progress.
+      let progress = document.getElementById(`progress_${sessionId}`)
       progress.style.width = '0%';
 
       // Play the new track.
@@ -235,6 +250,8 @@ function initPlayer(sessionName) {
 
       // Determine our current seek position.
       var seek = sound.seek() || 0;
+      let timer = document.getElementById(`timer_${sessionId}`)
+      let progress = document.getElementById(`progress_${sessionId}`)
       timer.innerHTML = self.formatTime(Math.round(seek));
       progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
 
@@ -291,9 +308,11 @@ function initPlayer(sessionName) {
   var player = new Player(sessionTracks);
 
   // Bind our player controls.
+  let playBtn = document.getElementById(`playBtn_${sessionId}`)
   playBtn.addEventListener('click', function() {
     player.play();
   });
+  let pauseBtn = document.getElementById(`pauseBtn_${sessionId}`)
   pauseBtn.addEventListener('click', function() {
     player.pause();
   });
@@ -303,27 +322,35 @@ function initPlayer(sessionName) {
   // nextBtn.addEventListener('click', function() {
   //   player.skip('next');
   // });
+  let waveform = document.getElementById(`waveform_${sessionId}`)
   waveform.addEventListener('click', function(event) {
     player.seek(event.clientX / window.innerWidth);
   });
+
+  let playlistBtn = document.getElementById(`playlistBtn_${sessionId}`)
   playlistBtn.addEventListener('click', function() {
     player.togglePlaylist();
   });
+  let playlist = document.getElementById(`playlist_${sessionId}`)
   playlist.addEventListener('click', function() {
     player.togglePlaylist();
   });
+  let volumeBtn = document.getElementById(`volumeBtn_${sessionId}`)
   volumeBtn.addEventListener('click', function() {
     player.toggleVolume();
   });
+  let volume = document.getElementById(`volume_${sessionId}`)
   volume.addEventListener('click', function() {
     player.toggleVolume();
   });
 
   // Setup the event listeners to enable dragging of volume slider.
+  let barEmpty = document.getElementById(`barEmpty_${sessionId}`)
   barEmpty.addEventListener('click', function(event) {
     var per = event.layerX / parseFloat(barEmpty.scrollWidth);
     player.volume(per);
   });
+  let sliderBtn = document.getElementById(`sliderBtn_${sessionId}`)
   sliderBtn.addEventListener('mousedown', function() {
     window.sliderDown = true;
   });

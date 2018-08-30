@@ -10,7 +10,7 @@
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
-#title {
+.player-title {
   position: absolute;
   width: 100%;
   top: 3%;
@@ -23,7 +23,7 @@
   color: $blue;
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
-#timer {
+.timer {
   position: absolute;
   top: 0;
   left: 3%;
@@ -34,7 +34,8 @@
   color: $blue;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
-#duration {
+
+.duration {
   position: absolute;
   top: 0;
   right: 3%;
@@ -79,13 +80,14 @@
   opacity: 1;
 }
 
-#playBtn {
+.playBtn {
   top: 40%;
   left: 50%;
   margin: auto -34.5px;
+  z-index: 5;
 }
 
-#pauseBtn {
+.pauseBtn {
   top: 40%;
   left: 50%;
   margin: auto -34.5px;
@@ -93,7 +95,7 @@
   z-index: 3;
 }
 
-#playlistBtn {
+.playlistBtn {
   z-index: 3;
   top: 50%;
   margin: -17.5px auto;
@@ -102,7 +104,7 @@
   left: 3%;
 }
 
-#volumeBtn {
+.volumeBtn {
   width: 35px;
   height: 35px;
   top: 50%;
@@ -111,7 +113,7 @@
   z-index: 3;
 }
 
-#waveform {
+.waveform {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -126,7 +128,7 @@
   color: rgba(0, 0, 0, 0.3);
 }
 
-#waveform:hover {
+.waveform:hover {
   opacity: 1;
 }
 
@@ -141,7 +143,7 @@
 //   opacity: 0.9;
 // }
 
-#progress {
+.progress {
   position: absolute;
   top: 0;
   left: 0;
@@ -151,7 +153,7 @@
   z-index: 0;
 }
 
-#loading {
+.loading {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -182,7 +184,7 @@
   }
 }
 
-#playlist {
+.playlist {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -190,9 +192,10 @@
   left: 0;
   background-color: rgba(147, 159, 179, 0.3);
   display: none;
+  z-index: 2;
 }
 
-#list {
+.player-list {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -231,7 +234,7 @@
   cursor: pointer;
 }
 
-#volume {
+.volume {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -252,16 +255,18 @@
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
-#barEmpty {
+
+.barEmpty {
   width: 90%;
   opacity: 0.5;
   box-shadow: none;
   cursor: pointer;
 }
-#barFull {
+
+.barFull {
   width: 90%;
 }
-#sliderBtn {
+.sliderBtn {
   width: 50px;
   height: 50px;
   position: absolute;

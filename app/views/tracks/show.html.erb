@@ -34,8 +34,8 @@
   <div class="session-index">
     <% @sessions.each do |session| %>
 
-      <div class="session-instances session-<%= session.talent.skill.name.gsub(' ', '') %>"
-        data-title="<%= session.talent.skill.name.gsub(' ', '') %>">
+      <div class="session-instances session-<%= session.id %>"
+        data-id="<%= session.id %>">
         <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
         <div class="session-box">
           <div class="img-item">
@@ -57,38 +57,38 @@
 
             <div id="player-container">
               <!-- Top Info -->
-              <div id="title_<%= session.id %>">
-                <span id="track_<%= session.id %>"></span>
-                <div id="timer_<%= session.id %>">0:00</div>
-                <div id="duration_<%= session.id %>">0:00</div>
+              <div class="player-title" id="title_<%= session.id %>">
+                <span class="track" id="track_<%= session.id %>"></span>
+                <div class="timer "id="timer_<%= session.id %>">0:00</div>
+                <div class="duration" id="duration_<%= session.id %>">0:00</div>
               </div>
 
               <!-- Controls -->
               <div class="controlsOuter">
                 <div class="controlsInner">
-                  <div id="loading_<%= session.id %>"></div>
-                  <i class="fas fa-play btn-player" id="playBtn_<%= session.id %>"></i>
-                  <i class="fas fa-pause btn-player" id="pauseBtn_<%= session.id %>"></i>
+                  <div class= "loading" id="loading_<%= session.id %>"></div>
+                  <i class="fas fa-play btn-player playBtn" id="playBtn_<%= session.id %>"></i>
+                  <i class="fas fa-pause btn-player pauseBtn" id="pauseBtn_<%= session.id %>"></i>
                 </div>
-                <i class="fas fa-volume-down btn-player" id="volumeBtn_<%= session.id %>"></i>
-                <i class="fas fa-list-ul btn-player" id="playlistBtn_<%= session.id %>"></i>
+                <i class="fas fa-volume-down btn-player volumeBtn" id="volumeBtn_<%= session.id %>"></i>
+                <i class="fas fa-list-ul btn-player playlistBtn" id="playlistBtn_<%= session.id %>"></i>
               </div>
 
               <!-- Progress -->
-              <div id="waveform_<%= session.id %>"></div>
-              <div id="bar_<%= session.id %>"></div>
-              <div id="progress_<%= session.id %>"></div>
+              <div class="waveform" id="waveform_<%= session.id %>"></div>
+              <div class="session" id="bar_<%= session.id %>"></div>
+              <div class= "progress" id="progress_<%= session.id %>"></div>
 
               <!-- Playlist -->
-              <div id="playlist_<%= session.id %>">
-                <div id="list_<%= session.id %>"></div>
+              <div class="playlist" id="playlist_<%= session.id %>">
+                <div class="player-list" id="list_<%= session.id %>"></div>
               </div>
 
               <!-- Volume -->
-              <div id="volume_<%= session.id %>" class="fadeout">
-                <div id="barFull_<%= session.id %>" class="bar"></div>
-                <div id="barEmpty_<%= session.id %>" class="bar"></div>
-                <div id="sliderBtn_<%= session.id %>"></div>
+              <div class="volume" id="volume_<%= session.id %>" class="fadeout">
+                <div class="barFull" id="barFull_<%= session.id %>" class="bar"></div>
+                <div class="barEmpty" id="barEmpty_<%= session.id %>" class="bar"></div>
+                <div class="sliderBtn" id="sliderBtn_<%= session.id %>"></div>
               </div>
             </div>
           </div>
