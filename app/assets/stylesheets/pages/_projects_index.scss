@@ -16,7 +16,7 @@
   font-size: 22px;
   display: flex;
   a {
-    color: rgba(0,0,0,0.6);
+    color: $blue;
     &:hover {
     color: rgba(0,0,0,0.4);
     }
@@ -65,7 +65,7 @@
 
 .project-title {
   text-align:center;
-  color: $green;
+  color: $blue;
 }
 
 .link-create-project {
@@ -91,6 +91,7 @@
 
 .main-title {
   margin-bottom: 25px;
+  color: $blue;
 }
 
 .button-add-track {
