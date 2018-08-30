@@ -23,10 +23,15 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  color: white !important;
+  background-color: white;
+  border: none;
+  color: rgba(180, 180, 180, 0.8);
+  &:hover {
+    background-color: transparent;
+    color: $blue !important;
+    cursor: pointer;
+  }
 }
-
-.skill-select-button
 
 .skill-genre {
   font-weight: normal;
@@ -134,12 +139,20 @@ h4.edit-profile {
   flex-direction: column;
 }
 
-.bio-select-button{
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
 
+.bio-select-button a {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  color: rgba(180, 180, 180, 0.8);
+  &:hover {
+    background-color: transparent;
+    color: $blue !important;
+    cursor: pointer;
+  }
+}
 
 .values {
   font-weight: normal;

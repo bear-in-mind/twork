@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   before_update :capitalize_occupation
   before_update :clean_genres
+  before_update :capitalize_bio
 
   private
 
@@ -25,6 +26,10 @@ class User < ApplicationRecord
 
   def clean_genres
     self.genres.reject! { |genre| genre.blank? || !GENRES.include?(genre) }
+  end
+
+  def capitalize_bio
+    self.bio[0] = bio.capitalize[0]
   end
 end
 
