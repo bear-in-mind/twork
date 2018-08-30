@@ -4,6 +4,8 @@ class TracksController < ApplicationController
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
+    @project = @track.project
+    @owner = @project.project_owner
   end
 
   def new
