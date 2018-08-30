@@ -19,11 +19,14 @@
   flex-direction: column;
 }
 
-.skill-select-button{
+.skill-select-button a {
   position: absolute;
   top: 10px;
   right: 10px;
+  color: white !important;
 }
+
+.skill-select-button
 
 .skill-genre {
   font-weight: normal;
@@ -33,6 +36,11 @@
   font-weight: normal;
   }
 }
+
+#edit_user_2 label  {
+   padding: 0px 10px 0px 0px;
+ }
+
 
 .profile-bar {
   display: flex;
@@ -121,7 +129,17 @@ h4.edit-profile {
   padding: 15px;
   padding-bottom: 5px;
   }
+  display: flex;
+  position: relative;
+  flex-direction: column;
 }
+
+.bio-select-button{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 
 .values {
   font-weight: normal;
