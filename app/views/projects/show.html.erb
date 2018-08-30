@@ -7,7 +7,7 @@
       From <%= @owner.first_name.capitalize %> <%= @owner.last_name.upcase %>
     </p>
     <p class="project-dates">
-      <%= @project.created_at.strftime("  Started on %d/%m/%Y") %> - Due: <%= @project.deadline.strftime("  Due on %d/%m/%Y") %>
+      <%= @project.created_at.strftime("  Started on %d/%m/%Y") %> - <%= @project.deadline.strftime("  Due on %d/%m/%Y") %>
     </p>
   </div>
   <div class="tracks-head">
@@ -18,28 +18,30 @@
     </button>
   </div>
 
-  <ul class="tracks-list container">
+  <ul class="tracks-list">
     <% @tracks.each do |track| %>
-      <li>
+      <li class="track-item">
         <div class="talents-pics">
           <% track.talents.each do |talent| %>
             <%= link_to profile_path(talent) do %>
-              <% if talent.avatar %>
-              <%= cl_image_tag talent.user.avatar, class: "track-avatar", data: { toggle: "tooltip" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
+              <% if talent.user.avatar %>
+                <%= cl_image_tag talent.user.avatar, class: "track-avatar", data: { toggle: "tooltip" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
+                <!-- TO DO les bails ne s'affichent pas -->
               <% else %>
-              <%= image_tag "noprofilepicture.png", class: "track-avatar" %>
+                <%= image_tag "noprofilepicture.png", class: "track-avatar" %>
               <% end %>
             <% end %>
+            <span class="pics-gradient"></span>
           <% end %>
         </div>
 
         <div class="track-details">
           <p class="track-title"><%= track.name %></p>
-          <p class="track-start-date"><%= track.created_at %></p>
+          <p class="track-start-date"><%= track.created_at.strftime("  Started on %d/%m/%Y") %></p>
         </div>
 
         <div class="sessions-count">
-          <%= pluralize(track.sessions.count, "session") %>
+          <p><%= pluralize(track.sessions.count, "session") %></p>
         </div>
 
         <div class="controls">
