@@ -96,7 +96,7 @@
                     <div class="modal-body text-center">
                       <%= simple_form_for [@project] do |f| %>
                         <%= f.input :name, label: "Project Name", required: true %>
-                        <%= f.input :deadline, label: "Deadline", required: false %>
+                        <%= f.input :deadline, label: "Deadline", required: false, input_html: { class: "datepicker"} %>
                         <%= f.submit "Add project", class: "btn btn-success" %>
                       <% end %>
                     </div>
