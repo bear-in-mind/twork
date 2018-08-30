@@ -20,7 +20,7 @@
                       </div>
                       <div class="track-musicians">
                         <% track.sessions.each do |session| %>
-                          <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar"%>
+                          <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar small-margin"%>
                         <% end %>
                       </div>
                     </div>
@@ -109,12 +109,13 @@
       </div>
     </div>
     <div class = "project-participate">
-      <% if @my_projects_as_talent != [] %>
+      <% if @my_projects_as_talent_sorted != [] %>
         <h3 class="main-title"> Projects you're participating to </h3>
-        <% @my_projects_as_talent.each do |project| %>
+        <% @my_projects_as_talent_sorted.each do |project| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="project-box project-detail">
               <div class="project-main">
+                <div class="project-main-layer"></div>
                 <div class="project-title">
                   <h3><%= project.name %></h3>
                 </div>
@@ -142,7 +143,7 @@
                   <% end %>
                 </div>
               </div>
-              <div class="project-date">
+              <div class="project-due-date">
                 <p>Due for: <%= project.deadline %></p>
               </div>
             </div>
