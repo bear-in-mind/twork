@@ -1,115 +1,39 @@
-.project-header {
-  padding: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  h6 {
-    font-size: 14px;
-  }
-  h1 {
-    font-size: 40px;
-    color: $green;
-    font-weight: bold;
-  }
-}
+.project.container {}
 
-.project-titles {
-  text-align: center;
-}
+.project-head {}
 
-.project-owner-div {
-  display: flex;
-  align-items: center;
-}
+.project-name {}
 
-.track-index a h3,
-.track-index a p {
-  color: black;
-  text-decoration: none;
-}
+.project-owner-name {}
 
-.track-index a:hover h3 {
-  color: white !important;
-  text-decoration: none;
-}
+.project-dates {}
 
-.track-index a p {
-  color: rgb(190, 190, 190) !important;
-}
+.tracks-head {}
 
-.track-index {
-  background-color: white;
-  padding: 50px;
-  border-radius: 3px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-}
+.add-track-btn {}
 
-.collaborators {
-  text-align: right;
-}
+.fas.fa-plus {}
 
-.collaborators p {
-  padding-top: 10px;
-  color: rgb(190, 190, 190) !important;
-  font-size: 14px;
-}
+.tracks-list.container {}
 
+.talents-pics {}
 
-.track-card-new {
-  text-align: center;
-  margin: auto;
-}
+.track-avatar {}
 
-.track-index button:hover {
-  h3 {
-    color: white;
-  }
-}
+.track-details {}
 
-.track-card-new button:hover h3 {
-  color: white !important;
-}
+.track-title {}
 
-.modal {
-  text-align: center;
-  padding: 0!important;
-}
+.track-start-date {}
 
-.modal:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px; /* Adjusts for spacing */
-}
+.sessions-count {}
 
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
+.controls {}
 
-.modal.fade .modal-dialog {
-  transform: translate3d(0, 50vh, 0);
-}
+.edit-track-btn {}
 
-.modal.in .modal-dialog {
-  transform: translate3d(0, 0, 0);
-}
+.far.fa-edit {}
 
-.card-link {
-  z-index: 0;
-}
+.delete-track-btn {}
 
-#tooltip-top > .tooltip-inner {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #062e56;
-}
-
-#tooltip-top > .tooltip-arrow {
-  border-top: 5px solid #062e56;
-}
+.far.fa-trash-alt {}

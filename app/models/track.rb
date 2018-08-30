@@ -3,8 +3,8 @@ class Track < ApplicationRecord
 
   has_many :sessions
   has_many :talents, through: :sessions
-  has_many :messages
   has_many :audio_files, through: :sessions
+  has_many :messages
 
   validates :name, presence: true, uniqueness: true
 end
