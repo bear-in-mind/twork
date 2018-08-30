@@ -15,84 +15,80 @@
       <div>
         <%= link_to profile_path(@owner) do %>
           <% if @owner.avatar.nil? %>
-          <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
+            <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
           <% else  %>
-          <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
-          <% end  %>
+            <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 
   <div class="brief-wrapper">
-      <h1>Brief</h1>
-      <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
-      <!-- BONUS add pin icon -->
-      <p><%= @track.brief %></p>
+    <h1>Brief</h1>
+    <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
+    <!-- BONUS add pin icon -->
+    <p><%= @track.brief %></p>
   </div>
 
   <div class="session-index">
     <% @sessions.each do |session| %>
 
-      <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
-
-      <div class="session-box">
-
-        <div class="img-item">
-          <% if session.talent.user.avatar %>
-            <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
-          <% else %>
-            <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
-          <% end %>
-        </div>
-
-        <div class="audio-item">
-
-          <div class="player">
-            <% session.audio_files.each do |file| %>
-              <div class='file'
-                data-title="<%= file.name %>"
-                data-url="<%= file.audio %>">
-              </div>
+      <div class="session-instances session-<%= session.talent.skill.name.gsub(' ', '') %>"
+        data-title="<%= session.talent.skill.name.gsub(' ', '') %>">
+        <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
+        <div class="session-box">
+          <div class="img-item">
+            <% if session.talent.user.avatar %>
+              <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
+            <% else %>
+              <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
             <% end %>
-
-            <div id="player-container">
-              <!-- Top Info -->
-              <div id="title">
-                <span id="track"></span>
-                <div id="timer">0:00</div>
-                <div id="duration">0:00</div>
-              </div>
-
-              <!-- Controls -->
-              <div class="controlsOuter">
-                <div class="controlsInner">
-                  <div id="loading"></div>
-                  <i class="fas fa-play btn-player" id="playBtn"></i>
-                  <i class="fas fa-pause btn-player" id="pauseBtn"></i>
+          </div>
+          <div class="audio-item">
+            <div class="player">
+              <% session.audio_files.each do |file| %>
+                <div class='file'
+                  data-title="<%= file.name %>"
+                  data-url="<%= file.audio %>">
                 </div>
-                <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
-                <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
-              </div>
+              <% end %>
+              <div id="player-container">
+                <!-- Top Info -->
+                <div id="title">
+                  <span id="track"></span>
+                  <div id="timer">0:00</div>
+                  <div id="duration">0:00</div>
+                </div>
+                <!-- Controls -->
+                <div class="controlsOuter">
+                  <div class="controlsInner">
+                    <div id="loading"></div>
+                    <i class="fas fa-play btn-player" id="playBtn"></i>
+                    <i class="fas fa-pause btn-player" id="pauseBtn"></i>
+                  </div>
+                  <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
+                  <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
+                </div>
 
-              <!-- Progress -->
-              <div id="waveform"></div>
-              <div id="bar"></div>
-              <div id="progress"></div>
+                <!-- Progress -->
+                <div id="waveform"></div>
+                <div id="bar"></div>
+                <div id="progress"></div>
 
-              <!-- Playlist -->
-              <div id="playlist">
-                <div id="list"></div>
-              </div>
+                <!-- Playlist -->
+                <div id="playlist">
+                  <div id="list"></div>
+                </div>
 
-              <!-- Volume -->
-              <div id="volume" class="fadeout">
-                <div id="barFull" class="bar"></div>
-                <div id="barEmpty" class="bar"></div>
-                <div id="sliderBtn"></div>
+                <!-- Volume -->
+                <div id="volume" class="fadeout">
+                  <div id="barFull" class="bar"></div>
+                  <div id="barEmpty" class="bar"></div>
+                  <div id="sliderBtn"></div>
+                </div>
               </div>
             </div>
-
           </div>
           <div class="controls">
             <div class="up-down text-left">

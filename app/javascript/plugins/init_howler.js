@@ -1,7 +1,17 @@
 import 'howler';
 import SiriWave from './siriwave';
 
-function initPlayer() {
+function initPlayers() {
+  const sessionInstances = document.querySelectorAll(".session-instances");
+  if (sessionInstances) {
+    sessionInstances.forEach((session) => {
+      initPlayer(session.dataset.title);
+    })
+  }
+}
+
+
+function initPlayer(sessionName) {
   /*!
    *  Howler.js Audio Player Demo
    *  howlerjs.com
@@ -11,18 +21,20 @@ function initPlayer() {
    *
    *  MIT License
    */
-  let session_tracks = []
+  let sessionTracks = []
 
-  const tracksFromHtml = document.querySelectorAll(".file");
-  tracksFromHtml.forEach((track)=> {
-    session_tracks.push({
-      title: track.dataset.title,
-      howl: null,
-      url: track.dataset.url
-    });
+  const audioFromHtml = document.querySelectorAll(`.session-${sessionName} .file`);
+  audioFromHtml.forEach((track) => {
+    if (track.dataset.title) {
+      sessionTracks.push({
+        title: track.dataset.title,
+        howl: null,
+        url: track.dataset.url
+      });
+    }
   })
 
-  console.log(session_tracks)
+  console.log(sessionTracks)
 
   // Cache references to DOM elements.
   var elms = ['track', 'waveform', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
@@ -30,17 +42,14 @@ function initPlayer() {
     window[elm] = document.getElementById(elm);
   });
 
-  /**
-   * Player class containing the state of our playlist and where we are in it.
-   * Includes all methods for playing, skipping, updating the display, etc.
-   * @param {Array} playlist Array of objects with playlist song details ({title, file, howl}).
-   */
   var Player = function(playlist) {
     this.playlist = playlist;
     this.index = 0;
 
     // Display the title of the first track.
-    track.innerHTML = '1. ' + playlist[0].title;
+    // if (track.innerHTML) {
+      track.innerHTML = playlist[0].title + ' v1';
+    // }
 
     // Setup the playlist display.
     playlist.forEach(function(song) {
@@ -53,6 +62,7 @@ function initPlayer() {
       list.appendChild(div);
     });
   };
+
   Player.prototype = {
     /**
      * Play a song in the playlist.
@@ -114,7 +124,7 @@ function initPlayer() {
       sound.play();
 
       // Update the track display.
-      track.innerHTML = (index + 1) + '. ' + data.title;
+      track.innerHTML = data.title + ' v' + (index + 1);
 
       // Show the pause button.
       if (sound.state() === 'loaded') {
@@ -280,8 +290,13 @@ function initPlayer() {
       return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
   };
+  /**
+   * Player class containing the state of our playlist and where we are in it.
+   * Includes all methods for playing, skipping, updating the display, etc.
+   * @param {Array} playlist Array of objects with playlist song details ({title, file, howl}).
+   */
 
-    var player = new Player(session_tracks);
+  var player = new Player(sessionTracks);
 
   // Bind our player controls.
   playBtn.addEventListener('click', function() {
@@ -371,7 +386,9 @@ function initPlayer() {
     wave.container.style.margin = -(height / 2) + 'px auto';
 
     // Update the position of the slider.
-    var sound = player.playlist[player.index].howl;
+    if (playlist[player.index]) {
+      var sound = player.playlist[player.index].howl;
+    }
     if (sound) {
       var vol = sound.volume();
       var barWidth = (vol * 0.9);
@@ -382,4 +399,4 @@ function initPlayer() {
   resize();
 }
 
-export { initPlayer };
+export { initPlayers };

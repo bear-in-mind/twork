@@ -1,4 +1,5 @@
 puts "Deleting db..."
+AudioFile.destroy_all
 Session.destroy_all
 Track.destroy_all
 Project.destroy_all
@@ -266,7 +267,9 @@ sequoias = Track.last
 Session.create!(track: ciao, talent: max_drums)
 drum_rec = Session.last
 Session.create!(track: ciao, talent: nico_guitar)
+gtr_rec = Session.last
 Session.create!(track: ciao, talent: johann_keys)
+keys_rec = Session.last
 Session.create!(track: ilot, talent: max_drums)
 Session.create!(track: vague, talent: nico_guitar)
 Session.create!(track: sequoias, talent: louis_bass)
@@ -277,8 +280,16 @@ dark_wagon = AudioFile.new(name: 'Dark Wagon', user_id: louis.id, session_id: ba
 dark_wagon.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a"
 dark_wagon.save!
 
-ciao_drums = AudioFile.new(name: 'Ciao Drums', user_id: max.id, session_id: drum_rec.id)
+ciao_drums = AudioFile.new(name: 'Drums', user_id: max.id, session_id: drum_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535539370/audio/Ciao_BASS-BATT-RHODES.mp3"
+ciao_drums.save!
+
+ciao_drums = AudioFile.new(name: 'Guitar', user_id: nico.id, session_id: gtr_rec.id)
+ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535628359/audio/gtr.m4a"
+ciao_drums.save!
+
+ciao_drums = AudioFile.new(name: 'Keyboards', user_id: johann.id, session_id: keys_rec.id)
+ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535628359/audio/keys.m4a"
 ciao_drums.save!
 
 # Brief for Ciao
