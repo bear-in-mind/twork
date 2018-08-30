@@ -281,4 +281,7 @@ ciao_drums = AudioFile.new(name: 'Ciao Drums', user_id: max.id, session_id: drum
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535539370/audio/Ciao_BASS-BATT-RHODES.mp3"
 ciao_drums.save!
 
+# Brief for Ciao
+ciao.update!(brief: "Sunny, summer vibe with strong Italo-Disco references. Overall feel is bright, funny, with a real feel-good vibe and should have a solid groove. \n References : MJ (Off the Wall period), late 70s Italian pop, Giorgio Moroder...")
+
 puts "Seeding done!"

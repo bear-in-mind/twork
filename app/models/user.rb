@@ -13,6 +13,19 @@ class User < ApplicationRecord
   has_many :skills, through: :talents
 
   GENRES = %w[Pop R&B Hip-Hop Rap Rock Electronic EDM Funk Disco House Techno Classical Jazz Folk Soundtrack Traditional]
+
+  before_update :capitalize_occupation
+  before_update :clean_genres
+
+  private
+
+  def capitalize_occupation
+    self.main_occupation[0] = main_occupation.capitalize[0]
+  end
+
+  def clean_genres
+    self.genres.reject! { |genre| genre.blank? || !GENRES.include?(genre) }
+  end
 end
 
 # Pour les views:
