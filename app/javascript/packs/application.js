@@ -11,5 +11,3 @@ $(function () {
 })
 
 initPlayer();
-
-flatpickr(".datepicker", {});
