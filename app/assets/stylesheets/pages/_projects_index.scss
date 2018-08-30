@@ -43,7 +43,6 @@
 .project-box {
   position: relative;
   margin-top: 20px;
-  transition: all 0.3s ease;
   &:hover {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -95,8 +94,7 @@
 }
 
 .button-add-track {
-  background-color: rgba(50, 183, 150, 0.7);
-  opacity: 0,6;
+  background-color: $green;
   text-decoration: none;
   color: white;
   height: 45px;
@@ -107,7 +105,7 @@
   text-align:center;
   font-weight: bold;
   &:hover {
-    background-color: rgba(50, 183, 150, 1.0);
+    background-color: #269b7e;
   }
 }
 
