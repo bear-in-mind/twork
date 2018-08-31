@@ -7,106 +7,126 @@
       <% end %>
     </div>
     <div class="project-titles">
-      <h2>Project</h2>
-      <h1><%= @project.name.capitalize %></h1>
+      <h2>Project: <%= link_to @project.name, project_path(@project) %></h2>
     </div>
     <div class="project-owner-div">
       <h2> Owner :</h2>
       <div>
         <%= link_to profile_path(@owner) do %>
           <% if @owner.avatar.nil? %>
-          <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
+            <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
           <% else  %>
-          <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
-          <% end  %>
+            <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 
+  <div class="track-title">
+    <h1><%= @track.name.capitalize %></h1>
+  </div>
+
   <div class="brief-wrapper">
-      <h1>Brief</h1>
-      <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
-      <!-- BONUS add pin icon -->
-      <p><%= @track.brief %></p>
+    <h1>Brief</h1>
+    <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
+    <!-- BONUS add pin icon -->
+    <p><%= @track.brief %></p>
   </div>
 
   <div class="session-index">
     <% @sessions.each do |session| %>
 
-      <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
-
-      <div class="session-box">
-
-        <div class="img-item">
-          <% if session.talent.user.avatar %>
-            <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
-          <% else %>
-            <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
-          <% end %>
-        </div>
-
-        <div class="audio-item">
-
-          <div class="player">
-            <% session.audio_files.each do |file| %>
-              <div class='file'
-                data-title="<%= file.name %>"
-                data-url="<%= file.audio %>">
-              </div>
+      <div class="session-instances session-<%= session.id %>"
+        data-id="<%= session.id %>">
+        <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
+        <div class="session-box">
+          <div class="img-item">
+            <% if session.talent.user.avatar %>
+              <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
+            <% else %>
+              <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
             <% end %>
+
+          </div>
+          <div class="audio-item">
+            <div class="player">
+              <% session.audio_files.order('created_at DESC').each do |file| %>
+                <div class='file'
+                  data-title="<%= file.name %>"
+                  data-url="<%= file.audio %>">
+                </div>
+              <% end %>
 
             <div id="player-container">
               <!-- Top Info -->
-              <div id="title">
-                <span id="track"></span>
-                <div id="timer">0:00</div>
-                <div id="duration">0:00</div>
+              <div class="player-title" id="title_<%= session.id %>">
+                <span class="track" id="track_<%= session.id %>"></span>
+                <div class="timer "id="timer_<%= session.id %>">0:00</div>
+                <div class="duration" id="duration_<%= session.id %>">0:00</div>
               </div>
 
               <!-- Controls -->
               <div class="controlsOuter">
                 <div class="controlsInner">
-                  <div id="loading"></div>
-                  <i class="fas fa-play btn-player" id="playBtn"></i>
-                  <i class="fas fa-pause btn-player" id="pauseBtn"></i>
+                  <div class= "loading" id="loading_<%= session.id %>"></div>
+                  <i class="fas fa-play btn-player playBtn" id="playBtn_<%= session.id %>"></i>
+                  <i class="fas fa-pause btn-player pauseBtn" id="pauseBtn_<%= session.id %>"></i>
                 </div>
-                <i class="fas fa-volume-down btn-player" id="volumeBtn"></i>
-                <i class="fas fa-list-ul btn-player" id="playlistBtn"></i>
+                <i class="fas fa-volume-down btn-player volumeBtn" id="volumeBtn_<%= session.id %>"></i>
               </div>
 
               <!-- Progress -->
-              <div id="waveform"></div>
-              <div id="bar"></div>
-              <div id="progress"></div>
+              <div class="waveform" id="waveform_<%= session.id %>"></div>
+              <div class="session" id="bar_<%= session.id %>"></div>
+              <div class= "progress" id="progress_<%= session.id %>"></div>
 
               <!-- Playlist -->
-              <div id="playlist">
-                <div id="list"></div>
+              <div class="playlist" id="playlist_<%= session.id %>">
+                <div class="player-list" id="list_<%= session.id %>"></div>
               </div>
 
               <!-- Volume -->
-              <div id="volume" class="fadeout">
-                <div id="barFull" class="bar"></div>
-                <div id="barEmpty" class="bar"></div>
-                <div id="sliderBtn"></div>
+              <div class="volume" id="volume_<%= session.id %>" class="fadeout">
+                <div class="barFull" id="barFull_<%= session.id %>" class="bar"></div>
+                <div class="barEmpty" id="barEmpty_<%= session.id %>" class="bar"></div>
+                <div class="sliderBtn" id="sliderBtn_<%= session.id %>"></div>
               </div>
             </div>
-
           </div>
           <div class="controls">
             <div class="up-down text-left">
-              <button type="button" class="upload-btn btn btn-primary">
+
+              <%= link_to "#", data: {toggle: "modal", target: "#addFile#{session.id}"}, class: "upload-btn btn btn-primary" do %>
+                <i class="fas fa-upload" title="Upload an audio file"></i>
+              <% end %>
+
+              <div class="modal fade" id="addFile<%= session.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header text-center">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Add a new File</h4>
+                    </div>
+                    <div class="modal-body text-center">
+                      <%= simple_form_for [@track, session, @audio_file] do |f| %>
+                        <%= f.input :audio, label: "Choose an audio file", required: false %>
+                        <%= f.input :audio_cache, as: :hidden %>
+                        <%= f.submit "Upload file", class: "btn btn-success", id: "upload-submit" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <!-- TO DO créer une modal d'upload -->
-                <i class="fas fa-upload"></i>
-              </button>
               <button type="button" class="download-btn btn btn-primary">
                 <!-- TO DO implémenter le download -->
                 <i class="fa fa-download" aria-hidden="true"></i>
               </button>
             </div>
+            <div class="btn btn-default" id="open-session-chat">Comments</div>
             <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
-            <button type="button" class="comments-btn btn btn-primary"><span class="caret"></span></button>
+            <button type="button" class="playlist-btn btn btn-primary" id="playlistBtn_<%= session.id %>"><span class="caret"></span></button>
           </div>
         </div>
       </div>

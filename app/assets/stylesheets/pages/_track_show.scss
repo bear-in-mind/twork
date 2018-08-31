@@ -9,10 +9,35 @@
     font-size: 14px;
   }
   h1 {
+    margin-top: 30px;
     font-size: 40px;
     color: $blue;
     font-weight: bold;
   }
+  h2 {
+    font-weight: lighter;
+    align-self: center;
+    color: $blue;
+    a {
+      font-weight: 400;
+      font-size: 24px;
+      color: $blue;
+      padding: 5px;
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+}
+
+.track-title {
+  h1 {
+    margin-top: 30px;
+    font-size: 40px;
+    color: $blue;
+    font-weight: bold;
+  }
+  text-align: center;
 }
 
 .sessions-list {
@@ -72,20 +97,43 @@
 }
 
 .controls {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   .up-down {
     flex-grow: 1;
   }
-  .upload-btn, .download-btn, .comments-btn {
+  .upload-btn, .download-btn, .playlist-btn {
     padding: 2px 13px;
     height: 22px;
     font-size: 13px;
     border: none;
+    &:hover {
+      background-color: $green;
+    }
   }
 }
 
+#upload-submit {
+  margin-top: 10px;
+}
 
+#open-session-chat {
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 43%;
+}
 
-
+.btn-default {
+  color: rgba(200, 200, 200, 0.6);
+  border-color: rgba(200, 200, 200, 0.6);
+  opacity: 1;
+  &:hover {
+    opacity: 1;
+    background-color: transparent;
+    color: $green;
+    border-color: $green;
+  }
+}

@@ -19,10 +19,18 @@
   flex-direction: column;
 }
 
-.skill-select-button{
+.skill-select-button a {
   position: absolute;
   top: 10px;
   right: 10px;
+  background-color: white;
+  border: none;
+  color: rgba(180, 180, 180, 0.8);
+  &:hover {
+    background-color: transparent;
+    color: $blue !important;
+    cursor: pointer;
+  }
 }
 
 .skill-genre {
@@ -33,6 +41,11 @@
   font-weight: normal;
   }
 }
+
+#edit_user_2 label  {
+   padding: 0px 10px 0px 0px;
+ }
+
 
 .profile-bar {
   display: flex;
@@ -120,6 +133,24 @@ h4.edit-profile {
   p {
   padding: 15px;
   padding-bottom: 5px;
+  }
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+
+.bio-select-button a {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  color: rgba(180, 180, 180, 0.8);
+  &:hover {
+    background-color: transparent;
+    color: $blue !important;
+    cursor: pointer;
   }
 }
 
