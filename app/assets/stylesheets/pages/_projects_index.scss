@@ -5,7 +5,8 @@
   left: 0;
   right: 0;
   z-index: 2;
-  color: $green;
+  color: $our-turquoise;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .musician-avatar {
@@ -16,7 +17,7 @@
   font-size: 22px;
   display: flex;
   a {
-    color: $blue;
+    color: rgba(0,0,0,0.6);
     &:hover {
     color: rgba(0,0,0,0.4);
     }
@@ -28,7 +29,8 @@
 }
 
 .create-title {
-  color: $green;
+  color: $our-turquoise;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 #new-project {
@@ -61,12 +63,13 @@
 
 .project-title {
   text-align:center;
-  color: $blue;
+  color: rgba(0,0,0,0.6);
 }
 
 .link-create-project {
   text-align:center;
-  color: $green;
+  color: $our-turquoise;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,11 +90,12 @@
 
 .main-title {
   margin-bottom: 25px;
-  color: $blue;
+  color: rgba(0,0,0,0.6);
 }
 
 .button-add-track {
-  background-color: $green;
+  background-color: $our-turquoise;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
   text-decoration: none;
   color: white;
   height: 45px;
@@ -102,7 +106,7 @@
   text-align:center;
   font-weight: bold;
   &:hover {
-    background-color: #269b7e;
+    background-color: darken(rgb(101, 216, 223), 15%);
   }
 }
 
