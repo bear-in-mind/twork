@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :edit, :update]
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
@@ -28,16 +28,15 @@ class TracksController < ApplicationController
   def update
     if @track.update(track_params)
       @track.updated_at = Time.now
-      redirect_to project_path(@project)
+      redirect_back(fallback_location: project_path(@track.project))
     else
       render :edit
     end
   end
 
   def destroy
-    raise
     @track.destroy
-    redirect_back(fallback_location: project_path(@project))
+    redirect_back(fallback_location: project_path(@track.project))
   end
 
   private
