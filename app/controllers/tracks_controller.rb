@@ -44,7 +44,9 @@ class TracksController < ApplicationController
   end
 
   def destroy
+    raise
     @track.destroy
+    redirect_back(fallback_location: project_path(@project))
   end
 
   private
