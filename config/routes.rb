@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :tracks, only: [:new, :create, :edit, :update]
   end
-  resources :tracks, only: [:show] do
+  resources :tracks, only: [:show, :destroy] do
     resources :sessions, only: [:new, :create, :destroy] do
       resources :audio_files, only: [:new, :create, :destroy]
     end
