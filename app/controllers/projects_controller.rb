@@ -33,6 +33,7 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @tracks = @project.tracks.includes(:talents, :sessions)
     @owner = @project.project_owner
     @track = Track.new
     # @test_session = Session.find(21)
