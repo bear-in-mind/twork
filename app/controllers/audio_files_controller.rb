@@ -6,13 +6,19 @@ class AudioFilesController < ApplicationController
 
   def create
     @audio_file = AudioFile.new(audio_file_params)
-    timestamp = Date.now.strftime("%y-%l-%e-%m-%M")
+    timestamp = Date.today.strftime("%e%m")
     @audio_file.session = Session.find_by(params[:id])
-    @audio_file.user = current_user
-    @audio_file.name = "#{@audio_file.session.track.name} - #{@audio_file.session.talent} - #{timestamp} "
+    @audio_file.uploaded_by = current_user
+    @audio_file.name = "#{@audio_file.session.track.name} - #{@audio_file.session.talent.skill.name} - #{timestamp} "
 
-    @audio_file.save
-    redirect_to_track_path(@audio_file.track)
+    if @audio_file.save
+      redirect_to track_path(params[:track_id])
+      flash[:notice] = "File uploaded !"
+    else
+      redirect_to track_path(params[:track_id])
+      flash[:alert] = "File upload failed !"
+    end
+
   end
 
   private
