@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create, :edit, :update]
+  before_action :set_project, only: [:new, :create]
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
@@ -23,14 +23,23 @@ class TracksController < ApplicationController
     end
   end
 
-  def edit; end
+
 
   def update
-    if @track.update(track_params)
+    if params[:track][:brief].present?
+      @track.update(brief_params)
       @track.updated_at = Time.now
-      redirect_to project_path(@project)
+      # raise
+      redirect_to track_path(@track)
     else
-      render :edit
+      # Is this used anywhere ?
+      if @track.update(track_params)
+        @track.updated_at = Time.now
+        redirect_to project_path(@project)
+      else
+        render :edit
+      end
+      # End of possibly useless code
     end
   end
 
@@ -50,5 +59,9 @@ class TracksController < ApplicationController
 
   def track_params
     params.require(:track).permit(:name)
+  end
+
+  def brief_params
+    params.require(:track).permit(:brief)
   end
 end
