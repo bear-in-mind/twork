@@ -29,8 +29,8 @@ class TracksController < ApplicationController
     if params[:track][:brief].present?
       @track.update(brief_params)
       @track.updated_at = Time.now
-      # raise
-      redirect_to track_path(@track)
+      redirect_back(fallback_location: project_path(@track.project))
+
     else
       # Is this used anywhere ?
       if @track.update(track_params)
@@ -44,9 +44,8 @@ class TracksController < ApplicationController
   end
 
   def destroy
-    raise
     @track.destroy
-    redirect_back(fallback_location: project_path(@project))
+    redirect_back(fallback_location: project_path(@track.project))
   end
 
   private
