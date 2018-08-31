@@ -103,7 +103,7 @@
                       <%= simple_form_for [@track, session, @audio_file] do |f| %>
                       <%= f.input :audio, label: "Choose an audio file", required: false %>
                       <%= f.input :audio_cache, as: :hidden %>
-                      <%= f.submit "Upload file", class: "btn btn-success", id: "upload-submit" %>
+                      <%= f.submit "Upload file", class: "btn our-cta-btn", id: "upload-submit" %>
                       <% end %>
                     </div>
                   </div>

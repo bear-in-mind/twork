@@ -13,7 +13,7 @@
   <div class="tracks-head">
     <p><%= pluralize(@tracks.count, "track") unless @tracks.nil? %></p>
 
-    <button type="button" data-toggle="modal" data-target="#addTrack" class="add-track-btn">
+    <button type="button" data-toggle="modal" data-target="#addTrack" class="our-cta-btn icon-btn">
       <i class="fas fa-plus"></i>
     </button>
 
@@ -30,7 +30,7 @@
           <div class="modal-body text-center">
             <%= simple_form_for [@project, @track], url: project_tracks_path(@project) do |f| %>
               <%= f.input :name, label: "Track Name", required: true %>
-              <%= f.submit "Add track", class: "btn btn-success" %>
+              <%= f.submit "Add track", class: "btn our-cta-btn" %>
             <% end %>
           </div>
         </div>
@@ -72,7 +72,7 @@
 
         <div>
           <div class="controls">
-            <button type="button" data-toggle="modal" data-target="#editTrack<%=track.id%>" class="edit-track-btn" >
+            <button type="button" data-toggle="modal" data-target="#editTrack<%=track.id%>" class="our-dormant-btn icon-btn" >
               <i class="far fa-edit"></i>
             </button>
 
@@ -89,7 +89,7 @@
                   <div class="modal-body text-center">
                     <%= simple_form_for [@project, track], url: project_track_path(@project, track) do |f| %>
                       <%= f.input :name, label: "Track Name", required: true %>
-                      <%= f.submit "Save changes", class: "btn btn-success" %>
+                      <%= f.submit "Save changes", class: "btn our-cta-btn" %>
                     <% end %>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
             <!-- #editTrack modal -->
 
             <%= link_to track_path(track), method: :delete do %>
-              <button type="button" class="delete-track-btn">
+              <button type="button" class="our-dormant-btn icon-btn">
                 <i class="far fa-trash-alt"></i>
               </button>
             <% end %>

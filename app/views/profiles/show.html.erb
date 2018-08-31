@@ -22,7 +22,7 @@
         </p>
       </div>
       <% if current_user.id == @profile.id %>
-        <%= link_to "Edit Profile", "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#profileEditModal"} %>
+        <%= link_to "Edit Profile", "#", class: "btn our-cta-btn btn-lg request", data: {toggle: "modal", target: "#profileEditModal"} %>
         <div class="modal fade" id="profileEditModal" tabindex="-1" role="dialog" aria-labelledby="profileEditModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -31,14 +31,14 @@
                     <%= f.input :main_occupation %>
                     <%= f.input :genres, collection: User::GENRES, input_html: { multiple: true, class: "select2" } %>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <%= f.submit class: "btn btn-success" %>
+                    <%= f.submit class: "btn our-cta-btn" %>
                   <% end %>
               </div>
             </div>
           </div>
         </div>
       <% else %>
-        <%= link_to "Send a request", project_path(current_user), class: "btn btn-success btn-lg request" %>
+        <%= link_to "Send a request", project_path(current_user), class: "btn our-cta-btn btn-lg request" %>
       <% end %>
     </div>
 
@@ -52,11 +52,11 @@
           </div>
           <% if current_user.id == @profile.id %>
             <div class="bio-select-button">
-<!--               <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#bioModal">
+<!--               <button type="button" class="btn our-cta-btn btn-lg" data-toggle="modal" data-target="#bioModal">
                 <i class='fas fa-pencil-alt'></i>
               </button>
  -->
-            <%= link_to "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#bioModal"} do %>
+            <%= link_to "#", class: "btn our-cta-btn btn-lg request", data: {toggle: "modal", target: "#bioModal"} do %>
               <i class='fas fa-pencil-alt'></i>
             <% end %>
 
@@ -71,7 +71,7 @@
                     <%= simple_form_for @profile, url: profile_path(@profile) do |f| %>
                       <%= f.input :bio %>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <%= f.submit class: "btn btn-success" %>
+                      <%= f.submit class: "btn our-cta-btn" %>
                     <% end %>
                   </div>
                 </div>
@@ -93,13 +93,13 @@
           <% if current_user.id == @profile.id %>
             <!-- START old -->
 <!--             <div class="skill-select-button">
-              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#skillsModal">
+              <button type="button" class="btn our-cta-btn btn-lg" data-toggle="modal" data-target="#skillsModal">
                 <i class='fas fa-pencil-alt'></i>
               </button>
             </div> -->
             <!-- old END -->
             <div class="skill-select-button">
-              <%= link_to "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#skillsModal"} do %>
+              <%= link_to "#", class: "btn our-cta-btn btn-lg request", data: {toggle: "modal", target: "#skillsModal"} do %>
                 <i class='fas fa-pencil-alt'></i>
               <% end %>
             </div>
@@ -113,7 +113,7 @@
                     <%= simple_form_for @profile, url: profile_path(@profile) do |f| %>
                       <%= f.input :skills, collection: @remaining_skills, input_html: { multiple: true, class: "select2" } %>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <%= f.submit class: "btn btn-success" %>
+                      <%= f.submit class: "btn our-cta-btn" %>
                     <% end %>
                   </div>
                 </div>
