@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :tracks, only: [:index, :new, :create, :edit, :update]
+    resources :tracks, only: [:new, :create, :edit, :update]
   end
   resources :tracks, only: [:show] do
     resources :sessions, only: [:new, :create, :destroy] do
