@@ -37,7 +37,7 @@ class TracksController < ApplicationController
         @track.updated_at = Time.now
         redirect_to project_path(@project)
       else
-        render :edit
+        render :show
       end
       # End of possibly useless code
     end
