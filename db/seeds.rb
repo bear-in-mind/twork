@@ -229,8 +229,10 @@ Talent.create!(skill: Skill.find_by(name: "Keyboards"), user: johann)
 johann_keys = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Arranger"), user: johann)
 Talent.create!(skill: Skill.find_by(name: "Vocals"), user: benj)
+benj_vox = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Producer"), user: benj)
 Talent.create!(skill: Skill.find_by(name: "FOH Engineer"), user: seb)
+seb_mix = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Recording Engineer"), user: seb)
 
 
@@ -248,8 +250,11 @@ aske = Project.last
 
 # Tracks
 Track.create!(project: venice, name: "Sandy")
+sandy = Track.last
 Track.create!(project: venice, name: "If You")
+if_you = Track.last
 Track.create!(project: venice, name: "Slow Down")
+slow_down = Track.last
 Track.create!(project: luce, name: "La Vague Amour")
 vague = Track.last
 Track.create!(project: luce, name: "Ciao")
@@ -257,9 +262,13 @@ ciao = Track.last
 Track.create!(project: luce, name: "L'Ilot Paradis")
 ilot = Track.last
 Track.create!(project: malca, name: "Saudi Palace")
+saudi = Track.last
 Track.create!(project: malca, name: "Ivory Tower")
+ivory = Track.last
 Track.create!(project: malca, name: "Casablanca Jungle")
+casa = Track.last
 Track.create!(project: remix, name: "Aveou Doudou")
+aveou = Track.last
 Track.create!(project: aske, name: "Sequoias")
 sequoias = Track.last
 
@@ -274,6 +283,16 @@ Session.create!(track: ilot, talent: max_drums)
 Session.create!(track: vague, talent: nico_guitar)
 Session.create!(track: sequoias, talent: louis_bass)
 bass_rec = Session.last
+Session.create!(track: slow_down, talent: max_drums)
+Session.create!(track: if_you, talent: max_drums)
+Session.create!(track: aveou, talent: seb_mix)
+Session.create!(track: aveou, talent: max_drums)
+Session.create!(track: casa, talent: seb_mix)
+Session.create!(track: ivory, talent: seb_mix)
+Session.create!(track: sandy, talent: benj_vox)
+Session.create!(track: sandy, talent: seb_mix)
+Session.create!(track: if_you, talent: benj_vox)
+Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
 dark_wagon = AudioFile.new(name: 'Dark Wagon', user_id: louis.id, session_id: bass_rec.id)
