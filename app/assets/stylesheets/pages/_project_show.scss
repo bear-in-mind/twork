@@ -41,7 +41,7 @@
 }
 
 // TRACK INDEX
-ul.tracks-list {
+.tracks-list {
   list-style: none;
   margin: 32px 0;
   padding: 0;
@@ -56,13 +56,23 @@ ul.tracks-list {
   background-color: white;
   &:hover {
     position: relative;
-    z-index: 10;
+    // z-index: 10;
     box-shadow: 4px 8px 32px rgba(0,0,0,0.3);
     border-left: 6px solid $blue;
   }
 }
 
 // INSIDE EACH TRACK
+// Clickable
+.link-to-track {
+  flex: 1 0 90%;
+}
+
+.clickable-track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 // Avatars
 .talents-pics {
   display: flex;
@@ -91,7 +101,7 @@ ul.tracks-list {
 // Track details
 .track-details {
   flex: 0 0 20%;
-  p.track-title {
+  .track-details-title {
     font-weight: normal;
   }
 }
