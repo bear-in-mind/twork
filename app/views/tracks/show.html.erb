@@ -3,7 +3,7 @@
   <div class="track-header">
     <div class= "project-name-div">
       <% if @project.deadline %>
-        <h6><i class="far fa-calendar"></i><%= @project.deadline.strftime("  Due on %d/%m/%Y") %></h6>
+      <h6><i class="far fa-calendar"></i><%= @project.deadline.strftime("  Due on %d/%m/%Y") %></h6>
       <% end %>
     </div>
     <div class="project-titles">
@@ -13,11 +13,11 @@
       <h2> Owner :</h2>
       <div>
         <%= link_to profile_path(@owner) do %>
-          <% if @owner.avatar.nil? %>
-            <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
-          <% else  %>
-            <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
-          <% end %>
+        <% if @owner.avatar.nil? %>
+        <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar" %>
+        <% else  %>
+        <%= cl_image_tag @owner.avatar, height: 85, width: 85, crop: :fill, class: "avatar" %>
+        <% end %>
         <% end %>
       </div>
     </div>
@@ -37,27 +37,27 @@
   <div class="session-index">
     <% @sessions.each do |session| %>
 
-      <div class="session-instances session-<%= session.id %>"
-        data-id="<%= session.id %>">
+    <div class="session-instances session-<%= session.id %>"
+      data-id="<%= session.id %>">
+
+      <div class="the-box">
         <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
         <div class="session-box">
           <div class="img-item">
             <% if session.talent.user.avatar %>
-              <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
+            <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
             <% else %>
-              <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
+            <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
             <% end %>
-
           </div>
           <div class="audio-item">
             <div class="player">
               <% session.audio_files.order('created_at DESC').each do |file| %>
-                <div class='file'
-                  data-title="<%= file.name %>"
-                  data-url="<%= file.audio %>">
-                </div>
-              <% end %>
-
+              <div class='file'
+              data-title="<%= file.name %>"
+              data-url="<%= file.audio %>">
+            </div>
+            <% end %>
             <div id="player-container">
               <!-- Top Info -->
               <div class="player-title" id="title_<%= session.id %>">
@@ -65,7 +65,6 @@
                 <div class="timer "id="timer_<%= session.id %>">0:00</div>
                 <div class="duration" id="duration_<%= session.id %>">0:00</div>
               </div>
-
               <!-- Controls -->
               <div class="controlsOuter">
                 <div class="controlsInner">
@@ -75,17 +74,11 @@
                 </div>
                 <i class="fas fa-volume-down btn-player volumeBtn" id="volumeBtn_<%= session.id %>"></i>
               </div>
-
               <!-- Progress -->
               <div class="waveform" id="waveform_<%= session.id %>"></div>
               <div class="session" id="bar_<%= session.id %>"></div>
               <div class= "progress" id="progress_<%= session.id %>"></div>
-
               <!-- Playlist -->
-              <div class="playlist" id="playlist_<%= session.id %>">
-                <div class="player-list" id="list_<%= session.id %>"></div>
-              </div>
-
               <!-- Volume -->
               <div class="volume" id="volume_<%= session.id %>" class="fadeout">
                 <div class="barFull" id="barFull_<%= session.id %>" class="bar"></div>
@@ -96,11 +89,9 @@
           </div>
           <div class="controls">
             <div class="up-down text-left">
-
               <%= link_to "#", data: {toggle: "modal", target: "#addFile#{session.id}"}, class: "upload-btn btn btn-primary" do %>
-                <i class="fas fa-upload" title="Upload an audio file"></i>
+              <i class="fas fa-upload" title="Upload an audio file"></i>
               <% end %>
-
               <div class="modal fade" id="addFile<%= session.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-sm" role="document">
                   <div class="modal-content">
@@ -110,15 +101,15 @@
                     </div>
                     <div class="modal-body text-center">
                       <%= simple_form_for [@track, session, @audio_file] do |f| %>
-                        <%= f.input :audio, label: "Choose an audio file", required: false %>
-                        <%= f.input :audio_cache, as: :hidden %>
-                        <%= f.submit "Upload file", class: "btn btn-success", id: "upload-submit" %>
+                      <%= f.input :audio, label: "Choose an audio file", required: false %>
+                      <%= f.input :audio_cache, as: :hidden %>
+                      <%= f.submit "Upload file", class: "btn btn-success", id: "upload-submit" %>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
-                <!-- TO DO créer une modal d'upload -->
+              <!-- TO DO créer une modal d'upload -->
               <button type="button" class="download-btn btn btn-primary">
                 <!-- TO DO implémenter le download -->
                 <i class="fa fa-download" aria-hidden="true"></i>
@@ -130,6 +121,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="playlist" id="playlist_<%= session.id %>">
+      <h6>Select a version: </h6>
+      <div class="player-list" id="list_<%= session.id %>"></div>
+    </div>
     <% end %>
   </div>
+</div>
 </div>
