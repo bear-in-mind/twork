@@ -66,7 +66,7 @@
                           <%= simple_form_for project, url: project_path(project) do |f| %>
                             <%= f.input :name, label: "Project Name", required: false %>
                             <%= f.input :deadline, label: "Deadline", required: false, include_blank: true, as: :string, input_html: { class: "datepicker"} %>
-                            <%= f.submit "Edit", class: "btn btn-success" %>
+                            <%= f.submit "Save", class: "btn btn-success" %>
                           <% end %>
                         </div>
                       </div>
