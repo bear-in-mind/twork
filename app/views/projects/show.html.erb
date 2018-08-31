@@ -72,12 +72,12 @@
 
         <div>
           <div class="controls">
-            <button type="button" data-toggle="modal" data-target="#editTrack" class="edit-track-btn" >
+            <button type="button" data-toggle="modal" data-target="#editTrack<%=track.id%>" class="edit-track-btn" >
               <i class="far fa-edit"></i>
             </button>
 
             <!-- #editTrack modal -->
-            <div class="modal fade" id="editTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="editTrack<%=track.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
 
@@ -87,7 +87,7 @@
                   </div>
 
                   <div class="modal-body text-center">
-                    <%= simple_form_for [@project, track], url: project_track_path(@project) do |f| %>
+                    <%= simple_form_for [@project, track], url: project_track_path(@project, track) do |f| %>
                       <%= f.input :name, label: "Track Name", required: true %>
                       <%= f.submit "Save changes", class: "btn btn-success" %>
                     <% end %>
@@ -97,7 +97,7 @@
             </div>
             <!-- #editTrack modal -->
 
-            <%= link_to track_path, method: :delete do %>
+            <%= link_to track_path(track), method: :delete do %>
               <button type="button" class="delete-track-btn">
                 <i class="far fa-trash-alt"></i>
               </button>
