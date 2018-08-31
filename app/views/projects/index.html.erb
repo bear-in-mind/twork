@@ -28,6 +28,7 @@
                 </div>
               </div>
               <div class="button-add-track">
+
                 <%= link_to 'Add a track', "#", data:{toggle:"modal", target: "#addTrack#{project.id}"}, class: "track-button-add"%>
                 <div class="modal fade" id="addTrack<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog modal-sm" role="document">
