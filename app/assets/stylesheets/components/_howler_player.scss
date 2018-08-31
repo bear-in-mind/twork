@@ -292,10 +292,13 @@
 }
 
 .fadeout {
+  justify-self: flex-end;
+  align-self: flex-end;
+  background-color: white;
+  right: 10px;
   position: absolute;
-  // right: 0px;
-  // bottom: 0;
   webkit-animation: fadeout 0.5s;
+  z-index: 5;
   -ms-animation: fadeout 0.5s;
   animation: fadeout 0.5s;
   text-align: center;
@@ -307,9 +310,12 @@
   }
 }
 .fadein {
+  justify-self: flex-end;
+  align-self: flex-end;
+  background-color: white;
+  z-index: 5;
   position: absolute;
-  // right: 0px;
-  // bottom: 0;
+  right: 10px;
   border: solid 1px $blue;
   border-radius: 6px;
   text-align: center;
