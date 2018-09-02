@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create]
+  before_action :set_project, only: :create
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
@@ -44,9 +44,8 @@ class TracksController < ApplicationController
   end
 
   def destroy
-    raise
     @track.destroy
-    redirect_back(fallback_location: project_path(@project))
+    redirect_back(fallback_location: project_path(@track.project))
   end
 
   private

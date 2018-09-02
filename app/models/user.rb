@@ -21,7 +21,7 @@ class User < ApplicationRecord
   private
 
   def capitalize_occupation
-    self.main_occupation[0] = main_occupation.capitalize[0]
+    self.main_occupation = main_occupation&.capitalize
   end
 
   def clean_genres
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def capitalize_bio
-    self.bio[0] = bio.capitalize[0]
+    self.bio = bio&.capitalize
   end
 end
 
