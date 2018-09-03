@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-
+<% if user_signed_in? %>
+  <!-- Link to projects_path when logged in is now set -->
+<!--   in class ApplicationController < ActionController::Base -->
+<% else %>
+  <!-- Login link (when logged out) -->
+  <div class="wrapper">
+    <div class="banner-home full-page" style="background-image: linear-gradient(-135deg, rgba(239, 248, 248, 0.2) 0%, rgba(0,36,61,0.6) 37%), url(<%= image_path 'Home_banner-R0000393-rev2.JPG'%>);">
+      <div class="banner-text-box">
+        <div class="banner-text">
+          <h1>This is <span class="brand">twork</span></h1>
+          <p>Find & book a Musics Professional</p>
+          <%= link_to new_user_registration_path, class: "btn our-cta-btn btn-centered home-btn" do %>
+            Join now
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
