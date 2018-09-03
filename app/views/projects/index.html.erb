@@ -1,60 +1,26 @@
 <div class="wrapper">
   <div class="container">
-    <div class = "own-projects">
-      <h3 class="main-title"> Projects you own </h3>
+    <div class = "own-projects text-center">
+      <h3 class="main-title"> Projects </h3>
       <div class="row">
         <% @my_projects_as_owner.each do |project| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="project-box project-detail">
               <div class="project-main">
-                <div class="project-main-layer"></div>
                 <%= link_to '', project_path(project.id), class: "project-link" %>
-                <div class="project-title">
-                  <h3><%= project.name %></h3>
-                </div>
-                <div class="project-tracklist">
-                  <% project.tracks.each do |track| %>
-                    <div class="project-track">
-                      <div class="track-name">
-                        <%= track.name %>
-                      </div>
-                      <div class="track-musicians">
-                        <% track.sessions.each do |session| %>
-                          <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar small-margin"%>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="button-add-track">
-
-                <%= link_to 'Add a track', "#", data:{toggle:"modal", target: "#addTrack#{project.id}"}, class: "track-button-add"%>
-                <div class="modal fade" id="addTrack<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header text-center">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="new-track-modal-title">Add a new Track</h4>
-                      </div>
-                      <div class="modal-body text-center">
-                        <%= simple_form_for [project, @track], url: project_tracks_path(project) do |f| %>
-                          <%= f.input :name, label: "Track Name", required: true %>
-                          <%= f.submit "Add track", class: "btn our-cta-btn" %>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-date">
-              <p>Due for: <%= project.deadline %></p>
-              <div class="fontawesome-buttons">
-                <div class="edit-button">
+                <div class="project-no-hover">
+                  <h4><%= project.name.upcase %></h4>
+                  <p class="deadline-project-card"><i class="far fa-calendar"></i> <%= " Due on #{project.deadline}" %></p>
                   <%= link_to "#", data:{toggle:"modal", target: "#editProject#{project.id}"}, id:"edit-project" do %>
                     <i class="far fa-edit"></i>
                   <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-date">
+              <div class="fontawesome-buttons">
+                <div class="edit-button">
                   <div class="modal fade" id="editProject<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog modal-sm" role="document">
                       <div class="modal-content">
@@ -81,7 +47,7 @@
           <div class="project-detail">
             <div class="link-create-project">
               <%= link_to '', "#", data:{toggle:"modal", target: "#addProject"}, id:"new-project"%>
-              <h4 class = "create-title">Create a new project</h4>
+              <h1 class = "create-title"><i class="fas fa-plus"></i></h1>
               <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-sm" role="document">
                   <div class="modal-content">
@@ -103,51 +69,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class = "project-participate">
-      <% if @my_projects_as_talent_sorted != [] %>
-        <h3 class="main-title"> Projects you're participating to </h3>
-        <div class="row">
-          <% @my_projects_as_talent_sorted.each do |project| %>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="project-box project-detail">
-                <div class="project-main">
-                  <div class="project-main-layer"></div>
-                  <div class="project-title">
-                    <h3><%= project.name %></h3>
-                  </div>
-                  <div class="owner-avatar">
-                    <%= cl_image_tag User.find(project.user_id).avatar, height: 50, width: 50, class: "avatar"%>
-                  </div>
-                  <div class="project-tracklist">
-                    <% @my_tracks.each do |track| %>
-                      <% if project.tracks.include?(track) %>
-                        <div class="project-track">
-                          <div class="track-name">
-                            <%= track.name %>
-                          </div>
-                          <div class="track-musicians">
-                            <% track.sessions.each do |session| %>
-                              <% if session.talent.user != current_user %>
-                                <div class="musician-avatar">
-                                  <%= cl_image_tag session.talent.user.avatar, height: 35, width: 35, class: "avatar"%>
-                                </div>
-                              <% end %>
-                            <% end %>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <div class="project-due-date">
-                <p>Due for: <%= project.deadline %></p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
