@@ -17,10 +17,17 @@ class SessionsController < ApplicationController
     # @session = Session.find(:id)
     # temp_session = params[:session][:status][0]
     # @session.content = temp_session
-    session.update(params[:session][:status])
-    temp_path = track_params[:session][:track_id]
-    raise
-    redirect_to track_path(params[:track_id])
+    @track = Track.find(params[:track_id])
+    @session = Session.find(params[:id])
+    @session.status = params[:session][:status][1]
+    # @session.update(status_params)
+    @session.save
+
+    # raise
+    # session = Session.find_by_id(session_id_params)
+    # @session.update(status_params)
+    # temp_path = track_params[:session][:track_id]
+    redirect_to track_path(@track)
   end
 
   def destroy
@@ -35,9 +42,16 @@ class SessionsController < ApplicationController
   end
 
   def status_params
-    params.require(:session).permit(:status)
+    params.require(:session).permit(:status)[1]
   end
 
+  # def track_id_params
+  #   params.require(:session).permit(:track_id)
+  # end
+
+  # def session_id_params
+  #   params.require(:session).permit(:id)
+  # end
   # def track_params
   #   params.require(:track).permit(:track_id)
   # end
