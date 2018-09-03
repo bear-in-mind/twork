@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :tracks, only: :create
   end
   resources :tracks, only: [:show, :update, :destroy] do
-    resources :sessions, only: [:new, :create, :destroy] do
+    resources :sessions, only: [:new, :create, :destroy, :update] do
       resources :audio_files, only: [:new, :create, :destroy]
     end
     resources :messages, only: [:new, :create, :destroy]

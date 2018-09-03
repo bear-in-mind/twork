@@ -7,6 +7,7 @@ class TracksController < ApplicationController
     @project = @track.project
     @owner = @project.project_owner
     @audio_file = AudioFile.new
+    # raise
   end
 
   def create
