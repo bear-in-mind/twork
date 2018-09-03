@@ -1,0 +1,25 @@
+[NEW USER STORIES]
+
+Twork is a music recording management tool, enabling me to collaborate on virtual remote recording sessions with every professionals involved in the making of a recording.
+
+As a user :
+[Project #index]
+- I can manage several projects, to organize the tracks I'm working on.
+- I can set a deadline on my projects, to display them by due date order.
+- I can clearly see which projects are completed, and which ones are done.
+
+[Project #show]
+For each project:
+- I can see all the tracks I'm working on, with whom, and see which ones are done.
+- I can add a new track to a project ; when adding a new track, I can assign other users (with a corresponding skill) to it, upload a basic track available to all assigned users, and send a brief for the track.
+
+[Track #show]
+For each track:
+- I can see all the ongoing collaborative sessions, all the track infos, and have access to the completed sessions files.
+  [Sessions #index]
+  For each session:
+  - I can listen to all the versions uploaded by the collaborator via an audio player.
+  - I can comment in real-time on the audio, and see the comments timeline on the player.
+  - I can display a chronology of all the comments made on a given session.
+  - I can decide when a session is completed ; when it is, I can send a final request to the collaborator for him to send the isolated audio track, which will become available in the Files section (call to action => modal).
+  - I can chat with all the collaborators (at the bottom of the page).
