@@ -6,6 +6,7 @@
   border: none;
   border-radius: 4px;
   font-size: 16px;
+  text-align: center;
 }
 
 .our-cta-btn {
@@ -13,10 +14,10 @@
   background-color: rgba(104, 178, 223, 0.8);
   box-shadow: 4px 4px 16px rgba(104, 178, 223, 0.5);
   &:hover {
+    color: white;
     background-color: rgba(0, 117, 191, 1);
     box-shadow: 5px 5px 20px rgba(104, 178, 223, 0.5);
     transition: all 0.3s ease;
-    color: white;
   }
 }
 
