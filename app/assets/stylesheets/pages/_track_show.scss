@@ -151,3 +151,28 @@
   justify-content: center;
   align-items: space-between;
 }
+
+.download-modal {
+  h4 {
+    font-size: 18px;
+    padding: 8px;
+    color: black;
+    font-style: normal;
+  }
+  ul {
+    list-style: none;
+    padding-left: 5px;
+    text-align: left;
+  }
+  color: rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  font-size: 14px;
+  span {
+    font-style: normal;
+    color: black;
+    font-size: 16px;
+    & a:hover {
+      color: $our-turquoise;
+    }
+  }
+}
