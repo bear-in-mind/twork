@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :set_track, only: [:show, :edit, :update, :destroy]
+  before_action :set_track, only: [:show, :update, :destroy]
   before_action :set_project, only: :create
 
   def show
@@ -7,10 +7,6 @@ class TracksController < ApplicationController
     @project = @track.project
     @owner = @project.project_owner
     @audio_file = AudioFile.new
-  end
-
-  def new
-    @track = Track.new
   end
 
   def create
@@ -22,8 +18,6 @@ class TracksController < ApplicationController
       render :new
     end
   end
-
-
 
   def update
     if params[:track][:brief].present?
