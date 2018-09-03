@@ -34,9 +34,13 @@
     <p><%= @track.brief %></p>
   </div>
 
+<!-- BUTTON FOR FILES MODAL  -->
+
   <%= link_to "#", data: {toggle: "modal", target: "#viewFiles"} do %>
     <div class="btn our-cta-btn">Audio Files</div>
   <% end %>
+
+<!-- FILES MODAL -->
 
   <div class="modal fade" id="viewFiles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">
@@ -55,6 +59,8 @@
       </div>
     </div>
   </div>
+
+  <!-- END OF MODAL -->
 
   <div class="session-index">
     <% @sessions.each do |session| %>
