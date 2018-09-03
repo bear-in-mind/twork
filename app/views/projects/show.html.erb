@@ -87,7 +87,7 @@
                   </div>
 
                   <div class="modal-body text-center">
-                    <%= simple_form_for [@project, track], url: project_track_path(@project, track) do |f| %>
+                    <%= simple_form_for track, url: track_path(track) do |f| %>
                       <%= f.input :name, label: "Track Name", required: true %>
                       <%= f.submit "Save changes", class: "btn btn-success" %>
                     <% end %>

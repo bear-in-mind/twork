@@ -3,14 +3,14 @@ class CommentsController < ApplicationController
   # TO DO nest comments index-new-create-edit-update routes in the audio_file #show (i.e. the player) TBC depending on player's doc
   # TO DO comment rattacher le comment à sa track_instant ?
 
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_audio_file, only: [:index, :new, :create, :edit, :update]
+  # before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_audio_file, only: [:index]
 
   def index
     @comments = @audio_file.comments
   end
 
-  def show; end
+  # def show; end
 
   def new
     @comment = Comment.new
@@ -18,29 +18,29 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.audio_file = @audio_file
-    @comment.user_id = current_user.id
+    @comment.audio_file_id = params[:comment][:audio_file_id]
+    @comment.user_id = params[:comment][:user_id]
     # @comment.track_instant = ??
     if @comment.save
-      redirect_to # player or comments#index ?
+      redirect_to track_path(params[:comment][:id])
     else
-      render :new
+      redirect_to track_path(params[:comment][:id])
     end
   end
 
-  def edit; end
+  # def edit; end
 
-  def update
-    if @comment.update(comment_params)
-      redirect_to # player or comments#index ?
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @comment.update(comment_params)
+  #     redirect_to # player or comments#index ?
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    @comment.destroy
-  end
+  # def destroy
+  #   @comment.destroy
+  # end
 
   private
 

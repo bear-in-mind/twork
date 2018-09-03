@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :projects, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :tracks, only: [:new, :create, :edit, :update]
+    resources :tracks, only: [:new, :create, :edit]
   end
-  resources :tracks, only: [:show, :destroy] do
+  resources :tracks, only: [:show, :destroy, :update] do
     resources :sessions, only: [:new, :create, :destroy] do
       resources :audio_files, only: [:new, :create, :destroy]
     end

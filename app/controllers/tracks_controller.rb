@@ -1,12 +1,13 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create, :edit, :update]
+  before_action :set_project, only: [:new, :create, :edit]
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
     @project = @track.project
     @owner = @project.project_owner
     @audio_file = AudioFile.new
+    @comment = Comment.new
   end
 
   def new
@@ -26,11 +27,20 @@ class TracksController < ApplicationController
   def edit; end
 
   def update
-    if @track.update(track_params)
+    if params[:track][:brief].present?
+      @track.update(brief_params)
       @track.updated_at = Time.now
-      redirect_back(fallback_location: project_path(@track.project))
+      # raise
+      redirect_to track_path(@track)
     else
-      render :edit
+      # Is this used anywhere ?
+      if @track.update(track_params)
+        @track.updated_at = Time.now
+        redirect_to project_path(params[:id])
+      else
+        render :show
+      end
+      # End of possibly useless code
     end
   end
 
