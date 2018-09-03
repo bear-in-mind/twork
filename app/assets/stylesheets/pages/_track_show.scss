@@ -11,17 +11,17 @@
   h1 {
     margin-top: 10px;
     font-size: 40px;
-    color: $blue;
+    color: $new-blue;
     font-weight: bold;
   }
   h2 {
     font-weight: lighter;
     align-self: center;
-    color: $blue;
+    color: $new-blue;
     a {
       font-weight: 400;
       font-size: 24px;
-      color: $blue;
+      color: $new-blue;
       padding: 5px;
       &:hover {
         color: $green;
@@ -34,7 +34,7 @@
   h1 {
     margin-top: 30px;
     font-size: 40px;
-    color: $blue;
+    color: $new-blue;
     font-weight: bold;
   }
   text-align: center;
@@ -50,7 +50,7 @@
 
 .brief-wrapper {
   width: 50%;
-  border: solid 1px $blue;
+  border: solid 1px $new-blue;
   border-radius: 5px;
   padding: 10px 20px;
   text-align: justify;
@@ -68,7 +68,7 @@
   color: rgba(180, 180, 180, 0.8);
   &:hover {
     background-color: transparent;
-    color: $blue !important;
+    color: $new-blue !important;
     cursor: pointer;
   }
 }
@@ -167,27 +167,27 @@
   align-items: space-between;
 }
 
-.download-modal {
-  h4 {
-    font-size: 18px;
-    padding: 8px;
-    color: black;
-    font-style: normal;
-  }
+#modalDownload {
+  // h4 {
+  //   font-size: 18px;
+  //   padding: 8px;
+  //   color: black;
+  //   font-style: normal;
+  // }
   ul {
     list-style: none;
     padding-left: 5px;
     text-align: left;
+    color: rgba(0, 0, 0, 0.3);
+    font-style: italic;
+    font-size: 14px;
   }
-  color: rgba(0, 0, 0, 0.3);
-  font-style: italic;
-  font-size: 14px;
   span {
     font-style: normal;
     color: black;
     font-size: 16px;
     & a:hover {
-      color: $our-turquoise;
+      color: $new-blue;
     }
   }
 }

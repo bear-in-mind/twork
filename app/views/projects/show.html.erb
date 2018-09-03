@@ -7,7 +7,10 @@
       From <%= @owner.first_name.capitalize %> <%= @owner.last_name.upcase %>
     </p>
     <p class="project-dates">
-      <%= @project.created_at.strftime("  Started on %d/%m/%Y") %> <%= @project.deadline.strftime("  -  Due on %d/%m/%Y") if @project.deadline %>
+      <%= @project.created_at.strftime("  Started on %d/%m/%Y") %>
+    </p>
+    </p>
+      <i class="far fa-calendar"></i><%= @project.deadline.strftime("Due on %d/%m/%Y") if @project.deadline %>
     </p>
   </div>
   <div class="tracks-head">
@@ -29,7 +32,7 @@
 
           <div class="modal-body text-center">
             <%= simple_form_for [@project, @track], url: project_tracks_path(@project, @track) do |f| %>
-              <%= f.input :name, label: "Track Name", required: true %>
+              <%= f.input :name, label: "Track Name", required: false %>
               <%= f.submit "Add track", class: "btn our-cta-btn" %>
             <% end %>
           </div>

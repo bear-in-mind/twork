@@ -73,7 +73,9 @@
       <div class="modal-content">
         <div class="modal-header download-modal text-center">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="modalDownload">Download files</h4>
+          <h4 class="modal-title">Download files</h4>
+        </div>
+        <div class="modal-body" id="modalDownload">
           <ul class="modal-list">
             <% @track.audio_files.each do |audio_file| %>
               <li>

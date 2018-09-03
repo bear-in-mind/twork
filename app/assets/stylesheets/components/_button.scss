@@ -10,12 +10,13 @@
 
 .our-cta-btn {
   color: white;
-  background-color: rgba(21, 68, 237, 0.8);
-  box-shadow: 4px 4px 16px rgba(21, 68, 237, 0.5);
+  background-color: rgba(104, 178, 223, 0.8);
+  box-shadow: 4px 4px 16px rgba(104, 178, 223, 0.5);
   &:hover {
-    background-color: rgba(21, 68, 237, 0.9);
-    box-shadow: 5px 5px 20px rgba(21, 68, 237, 0.5);
+    background-color: rgba(0, 117, 191, 1);
+    box-shadow: 5px 5px 20px rgba(104, 178, 223, 0.5);
     transition: all 0.3s ease;
+    color: white;
   }
 }
 
@@ -24,8 +25,8 @@
   background-color: transparent;
   &:hover {
     color: white;
-    background-color: rgba(21, 68, 237, 0.8);
-    box-shadow: 4px 4px 16px rgba(21, 68, 237, 0.5);
+    background-color: rgba(104, 178, 223, 0.8);
+    box-shadow: 4px 4px 16px rgba(104, 178, 223, 0.5);
     transition: all 0.3s ease;
   }
 }
