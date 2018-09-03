@@ -40,7 +40,7 @@
                       <div class="modal-body text-center">
                         <%= simple_form_for [project, @track], url: project_tracks_path(project) do |f| %>
                           <%= f.input :name, label: "Track Name", required: true %>
-                          <%= f.submit "Add track", class: "btn btn-success" %>
+                          <%= f.submit "Add track", class: "btn our-cta-btn" %>
                         <% end %>
                       </div>
                     </div>
@@ -66,7 +66,7 @@
                           <%= simple_form_for project, url: project_path(project) do |f| %>
                             <%= f.input :name, label: "Project Name", required: false %>
                             <%= f.input :deadline, label: "Deadline", required: false, include_blank: true, as: :string, input_html: { class: "datepicker"} %>
-                            <%= f.submit "Save", class: "btn btn-success" %>
+                            <%= f.submit "Save", class: "btn our-cta-btn" %>
                           <% end %>
                         </div>
                       </div>
@@ -93,7 +93,7 @@
                       <%= simple_form_for [@project] do |f| %>
                         <%= f.input :name, label: "Project Name", required: true %>
                         <%= f.input :deadline, label: "Deadline", required: false, as: :string, input_html: { class: "datepicker"} %>
-                        <%= f.submit "Add project", class: "btn btn-success" %>
+                        <%= f.submit "Add project", class: "btn our-cta-btn" %>
                       <% end %>
                     </div>
                   </div>

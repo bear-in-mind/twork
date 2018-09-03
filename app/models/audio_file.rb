@@ -8,4 +8,9 @@ class AudioFile < ApplicationRecord
   validates :session_id, presence: true
 
   mount_uploader :audio, AudioUploader
+
+  def get_format
+    File.extname(self.audio.url)
+  end
+
 end

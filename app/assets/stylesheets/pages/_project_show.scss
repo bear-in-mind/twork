@@ -17,7 +17,8 @@
     margin-top: 0;
     font-size: 40px;
     font-weight: bold;
-    color: $blue;
+    color: $our-turquoise;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   }
 }
 .tracks-head {
@@ -26,17 +27,6 @@
   align-items: center;
   p {
     font-weight: normal;
-  }
-  .add-track-btn {
-    height: 34px;
-    width: 34px;
-    margin-left: 3px;
-    padding-top: 6px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    color: white;
-    background-color: $green;
   }
 }
 
@@ -58,7 +48,7 @@
     position: relative;
     // z-index: 10;
     box-shadow: 4px 8px 32px rgba(0,0,0,0.3);
-    border-left: 6px solid $blue;
+    border-left: 6px solid $our-blue;
   }
 }
 
@@ -114,19 +104,4 @@
 // Edit and delete
 .controls {
   padding-right: 16px;
-  .edit-track-btn, .delete-track-btn {
-    height: 34px;
-    width: 34px;
-    margin-left: 3px;
-    padding-top: 6px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    color: rgba(0,0,0,0.3);
-    background-color: transparent;
-    &:hover {
-      color: white;
-      background-color: $green;
-    }
-  }
 }

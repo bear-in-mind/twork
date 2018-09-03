@@ -60,6 +60,34 @@
     <!-- End edit brief -->
   </div>
 
+<!-- BUTTON FOR FILES MODAL  -->
+
+  <%= link_to "#", data: {toggle: "modal", target: "#viewFiles"} do %>
+    <div class="btn our-cta-btn">Audio Files</div>
+  <% end %>
+
+<!-- FILES MODAL -->
+
+  <div class="modal fade" id="viewFiles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header download-modal text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalDownload">Download files</h4>
+          <ul class="modal-list">
+            <% @track.audio_files.each do |audio_file| %>
+              <li>
+                <span><%= link_to audio_file.name, audio_file.audio.url%></span> - uploaded_by <%= audio_file.uploaded_by.first_name %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END OF MODAL -->
+
   <div class="session-index">
     <% @sessions.each do |session| %>
 
@@ -79,7 +107,7 @@
           <div class="audio-item">
             <div class="player">
               <% session.audio_files.order('created_at DESC').each do |file| %>
-              <div class='file'
+              <div class='file-<%= session.id %>'
               data-title="<%= file.name %>"
               data-url="<%= file.audio %>">
             </div>
@@ -128,18 +156,14 @@
                     <div class="modal-body text-center">
                       <%= simple_form_for [@track, session, @audio_file] do |f| %>
                       <%= f.input :audio, label: "Choose an audio file", required: false %>
-                      <%= f.input :audio_cache, as: :hidden %>
-                      <%= f.submit "Upload file", class: "btn btn-success", id: "upload-submit" %>
+                      <%#= f.input :audio_cache, as: :hidden %>
+                      <%= f.submit "Upload file", class: "btn our-cta-btn", id: "upload-submit" %>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- TO DO créer une modal d'upload -->
-              <button type="button" class="download-btn btn btn-primary">
-                <!-- TO DO implémenter le download -->
-                <i class="fa fa-download" aria-hidden="true"></i>
-              </button>
             </div>
             <div class="btn btn-default" id="open-session-chat">Comments</div>
             <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->

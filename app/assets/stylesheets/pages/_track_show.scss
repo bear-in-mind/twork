@@ -56,6 +56,21 @@
   text-align: justify;
   margin: 40px;
   align-self: center;
+  position: relative;
+}
+
+.brief-select-button a {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  color: rgba(180, 180, 180, 0.8);
+  &:hover {
+    background-color: transparent;
+    color: $blue !important;
+    cursor: pointer;
+  }
 }
 
 .session-index {
@@ -150,4 +165,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: space-between;
+}
+
+.download-modal {
+  h4 {
+    font-size: 18px;
+    padding: 8px;
+    color: black;
+    font-style: normal;
+  }
+  ul {
+    list-style: none;
+    padding-left: 5px;
+    text-align: left;
+  }
+  color: rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  font-size: 14px;
+  span {
+    font-style: normal;
+    color: black;
+    font-size: 16px;
+    & a:hover {
+      color: $our-turquoise;
+    }
+  }
 }
