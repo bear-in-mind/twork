@@ -1,6 +1,6 @@
 // above footer
 .full-page {
-  min-height: calc(100vh - 170px);
+  min-height: calc(100vh - 140px);
 }
 
 // footer
@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 70px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.5);
 }
@@ -18,11 +18,11 @@
   align-items: center;
 }
 .footer-links a {
-  color: $our-turquoise;
+  color: $new-blue;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
-  color: darken($our-turquoise, 15%);
+  color: darken($new-blue, 15%);
 }
