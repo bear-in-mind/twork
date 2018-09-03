@@ -7,7 +7,7 @@ import { initPlayers } from '../plugins/init_howler';
 import { alertFadeOut } from '../components/alert';
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip({ boundary: 'viewport' })
 })
 
 initPlayers();

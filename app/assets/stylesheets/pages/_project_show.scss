@@ -68,7 +68,7 @@
 .talents-pics {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   padding: 8px 0 8px 40px;
   flex: 0 0 25%;
   position: relative;
@@ -116,6 +116,7 @@
 
 .tooltip {
   z-index: 5;
+  width: 60%;
 }
 
 .fa-calendar {
