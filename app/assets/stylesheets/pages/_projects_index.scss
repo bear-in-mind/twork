@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   z-index: 2;
-  color: $our-turquoise;
+  color: $new-blue;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
@@ -35,7 +35,7 @@
 }
 
 #new-project {
-  background-color: rgba(101, 216, 223, 0.5);
+  background-color: rgba(104, 178, 223, 0.5);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -63,7 +63,7 @@
   height: 300px;
   background-color: white;
   &:hover {
-    background-color: #65D8DF;
+    background-color: $new-blue;
     h4 {
       color: white;
       text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
@@ -79,7 +79,7 @@
 
 .link-create-project {
   text-align:center;
-  color: $our-turquoise;
+  color: $new-blue;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
@@ -109,35 +109,6 @@
 
 h3.main-title {
   padding-top: 20px;
-}
-
-.button-add-track {
-  background-color: $our-turquoise;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
-  text-decoration: none;
-  color: white;
-  height: 45px;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  text-align:center;
-  font-weight: bold;
-  &:hover {
-    background-color: darken(rgb(101, 216, 223), 15%);
-  }
-}
-
-.track-button-add {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  color: white;
-  margin: auto;
-  padding: 10px;
 }
 
 .project-main {
@@ -191,7 +162,7 @@ h3.main-title {
   width: 100%;
   align-items: center;
   justify-content: center;
-  color: $our-turquoise;
+  color: $new-blue;
   h4 {
     font-weight: light;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);

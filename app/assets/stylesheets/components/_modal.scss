@@ -25,6 +25,13 @@
   transform: translate3d(0, 0, 0);
 }
 
+.modal-header {
+  background-color: $new-blue;
+  color: white;
+}
 
-
-
+.modal-body {
+  .form-group {
+    padding: 10px 0px;
+  }
+}
