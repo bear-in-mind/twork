@@ -17,7 +17,7 @@ function initPlayer(sessionId) {
 
   let sessionTracks = []
 
-  const audioFromHtml = document.querySelectorAll(`.session-${sessionId} .file`);
+  const audioFromHtml = document.querySelectorAll(`.file-${sessionId}`);
   // const audioFromHtml = document.querySelectorAll(`.file`);
   audioFromHtml.forEach((track) => {
     if (track.dataset.title) {
