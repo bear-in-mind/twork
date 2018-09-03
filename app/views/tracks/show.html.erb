@@ -32,6 +32,32 @@
     <!-- TO DO form et/ou show pour afficher le brief de la track (rails g migration AddBriefToTracks brief:text ?) -->
     <!-- BONUS add pin icon -->
     <p><%= @track.brief %></p>
+    <!-- Edit brief button and modal   -->
+    <%# if current_user.id == @profile.id %>
+      <div class="brief-select-button">
+      <%= link_to "#", class: "btn btn-success btn-lg request", data: {toggle: "modal", target: "#briefModal"} do %>
+        <i class='fas fa-pencil-alt'></i>
+      <% end %>
+
+      </div>
+      <div class="modal fade" id="briefModal" tabindex="-1" role="dialog" aria-labelledby="briefModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="briefModalLabel">Modify your brief</h2>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for @track, url: track_path(@track) do |f| %>
+                <%= f.input :brief %>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <%= f.submit class: "btn btn-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%# end %>
+    <!-- End edit brief -->
   </div>
 
   <div class="session-index">
