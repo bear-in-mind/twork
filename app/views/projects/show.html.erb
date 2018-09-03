@@ -30,6 +30,7 @@
           <div class="modal-body text-center">
             <%= simple_form_for [@project, @track], url: project_tracks_path(@project, @track) do |f| %>
               <%= f.input :name, label: "Track Name", required: true %>
+              <%= f.input :brief, as: :text, label: "Add a biref" %>
               <%= f.submit "Add track", class: "btn our-cta-btn" %>
             <% end %>
           </div>

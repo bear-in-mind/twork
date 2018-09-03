@@ -5,11 +5,12 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.new(session_params)
-    @session.track = Track.find(params[:id]) # Supposes that session routes are nested in tracks
+    @track = Track.find(params[:track_id])
+    @session.track = @track # Supposes that session routes are nested in tracks
     if @session.save
-      redirect_to track_path(@session.track)
+      redirect_to track_path(@track)
     else
-      render :new
+      redirect_to track_path(@track) # User doesn't get any error msg
     end
   end
 
@@ -21,6 +22,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:talent)
+    params.require(:session).permit(:talent_id)
   end
 end
