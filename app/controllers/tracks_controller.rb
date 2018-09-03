@@ -1,16 +1,12 @@
 class TracksController < ApplicationController
-  before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create, :edit, :update]
+  before_action :set_track, only: [:show, :update, :destroy]
+  before_action :set_project, only: :create
 
   def show
     @sessions = @track.sessions.includes(:audio_files)
     @project = @track.project
     @owner = @project.project_owner
     @audio_file = AudioFile.new
-  end
-
-  def new
-    @track = Track.new
   end
 
   def create
@@ -22,8 +18,6 @@ class TracksController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
 
   def update
     if @track.update(track_params)
