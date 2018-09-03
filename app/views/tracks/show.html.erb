@@ -53,7 +53,7 @@
           <div class="audio-item">
             <div class="player">
               <% session.audio_files.order('created_at DESC').each do |file| %>
-              <div class='file'
+              <div class='file-<%= session.id %>'
               data-title="<%= file.name %>"
               data-url="<%= file.audio %>">
             </div>
@@ -102,7 +102,7 @@
                     <div class="modal-body text-center">
                       <%= simple_form_for [@track, session, @audio_file] do |f| %>
                       <%= f.input :audio, label: "Choose an audio file", required: false %>
-                      <%= f.input :audio_cache, as: :hidden %>
+                      <%#= f.input :audio_cache, as: :hidden %>
                       <%= f.submit "Upload file", class: "btn our-cta-btn", id: "upload-submit" %>
                       <% end %>
                     </div>
