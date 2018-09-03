@@ -22,7 +22,7 @@
 
     <!-- #addTrack modal -->
     <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
 
           <div class="modal-header text-center">
@@ -33,6 +33,7 @@
           <div class="modal-body text-center">
             <%= simple_form_for [@project, @track], url: project_tracks_path(@project, @track) do |f| %>
               <%= f.input :name, label: "Track Name", required: false %>
+              <%= f.input :brief, as: :text, label: "Write a brief", :input_html => { :rows => 5 } %>
               <%= f.submit "Add track", class: "btn our-cta-btn" %>
             <% end %>
           </div>
