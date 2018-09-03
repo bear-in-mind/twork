@@ -35,11 +35,19 @@ class TracksController < ApplicationController
   end
 
   def update
-    if @track.update(track_params)
+    if params[:track][:brief].present?
+      @track.update(brief_params)
       @track.updated_at = Time.now
-      redirect_back(fallback_location: project_path(@track.project))
+      redirect_to track_path(@track)
     else
-      render :edit
+      # Is this used anywhere ?
+      if @track.update(track_params)
+        @track.updated_at = Time.now
+        redirect_to project_path(@project)
+      else
+        render :show
+      end
+      # End of possibly useless code
     end
   end
 
@@ -60,5 +68,9 @@ class TracksController < ApplicationController
 
   def track_params
     params.require(:track).permit(:name, :brief)
+  end
+
+  def brief_params
+    params.require(:track).permit(:brief)
   end
 end
