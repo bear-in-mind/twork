@@ -16,9 +16,9 @@
       </div>
       <div class="download">
         <!-- BUTTON FOR FILES MODAL  -->
-        <div class="group-btn">
+        <div class="dl-btn session-btn">
           <button type="button" data-toggle="modal" data-target="#viewFiles">
-            <span>Download Files</span>
+            Download Files
           </button>
         </div>
         <!-- FILES MODAL -->
@@ -183,7 +183,7 @@
             <div class="player-list" id="list_<%= session.id %>"></div>
           </div>>
         </div>
-        
+
         <!-- close the-box -->
 
         <!-- @CLAIRE PUT COMMENTS HERE -->
@@ -201,7 +201,7 @@
         <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
 
         <div class="controls">
-          <div class="upload-btn group-btn">
+          <div class="upload-btn session-btn">
             <button type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
               <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
             </button>
@@ -228,12 +228,14 @@
             <!-- addFile Modal -->
           </div>
 
-          <div class="delete-btn group-btn">
-            <%= link_to track_session_path(@track, session), method: :delete do %>
-              <i class="far fa-trash-alt"></i>Delete Session
-            <% end %>
+          <div class="delete-btn session-btn">
+            <button>
+              <%= link_to track_session_path(@track, session), method: :delete do %>
+                <i class="far fa-trash-alt"></i>Delete Session
+              <% end %>
+            </button>
           </div>
-          <div class="playlist-btn group-btn">
+          <div class="playlist-btn session-btn">
             <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
             <button type="button" id="playlistBtn_<%= session.id %>">
               <span class="caret"></span>
