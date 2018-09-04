@@ -20,7 +20,7 @@
   font-size: 28px;
   opacity: 0.9;
   font-weight: 300;
-  color: $new-blue;
+  color: black;
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 .timer {
@@ -31,8 +31,8 @@
   font-size: 26px;
   opacity: 0.9;
   font-weight: 300;
-  color: $new-blue;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  color: black;
+  // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 
 .duration {
@@ -43,8 +43,8 @@
   font-size: 26px;
   opacity: 0.5;
   font-weight: 300;
-  color: $new-blue;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  color: black;
+  // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 
 .controlsOuter {
@@ -53,46 +53,63 @@
   height: 70px;
   bottom: 3%;
 }
-.controlsInner {
-  position: absolute;
-  width: 340px;
-  height: 70px;
-  left: 50%;
-  margin: 0 -170px;
-}
+
 .btn-player {
   position: absolute;
-  cursor: pointer;
-  opacity: 0.9;
-  -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
-  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
+  color: white;
+  // opacity: 0.9;
+  // -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
+  // filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
   -webkit-user-select: none;
   user-select: none;
-  font-size: 40px;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: $new-blue;
-  color: transparent;
-  &:hover {
-    color: $new-blue;
-  }
+  font-size: 35px;
+  // -webkit-text-stroke-width: 1px;
+  // -webkit-text-stroke-color: black;
 }
 .btn-player:hover {
   opacity: 1;
 }
 
+.button-play-pause {
+  cursor: pointer;
+  background-color: rgba(40, 40, 40, 0.5);
+  &:hover {
+    background-color: $new-blue;
+  }
+  border-radius: 50%;
+  margin: auto 14.5px;
+  bottom: 28px;
+  z-index: 15;
+  position: relative;
+  // position: absolute;
+  // top: -22%;
+  // left: 54%;
+  width: 70px;
+  height: 70px;
+  /* text-align: center; */
+  padding-top: 16px;
+}
+
 .playBtn {
-  top: -22%;
-  left: 54%;
-  margin: auto -34.5px;
-  z-index: 5;
+  padding-left: 23px;
+}
+
+.prevBtn {
+  position: absolute;
+  left: -16%;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.nextBtn {
+  position: absolute;
+  left: 16%;
+  display: none;
 }
 
 .pauseBtn {
-  top: -22%;
-  left: 54%;
-  margin: auto -34.5px;
   display: none;
-  z-index: 3;
+  padding-left: 20px;
 }
 
 .playlistBtn {
@@ -151,7 +168,7 @@
   width: 0%;
   height: 100%;
   background-color: rgba(104, 178, 223, 0.4);
-  z-index: 0;
+  z-index: 10;
 }
 
 .loading {
@@ -318,7 +335,7 @@
   position: absolute;
   right: -172px;
   top: 30px;
-  border: solid 1px $new-blue;
+  border: 1px groove rgba(0,0,0, 0.2);
   border-radius: 6px;
   text-align: center;
     h6 {

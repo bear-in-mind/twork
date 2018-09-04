@@ -46,36 +46,6 @@
     </div>
   </div>
 
-  <div class="sessions-head">
-    <h2><%= pluralize(@sessions.count, "session") unless @sessions.nil? %></h2>
-
-    <button type="button" data-toggle="modal" data-target="#addSession" class="our-dormant-btn icon-btn">
-      <i class="fas fa-plus"></i>
-    </button>
-
-    <!-- #addSession modal -->
-    <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-
-          <div class="modal-header text-center">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Add a new Session</h4>
-          </div>
-
-          <div class="modal-body text-center">
-            <%= simple_form_for [@track, @session] do |f| %>
-            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
-            <!-- TODO add an audio file ? -->
-            <%= f.submit "Add session", class: "btn our-cta-btn" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- #addSession modal -->
-  </div>
-
   <div class="brief-head">
     <div class="brief-title">
       <% if @track.brief %>
@@ -110,6 +80,37 @@
     </div>
     <p><%= @track.brief if @track.brief %></p>
   </div>
+
+  <div class="sessions-head">
+    <h2><%= pluralize(@sessions.count, "session") unless @sessions.nil? %></h2>
+
+    <button type="button" data-toggle="modal" data-target="#addSession" class="our-dormant-btn icon-btn">
+      <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- #addSession modal -->
+    <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Add a new Session</h4>
+          </div>
+
+          <div class="modal-body text-center">
+            <%= simple_form_for [@track, @session] do |f| %>
+            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
+            <!-- TODO add an audio file ? -->
+            <%= f.submit "Add session", class: "btn our-cta-btn" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #addSession modal -->
+  </div>
+
 
   <!-- SESSIONS -->
   <div class="session-index">
@@ -152,11 +153,13 @@
                   </div>
                   <!-- Controls -->
                   <div class="controlsOuter">
-                    <div class="controlsInner">
                       <div class="loading" id="loading_<%= session.id %>"></div>
-                      <i class="fas fa-play btn-player playBtn" id="playBtn_<%= session.id %>"></i>
-                      <i class="fas fa-pause btn-player pauseBtn" id="pauseBtn_<%= session.id %>"></i>
-                    </div>
+                      <div class="button-play-pause">
+                        <i class="fas fa-play btn-player playBtn" id="playBtn_<%= session.id %>"></i>
+                        <i class="fas fa-pause btn-player pauseBtn" id="pauseBtn_<%= session.id %>"></i>
+                      </div>
+                        <i class="fas fa-step-backward btn-player prevBtn" id="prevBtn_<%= session.id %>"></i>
+                        <i class="fas fa-step-forward btn-player nextBtn" id="nextBtn_<%= session.id %>"></i>
                   <!-- Volume Btn -->
                   <i class="fas fa-volume-down btn-player volumeBtn" id="volumeBtn_<%= session.id %>"></i>
                   </div>
@@ -201,9 +204,7 @@
                 <div class="modal-content">
                   <div class="modal-header text-center">
                     <h4 class="modal-title" id="myModalLabel">Add a new file</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   </div>
                   <div class="modal-body text-center">
                     <%= simple_form_for [@track, session, @audio_file] do |f| %>

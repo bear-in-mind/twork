@@ -322,12 +322,14 @@ function initPlayer(sessionId) {
   pauseBtn.addEventListener('click', function() {
     player.pause();
   });
-  // prevBtn.addEventListener('click', function() {
-  //   player.skip('prev');
-  // });
-  // nextBtn.addEventListener('click', function() {
-  //   player.skip('next');
-  // });
+  let prevBtn = document.getElementById(`prevBtn_${sessionId}`);
+  prevBtn.addEventListener('click', function() {
+    player.skip('prev');
+  });
+  let nextBtn = document.getElementById(`nextBtn_${sessionId}`);
+  nextBtn.addEventListener('click', function() {
+    player.skip('next');
+  });
   let waveform = document.getElementById(`waveform_${sessionId}`)
   waveform.addEventListener('click', function(event) {
     player.seek(event.clientX / window.innerWidth);
@@ -410,7 +412,7 @@ function initPlayer(sessionId) {
     wave.width_4 = width / 4;
     wave.canvas.height = height;
     wave.canvas.width = width;
-    // wave.container.style.margin = -(height / 2) + 'px auto';
+    wave.container.style.margin = -(height / 2) + 'px auto';
 
     // Update the position of the slider.
     let playlist = document.getElementById(`playlist_${sessionId}`)
