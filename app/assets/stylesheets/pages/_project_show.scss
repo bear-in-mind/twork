@@ -14,11 +14,14 @@
   margin-top: 32px;
   border-top: 1px groove rgba(0,0,0,0.1);
   h1.project-name {
-    margin: 10px;
+    margin-bottom: 10px;
     font-size: 40px;
     font-weight: bold;
     color: $new-blue;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+  .fa-calendar {
+    padding-right: 5px;
   }
 }
 .tracks-head {
@@ -45,79 +48,78 @@
   margin-bottom: 3px;
   background-color: white;
   &:hover {
+    // needed so pics-gradient doesn't show upon hover
     position: relative;
-    // z-index: 10;
+    z-index: 10;
     box-shadow: 4px 8px 32px rgba(0,0,0,0.3);
     border-left: 6px solid $new-blue;
   }
   transition: all 0.2s ease;
-}
 
-// INSIDE EACH TRACK
-// Clickable
-.link-to-track {
-  flex: 1 0 90%;
-}
-
-.clickable-track {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-// Avatars
-.talents-pics {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: hidden;
-  padding: 8px 0 8px 40px;
-  flex: 0 0 25%;
-  position: relative;
-  .pics-gradient {
-    position: absolute;
-    right: 0;
-    width: 32px;
-    height: 100%;
-    background: linear-gradient(-90deg, rgba(255,255,255,0.8), transparent);
+  // INSIDE EACH TRACK
+  // Clickable
+  a.link-to-track {
+    text-decoration: none;
+    flex: 1 1 auto;
   }
-  .track-avatar {
-    height: 72px;
-    width: 72px;
-    border-radius: 50%;
-    border: 2px solid $light-gray;
-    box-shadow: 1px 1px 2px rgba(57, 80, 117, 0.3);
-    margin-left: -24px;
+  .clickable-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-}
+  // Avatars
+  .talents-pics {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 8px 0 8px 40px;
+    flex: 0 0 25%;
+    position: relative;
+    // prevents tooltip from being displayed but avoids pics overflowing
+    overflow-x: hidden;
+    .pics-gradient {
+      position: absolute;
+      right: 0;
+      width: 32px;
+      height: 100%;
+      background: linear-gradient(-90deg, rgba(255,255,255,0.8), transparent);
+    }
+    .track-avatar {
+      height: 72px;
+      width: 72px;
+      border-radius: 50%;
+      border: 2px solid $light-gray;
+      box-shadow: 1px 1px 2px rgba(57, 80, 117, 0.3);
+      margin-left: -24px;
+    }
+  }
+  // .tooltip {
+  //   z-index: 15;
+  // }
 
-// Track details
-.track-details {
-  flex: 0 0 20%;
-  .track-details-title {
+  // Track details
+  .track-title {
+    flex: 0 0 20%;
     font-weight: normal;
   }
   .track-start-date {
+    flex: 0 0 20%;
     color: rgba(0, 0, 0, 0.5);
     font-style: italic;
+    font-weight: lighter;
   }
-}
 
-// Sessions count
-.sessions-count {
-  flex: 0 0 20%;
-  p {
-    color: $new-blue;
+  // Sessions count
+  .sessions-count {
+    flex: 0 0 20%;
+    p {
+      color: $new-blue;
+    }
   }
-}
 
-// Edit and delete
-.controls {
-  padding-right: 16px;
-}
-
-.tooltip {
-  z-index: 5;
-}
-
-.fa-calendar {
-  padding-right: 5px;
+  // Edit and delete
+  .controls {
+    flex: 0 1 auto;
+    padding-right: 16px;
+    flex-wrap: wrap;
+  }
 }
