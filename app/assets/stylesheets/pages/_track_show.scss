@@ -122,12 +122,20 @@
 }
 // Inside each session
 .img-item {
+  position: relative;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   overflow: hidden;
-  .avatar-sq {
+  .avatar-sq, .img-gradient {
     height: 160px;
     width: 160px;
+  }
+  .img-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(-225deg, rgba(104, 178, 223,0.6) 0%, rgba(0, 45, 76,0.2) 66%);
+    z-index: 10;
   }
 }
 .audio-item {
