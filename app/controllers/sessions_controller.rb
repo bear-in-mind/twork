@@ -10,13 +10,15 @@ class SessionsController < ApplicationController
     if @session.save
       redirect_to track_path(@track)
     else
-      redirect_to track_path(@track) # User doesn't get any error msg
+      redirect_to track_path(@track) # User doesn't get any error msg if it fails
     end
   end
 
   def destroy
-    @session = Session.find(:id)
+    @session = Session.find(params[:id])
     @session.destroy
+    redirect_to track_path(@session.track)
+
   end
 
   private
