@@ -22,3 +22,17 @@
 .comment-body p {
   font-size: 15px;
 }
+
+.comment-flexbox-class {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  .form-group {
+    width: 100%;
+  }
+}
+
+.btn-send-comment {
+  height: 39px;
+  margin-left: 10px;
+}
