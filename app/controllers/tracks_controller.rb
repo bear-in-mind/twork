@@ -45,6 +45,7 @@ class TracksController < ApplicationController
       # Is this used anywhere ?
       if @track.update(track_params)
         @track.updated_at = Time.now
+        @project = @track.project
         redirect_to project_path(@project)
       else
         render :show

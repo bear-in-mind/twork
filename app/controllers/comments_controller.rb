@@ -12,13 +12,10 @@ class CommentsController < ApplicationController
 
   # def show; end
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @comment = Comment.new(comment_params)
     @audiofile = AudioFile.find(params[:comment][:audio_file_id])
+    @session = @audiofile.session
     @comment.audio_file_id = params[:comment][:audio_file_id]
     @comment.user_id = params[:comment][:user_id]
     # @comment.track_instant = ??

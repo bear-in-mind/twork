@@ -181,17 +181,16 @@
           <div class="playlist" id="playlist_<%= session.id %>">
             <h6>Select a version: </h6>
             <div class="player-list" id="list_<%= session.id %>"></div>
-          </div>>
+          </div>
         </div>
-        
+
         <!-- close the-box -->
 
         <!-- @CLAIRE PUT COMMENTS HERE -->
         <div class="audiofile-comments">
           <% session.audio_files.each do |audio_file| %>
             <div id="new-comment<%= audio_file.id %>">
-              <p><%= audio_file.name %></p>
-              <%= render '/comments/comment_form', session: session, audio_file: audio_file %>
+              <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
             </div>
             <div id="ajax_comments<%= audio_file.id %>" >
               <%= render '/comments/show', audio_file: audio_file %>
@@ -216,7 +215,7 @@
                     </button>
                   </div>
                   <div class="modal-body text-center">
-                    <%= simple_form_for [@track, session, @audio_file] do |f| %>
+                    <%= simple_form_for [session, @audio_file] do |f| %>
                     <%= f.input :audio, label: "Choose an audio file", required: false %>
                     <%#= f.input :audio_cache, as: :hidden %>
                     <%= f.submit "Upload file", id: "upload-submit" %>
@@ -229,7 +228,7 @@
           </div>
 
           <div class="delete-btn group-btn">
-            <%= link_to track_session_path(@track, session), method: :delete do %>
+            <%= link_to session_path(session), method: :delete do %>
               <i class="far fa-trash-alt"></i>Delete Session
             <% end %>
           </div>
