@@ -8,6 +8,10 @@
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
+  a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 /* Logo */
@@ -15,10 +19,6 @@
 //   height: 50px;
 // }
 
-a:hover, a:focus {
-  color: white;
-  text-decoration: none;
-}
 
 .brand {
   color: white;
@@ -26,6 +26,8 @@ a:hover, a:focus {
   font-weight: bolder;
   font-size: 24px;
   text-decoration: none;
+  flex: 100%;
+  text-align: center;
 }
 
 /* User Avatar */
@@ -54,8 +56,9 @@ a:hover, a:focus {
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  // padding: 0 20px;
   font-weight: 400;
+  color: white;
 }
 
 /* Navbar link */
@@ -98,4 +101,9 @@ a:hover, a:focus {
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.position-right {
+  position: absolute;
+  right: 20px;
 }

@@ -5,11 +5,12 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.new(session_params)
-    @session.track = Track.find(params[:id]) # Supposes that session routes are nested in tracks
+    @track = Track.find(params[:track_id])
+    @session.track = @track # Supposes that session routes are nested in tracks
     if @session.save
-      redirect_to track_path(@session.track)
+      redirect_to track_path(@track)
     else
-      render :new
+      redirect_to track_path(@track) # User doesn't get any error msg
     end
   end
 
@@ -17,10 +18,7 @@ class SessionsController < ApplicationController
 
     @track = Track.find(params[:track_id])
     @session = Session.find(params[:id])
-    @session.update(session_params)
-    # @session.update(status_params)
-    # raise
-
+    @session.update(session_status_params)
     redirect_to track_path(@track)
   end
 
@@ -32,17 +30,10 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:talent, :status)
+    params.require(:session).permit(:talent_id)
   end
 
-  # def track_id_params
-  #   params.require(:session).permit(:track_id)
-  # end
-
-  # def session_id_params
-  #   params.require(:session).permit(:id)
-  # end
-  # def track_params
-  #   params.require(:track).permit(:track_id)
-  # end
+  def session_status_params
+    params.require(:session).permit(:status)
+  end
 end

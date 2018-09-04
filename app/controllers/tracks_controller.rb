@@ -3,9 +3,24 @@ class TracksController < ApplicationController
   before_action :set_project, only: :create
 
   def show
-    @sessions = @track.sessions.includes(:audio_files)
+    #project details
     @project = @track.project
     @owner = @project.project_owner
+
+    # session index
+    @sessions = @track.sessions.includes(:audio_files)
+
+    # create session
+    @session = Session.new
+    @talents = Talent.all
+    @talents_name = User.all.map do |user|
+      "#{user.first_name.capitalize} #{user.last_name.upcase}"
+    end
+    @talents_id = Talent.all.map do |talent|
+      talent.id
+    end
+
+    # create audio file
     @audio_file = AudioFile.new
     # raise
   end
@@ -53,7 +68,7 @@ class TracksController < ApplicationController
   end
 
   def track_params
-    params.require(:track).permit(:name)
+    params.require(:track).permit(:name, :brief)
   end
 
   def brief_params

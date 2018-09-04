@@ -5,28 +5,29 @@
   padding-top: 6px;
   border: none;
   border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
 }
 
 .our-cta-btn {
-  font-size: 14px;
   color: white;
-  background-color: rgba(21, 68, 237, 0.8);
-  box-shadow: 4px 4px 16px rgba(21, 68, 237, 0.5);
+  background-color: rgba(104, 178, 223, 0.8);
+  box-shadow: 4px 4px 16px rgba(104, 178, 223, 0.5);
   &:hover {
-    background-color: rgba(21, 68, 237, 0.9);
-    box-shadow: 5px 5px 20px rgba(21, 68, 237, 0.5);
+    color: white;
+    background-color: rgba(0, 117, 191, 1);
+    box-shadow: 5px 5px 20px rgba(104, 178, 223, 0.5);
     transition: all 0.3s ease;
   }
 }
 
 .our-dormant-btn {
-  font-size: 16px;
   color: rgba(0,0,0,0.3);
   background-color: transparent;
   &:hover {
     color: white;
-    background-color: rgba(21, 68, 237, 0.8);
-    box-shadow: 4px 4px 16px rgba(21, 68, 237, 0.5);
+    background-color: rgba(104, 178, 223, 0.8);
+    box-shadow: 4px 4px 16px rgba(104, 178, 223, 0.5);
     transition: all 0.3s ease;
   }
 }

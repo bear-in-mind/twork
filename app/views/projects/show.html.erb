@@ -7,7 +7,8 @@
       From <%= @owner.first_name.capitalize %> <%= @owner.last_name.upcase %>
     </p>
     <p class="project-dates">
-      <%= @project.created_at.strftime("  Started on %d/%m/%Y") %> <%= @project.deadline.strftime("  -  Due on %d/%m/%Y") if @project.deadline %>
+      <i class="far fa-calendar"></i>
+      <%= @project.deadline.strftime("Due on %d/%m/%Y") if @project.deadline %>
     </p>
   </div>
   <div class="tracks-head">
@@ -19,7 +20,7 @@
 
     <!-- #addTrack modal -->
     <div class="modal fade" id="addTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
 
           <div class="modal-header text-center">
@@ -29,7 +30,8 @@
 
           <div class="modal-body text-center">
             <%= simple_form_for [@project, @track], url: project_tracks_path(@project, @track) do |f| %>
-              <%= f.input :name, label: "Track Name", required: true %>
+              <%= f.input :name, label: "Track Name", required: false %>
+              <%= f.input :brief, as: :text, label: "Write a brief", :input_html => { :rows => 5 } %>
               <%= f.submit "Add track", class: "btn our-cta-btn" %>
             <% end %>
           </div>
@@ -49,7 +51,7 @@
               <% track.talents.each do |talent| %>
 
                 <% if talent.user.avatar %>
-                  <%= cl_image_tag talent.user.avatar, class: "track-avatar", data: { toggle: "tooltip" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
+                  <%= cl_image_tag talent.user.avatar, class: "track-avatar", data: { toggle: "tooltip", placement: "right" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
                   <!-- TO DO les bails ne s'affichent pas -->
                 <% else %>
                   <%= image_tag "noprofilepicture.png", class: "track-avatar" %>
@@ -57,12 +59,17 @@
 
                 <span class="pics-gradient visible-xs visible-sm"></span>
               <% end %>
+              <%= image_tag "noprofilepicture.png", class: "track-avatar no-one" if track.talents.empty?  %>
             </div>
 
-            <div class="track-details">
-              <p class="track-details-title"><%=track.name%></p>
-              <p class="track-start-date"><%=track.created_at.strftime("Started on %d/%m/%Y")%></p>
+            <div class="track-title">
+              <%=track.name%>
             </div>
+            <div class="track-start-date">
+              Started on<br>
+              <%=track.created_at.strftime("%d/%m/%Y")%>
+            </div>
+
 
             <div class="sessions-count">
               <p><%= pluralize(track.sessions.count, "session") unless track.sessions.nil? %></p>
@@ -70,39 +77,37 @@
           </div>
         <% end %>
 
-        <div>
-          <div class="controls">
-            <button type="button" data-toggle="modal" data-target="#editTrack<%=track.id%>" class="our-dormant-btn icon-btn" >
-              <i class="far fa-edit"></i>
-            </button>
+        <div class="controls">
+          <button type="button" data-toggle="modal" data-target="#editTrack<%=track.id%>" class="our-dormant-btn icon-btn" >
+            <i class="far fa-edit"></i>
+          </button>
 
-            <!-- #editTrack modal -->
-            <div class="modal fade" id="editTrack<%=track.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
+          <!-- #editTrack modal -->
+          <div class="modal fade" id="editTrack<%=track.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
 
-                  <div class="modal-header text-center">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Edit Track</h4>
-                  </div>
+                <div class="modal-header text-center">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Edit Track</h4>
+                </div>
 
-                  <div class="modal-body text-center">
-                    <%= simple_form_for track, url: track_path(track) do |f| %>
-                      <%= f.input :name, label: "Track Name", required: true %>
-                      <%= f.submit "Save changes", class: "btn our-cta-btn" %>
-                    <% end %>
-                  </div>
+                <div class="modal-body text-center">
+                  <%= simple_form_for track, url: track_path(track) do |f| %>
+                    <%= f.input :name, label: "Track Name", required: true %>
+                    <%= f.submit "Save changes", class: "btn our-cta-btn" %>
+                  <% end %>
                 </div>
               </div>
             </div>
-            <!-- #editTrack modal -->
-
-            <%= link_to track_path(track), method: :delete do %>
-              <button type="button" class="our-dormant-btn icon-btn">
-                <i class="far fa-trash-alt"></i>
-              </button>
-            <% end %>
           </div>
+          <!-- #editTrack modal -->
+
+          <%= link_to track_path(track), method: :delete do %>
+            <button type="button" class="our-dormant-btn icon-btn">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          <% end %>
         </div>
       </div>
 
