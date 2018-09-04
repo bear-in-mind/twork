@@ -16,8 +16,10 @@ class SessionsController < ApplicationController
 
   def destroy
     @session = Session.find(params[:id])
+    @track = @session.track
     @session.destroy
-    redirect_to track_path(@session.track)
+
+    redirect_to track_path(@track)
 
   end
 
