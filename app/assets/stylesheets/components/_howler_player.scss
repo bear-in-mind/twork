@@ -9,6 +9,7 @@
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   border-bottom: 1px groove rgba(0,0,0,0.1);
+  border-radius: 6px;
 }
 
 .player-title {
@@ -74,12 +75,12 @@
 
 .button-play-pause {
   cursor: pointer;
-  background-color: rgba(40, 40, 40, 0.5);
+  background-color: rgba(40, 40, 40, 0.7);
   &:hover {
     background-color: $new-blue;
   }
   border-radius: 50%;
-  margin: auto 33.5px;
+  margin: auto 42.5px;
   top: 8px;
   z-index: 15;
   position: relative;
@@ -104,7 +105,7 @@
     background-color: $new-blue;
   }
   border-radius: 50%;
-  margin: auto 5.5px;
+  margin: auto 8.5px;
   top: -7px;
   z-index: 15;
   position: relative;
@@ -266,7 +267,7 @@
   line-height: 5px;
   color: $new-blue;
   text-align: right;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
+  // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
   display: flex;
   align-items: center;
   justify-content: center;

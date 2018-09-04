@@ -9,6 +9,32 @@
   outline: none !important;
   text-decoration: none;
   border: 1px solid white;
+  margin: 5px;
+  padding: 7px 13px 5px 8px;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  a {
+    font-size: 16px;
+  }
+  &:hover {
+    color: $new-blue;
+    background-color: white;
+    .caret {
+      color: $new-blue;
+      border-top: 6px dashed $new-blue;
+    }
+  }
+  i, .caret {
+    margin-right: 4px;
+  }
+}
+
+.controls-btn button, .group-btn a {
+  outline: none !important;
+  text-decoration: none;
+  border: 1px solid white;
   border-radius: 4px;
   margin: 5px;
   padding: 7px 13px 5px 8px;
@@ -173,17 +199,18 @@
 .toolbox {
   // background-color: rgba(80, 80, 80, 0.5);
   background-color: $new-blue;
-  display: flex;
+  display: block;
   width:100%;
   height:50%;
   position: relative;
-  justify-content: space-between;
 }
 
 .controls {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-evenly;
+  max-height: 50%;
+  border-top: solid 1px white;
 }
 
 // .version-button {
@@ -193,4 +220,16 @@
 
 .sessions-list {
   width: 52vw;
+}
+
+.talent-toolbox {
+  h6 {
+    color: white;
+    font-size: 22px;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-left: 5px;
+    margin: 0;
+  }
+  max-height: 50%;
 }

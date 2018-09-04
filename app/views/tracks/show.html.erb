@@ -177,17 +177,20 @@
                     <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
                   </h6>                </div>
                 <div class="controls">
+                  <div class="controls-btn">
+                    <span>Comments</span><span class="caret-comments"></span>
+                  </div>
                   <div>
                     <%= link_to track_session_path(@track, session), method: :delete do %>
                     <!-- <i class="far fa-trash-alt"></i>Delete -->
-                    <div class="group-btn">
+                    <div class="controls-btn">
                       <button>
                         <i class="far fa-trash-alt"></i>Delete
                       </button>
                     </div>
                     <% end %>
                   </div>
-                  <div class="upload-btn group-btn">
+                  <div class="upload-btn controls-btn">
                     <button type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
                       <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
                     </button>
@@ -210,7 +213,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="playlist-btn group-btn version-button">
+                  <div class="playlist-btn controls-btn version-button">
                     <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
                     <button type="button" id="playlistBtn_<%= session.id %>">
                       <span>View Files</span>
