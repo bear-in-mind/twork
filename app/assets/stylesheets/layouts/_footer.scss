@@ -26,3 +26,9 @@
 .footer-links a:hover {
   color: darken($new-blue, 15%);
 }
+
+.brand-footer {
+  color: $new-blue;
+  font-weight: bold;
+  // text-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
+}

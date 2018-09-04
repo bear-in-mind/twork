@@ -51,7 +51,7 @@
               <% track.talents.each do |talent| %>
 
                 <% if talent.user.avatar %>
-                  <%= cl_image_tag talent.user.avatar, class: "track-avatar", data: { toggle: "tooltip" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
+                  <%= cl_image_tag talent.user.avatar, class: "track-avatar", data: { toggle: "tooltip", placement: "right" }, title: "#{talent.user.first_name} #{talent.user.last_name} (#{talent.skill.name})" %>
                   <!-- TO DO les bails ne s'affichent pas -->
                 <% else %>
                   <%= image_tag "noprofilepicture.png", class: "track-avatar" %>
