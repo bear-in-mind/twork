@@ -65,7 +65,7 @@
 
           <div class="modal-body text-center">
             <%= simple_form_for [@track, @session] do |f| %>
-            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: true %>
+            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
             <!-- TODO add an audio file ? -->
             <%= f.submit "Add session", class: "btn our-cta-btn" %>
             <% end %>
@@ -202,7 +202,7 @@
 
         <div class="controls">
           <div class="upload-btn group-btn">
-            <button type="button" data-toggle="modal" data-target="#addFile#{session.id}">
+            <button type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
               <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
             </button>
             <!-- addFile Modal -->
