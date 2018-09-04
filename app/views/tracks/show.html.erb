@@ -93,7 +93,7 @@
           <div class="modal-content">
 
             <div class="modal-header text-center">
-              <h4 class="modal-title">Edit Track</h4>
+              <h4 class="modal-title">Edit Brief</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
 
@@ -215,14 +215,14 @@
             </div>
             <!-- close audio-item -->
           </div>
+
+          <div class="playlist" id="playlist_<%= session.id %>">
+            <h6>Select a version: </h6>
+            <div class="player-list" id="list_<%= session.id %>"></div>
+          </div>
           <!-- close session-box -->
         </div>
         <!-- close the-box -->
-
-        <div class="playlist" id="playlist_<%= session.id %>">
-          <h6>Select a version: </h6>
-          <div class="player-list" id="list_<%= session.id %>"></div>
-        </div>
         <div class="comments-area" id="open-session-chat">Write a comment</div>
       </div>
       <!-- close session-instances -->
