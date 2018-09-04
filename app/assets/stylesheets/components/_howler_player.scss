@@ -150,7 +150,7 @@
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: rgba(147, 159, 179, 0.3);
+  background-color: rgba(104, 178, 223, 0.4);
   z-index: 0;
 }
 
@@ -295,7 +295,8 @@
   justify-self: flex-end;
   align-self: flex-end;
   background-color: white;
-  right: 10px;
+  right: -172px;
+  top: 30px;
   position: absolute;
   webkit-animation: fadeout 0.5s;
   z-index: 5;
@@ -315,7 +316,8 @@
   background-color: white;
   z-index: 5;
   position: absolute;
-  right: 10px;
+  right: -172px;
+  top: 30px;
   border: solid 1px $new-blue;
   border-radius: 6px;
   text-align: center;
