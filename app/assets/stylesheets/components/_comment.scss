@@ -1,0 +1,24 @@
+.comment-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.comment-body {
+  padding-left: 10px;
+  flex-grow: 1;
+}
+
+.avatar-comment {
+  width: 40px;
+  height: 40px;
+}
+
+.comment-body h5 {
+  margin-bottom: 1px;
+}
+
+.comment-body p {
+  font-size: 15px;
+}

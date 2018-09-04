@@ -18,11 +18,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @audiofile = AudioFile.find(params[:comment][:audio_file_id])
     @comment.audio_file_id = params[:comment][:audio_file_id]
     @comment.user_id = params[:comment][:user_id]
     # @comment.track_instant = ??
+    @audiofileid = params[:comment][:audio_file_id]
     if @comment.save
-      redirect_to track_path(params[:comment][:id])
+      respond_to do |format|
+        format.html {redirect_to track_path(params[:comment][:id])}
+        format.js
+      end
     else
       redirect_to track_path(params[:comment][:id])
     end

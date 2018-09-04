@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AudioFilesControllerTest < ActionDispatch::IntegrationTest
+class audiofilesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get audio_files_new_url
     assert_response :success

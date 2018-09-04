@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AudioFileTest < ActiveSupport::TestCase
+class audiofileTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

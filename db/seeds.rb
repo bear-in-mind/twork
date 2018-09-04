@@ -295,23 +295,23 @@ Session.create!(track: if_you, talent: benj_vox)
 Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
-dark_wagon = AudioFile.new(name: 'Dark Wagon', user_id: louis.id, session_id: bass_rec.id)
+dark_wagon = audio_file.new(name: 'Dark Wagon', user_id: louis.id, session_id: bass_rec.id)
 dark_wagon.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a"
 dark_wagon.save!
 
-dark_wagon = AudioFile.new(name: 'Dark Zouk', user_id: louis.id, session_id: drum_rec.id)
+dark_wagon = audio_file.new(name: 'Dark Zouk', user_id: louis.id, session_id: drum_rec.id)
 dark_wagon.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535531527/audio/Dark_Wagon.m4a"
 dark_wagon.save!
 
-ciao_drums = AudioFile.new(name: 'Drums', user_id: max.id, session_id: drum_rec.id)
+ciao_drums = audio_file.new(name: 'Drums', user_id: max.id, session_id: drum_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535539370/audio/Ciao_BASS-BATT-RHODES.mp3"
 ciao_drums.save!
 
-ciao_drums = AudioFile.new(name: 'Guitar', user_id: nico.id, session_id: gtr_rec.id)
+ciao_drums = audio_file.new(name: 'Guitar', user_id: nico.id, session_id: gtr_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535628359/audio/gtr.m4a"
 ciao_drums.save!
 
-ciao_drums = AudioFile.new(name: 'Keyboards', user_id: johann.id, session_id: keys_rec.id)
+ciao_drums = audio_file.new(name: 'Keyboards', user_id: johann.id, session_id: keys_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1535628359/audio/keys.m4a"
 ciao_drums.save!
 

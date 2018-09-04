@@ -176,25 +176,13 @@
         <div class="player-list" id="list_<%= session.id %>"></div>
       </div>
       <div class="audiofile-comments">
-        <% session.audio_files.each do |audiofile| %>
-          <div class="new-comment">
-            <p><%= audiofile.name %></p>
-            <%= simple_form_for @comment do |f| %>
-              <%= f.input :content, label: false,:input_html => {class: "test-width", :style => 'width: 100%', :rows => 2} %>
-              <%= f.hidden_field :audio_file_id, value: audiofile.id %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.hidden_field :id, value: params[:id] %>
-              <%= f.hidden_field :time, value: timedcomments(session.id) %>
-              <%= f.submit "Send a comment", class: "btn btn-success" %>
-            <% end %>
+        <% session.audio_files.each do |audio_file| %>
+          <div id="new-comment<%= audio_file.id %>">
+            <p><%= audio_file.name %></p>
+            <%= render '/comments/comment_form', session: session, audio_file: audio_file %>
           </div>
-          <div class="index-comments">
-            <div class="comments-text">
-              <% audiofile.comments.each do |comment| %>
-                <h5 class="msg-header"><strong><%= "#{comment.author.first_name} #{comment.author.last_name[0,1]}." %></strong> - <%= comment.created_at.strftime("%e %b %Y %H:%M %p") %></h5>
-                <p><%= comment.content %></p>
-              <% end %>
-            </div>
+          <div id="ajax_comments<%= audio_file.id %>" >
+            <%= render '/comments/show', audio_file: audio_file %>
           </div>
         <% end %>
       </div>
