@@ -59,6 +59,7 @@
 
                 <span class="pics-gradient visible-xs visible-sm"></span>
               <% end %>
+              <%= image_tag "noprofilepicture.png", class: "track-avatar no-one" if track.talents.empty?  %>
             </div>
 
             <div class="track-title">
