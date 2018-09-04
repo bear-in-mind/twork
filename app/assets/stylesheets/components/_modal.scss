@@ -25,6 +25,25 @@
   transform: translate3d(0, 0, 0);
 }
 
+.modal-header {
+  position: relative;
+  background-color: $new-blue;
+  color: white;
+  height: 40px;
+  align-items: center;
+  h4 {
+    font-size: 18px;
+  }
+  padding: 10px;
+  span {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}
 
-
-
+.modal-body {
+  .form-group {
+    padding: 10px 0px;
+  }
+}

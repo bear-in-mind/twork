@@ -1,3 +1,8 @@
+// HEAD
+h1.project-name {
+  margin: 0;
+}
+
 .project-link {
   position: absolute;
   top: 0;
@@ -5,7 +10,7 @@
   left: 0;
   right: 0;
   z-index: 2;
-  color: $our-turquoise;
+  color: $new-blue;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
@@ -29,17 +34,19 @@
 }
 
 .create-title {
-  color: $our-turquoise;
+  color: white;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  z-index: 2;
 }
 
 #new-project {
+  background-color: rgba(104, 178, 223, 0.5);
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 0;
 }
 
 .project-box {
@@ -53,12 +60,21 @@
 
 .project-detail {
   position: relative;
-  border-radius: 4px;
+  border-radius: 20px;
   margin-bottom: 10px;
-  background-color: white;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 10px 10px 20px 2px rgba(0,0,0, 0.1);
   height: 300px;
+  background-color: white;
+  &:hover {
+    background-color: $new-blue;
+    h4 {
+      color: white;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    }
+  }
+  transition: all 0.2s ease;
 }
 
 .project-title {
@@ -68,7 +84,7 @@
 
 .link-create-project {
   text-align:center;
-  color: $our-turquoise;
+  color: $new-blue;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
@@ -91,35 +107,13 @@
 .main-title {
   margin-bottom: 25px;
   color: rgba(0,0,0,0.6);
-}
-
-.button-add-track {
-  background-color: $our-turquoise;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
-  text-decoration: none;
-  color: white;
-  height: 45px;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  text-align:center;
-  font-weight: bold;
-  &:hover {
-    background-color: darken(rgb(101, 216, 223), 15%);
+  h3 {
+    margin-top: 25px;
   }
 }
 
-.track-button-add {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  color: white;
-  margin: auto;
-  padding: 10px;
+h3.main-title {
+  padding-top: 20px;
 }
 
 .project-main {
@@ -128,6 +122,11 @@
   bottom: 0;
   left: 0;
   right: 0;
+  &:hover {
+    p {
+      color: white;
+    }
+  }
 }
 
 .project-date {
@@ -137,6 +136,7 @@
   p {
     margin-bottom: 0px;
   }
+  margin-bottom: 20px;
 }
 
 .project-main-layer {
@@ -158,4 +158,40 @@
 .small-margin {
   margin-right: -10px;
   margin-left: 0px;
+}
+
+.project-no-hover {
+  z-index: 4;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: $new-blue;
+  h4 {
+    font-weight: light;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+  }
+}
+
+.deadline-project-card {
+  position: absolute;
+  bottom: 3px;
+  left: 10px;
+  padding: 10px;
+  font-size: 14px;
+  color: rgba(0,0,0, 0.5);
+  padding-left: 6px;
+}
+
+#edit-project {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  color: rgba(0,0,0, 0.5);
+  &:hover {
+    color: white;
+  }
 }

@@ -341,6 +341,8 @@ function initPlayer(sessionId) {
   playlist.addEventListener('click', function() {
     player.togglePlaylist();
   });
+
+  // VOLUME
   let volumeBtn = document.getElementById(`volumeBtn_${sessionId}`)
   volumeBtn.addEventListener('click', function() {
     player.toggleVolume();

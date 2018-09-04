@@ -20,7 +20,7 @@
   font-size: 28px;
   opacity: 0.9;
   font-weight: 300;
-  color: $blue;
+  color: $new-blue;
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 .timer {
@@ -31,7 +31,7 @@
   font-size: 26px;
   opacity: 0.9;
   font-weight: 300;
-  color: $blue;
+  color: $new-blue;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 
@@ -43,7 +43,7 @@
   font-size: 26px;
   opacity: 0.5;
   font-weight: 300;
-  color: $blue;
+  color: $new-blue;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 
@@ -70,10 +70,10 @@
   user-select: none;
   font-size: 40px;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: $blue;
+  -webkit-text-stroke-color: $new-blue;
   color: transparent;
   &:hover {
-    color: $blue;
+    color: $new-blue;
   }
 }
 .btn-player:hover {
@@ -150,7 +150,7 @@
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: rgba(147, 159, 179, 0.3);
+  background-color: rgba(104, 178, 223, 0.4);
   z-index: 0;
 }
 
@@ -194,7 +194,7 @@
   background-color: rgba(147, 159, 179, 0.3);
   display: none;
   z-index: 10;
-  color: $blue;
+  color: $new-blue;
 }
 
 .player-list {
@@ -224,7 +224,7 @@
   height: 100%;
   font-size: 18px;
   line-height: 5px;
-  color: $blue;
+  color: $new-blue;
   text-align: right;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
   display: flex;
@@ -233,7 +233,7 @@
   border-bottom: solid 1px rgba(180, 180, 180, 0.6);
 }
 .list-song:hover {
-  background-color: $blue;
+  background-color: $new-blue;
   color: white;
   cursor: pointer;
   transition: background-color ease 0.3s;
@@ -295,7 +295,8 @@
   justify-self: flex-end;
   align-self: flex-end;
   background-color: white;
-  right: 10px;
+  right: -172px;
+  top: 30px;
   position: absolute;
   webkit-animation: fadeout 0.5s;
   z-index: 5;
@@ -303,7 +304,7 @@
   animation: fadeout 0.5s;
   text-align: center;
   border-radius: 6px;
-  border: solid 1px $blue;
+  border: solid 1px $new-blue;
   h6 {
     color: rgba(180, 180, 180, 0.6);
     font-weight: 400;
@@ -315,8 +316,9 @@
   background-color: white;
   z-index: 5;
   position: absolute;
-  right: 10px;
-  border: solid 1px $blue;
+  right: -172px;
+  top: 30px;
+  border: solid 1px $new-blue;
   border-radius: 6px;
   text-align: center;
     h6 {

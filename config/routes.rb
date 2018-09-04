@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'projects#index'
+  root to: 'pages#home'
 
   resources :profiles, only: [:index, :show, :edit, :update, :destroy]
   resources :talents, only: [:destroy]
