@@ -410,7 +410,7 @@ function initPlayer(sessionId) {
     wave.width_4 = width / 4;
     wave.canvas.height = height;
     wave.canvas.width = width;
-    wave.container.style.margin = -(height / 2) + 'px auto';
+    // wave.container.style.margin = -(height / 2) + 'px auto';
 
     // Update the position of the slider.
     let playlist = document.getElementById(`playlist_${sessionId}`)

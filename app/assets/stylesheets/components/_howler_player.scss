@@ -81,15 +81,15 @@
 }
 
 .playBtn {
-  top: 10%;
-  left: 50%;
+  top: -22%;
+  left: 54%;
   margin: auto -34.5px;
   z-index: 5;
 }
 
 .pauseBtn {
-  top: 40%;
-  left: 50%;
+  top: -22%;
+  left: 54%;
   margin: auto -34.5px;
   display: none;
   z-index: 3;
@@ -120,7 +120,7 @@
   position: absolute;
   left: 0;
   top: 100%;
-  margin: -15% auto;
+  margin: -150px auto;
   display: none;
   cursor: pointer;
   opacity: 0.8;
