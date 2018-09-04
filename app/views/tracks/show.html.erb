@@ -184,13 +184,23 @@
           <div class="playlist" id="playlist_<%= session.id %>">
             <h6>Select a version: </h6>
             <div class="player-list" id="list_<%= session.id %>"></div>
-          </div>
-          <!-- close session-box -->
+          </div>>
         </div>
+        
         <!-- close the-box -->
 
         <!-- @CLAIRE PUT COMMENTS HERE -->
-          <div class="comments-area" id="open-session-chat">Write a comment</div>
+        <div class="audiofile-comments">
+          <% session.audio_files.each do |audio_file| %>
+            <div id="new-comment<%= audio_file.id %>">
+              <p><%= audio_file.name %></p>
+              <%= render '/comments/comment_form', session: session, audio_file: audio_file %>
+            </div>
+            <div id="ajax_comments<%= audio_file.id %>" >
+              <%= render '/comments/show', audio_file: audio_file %>
+            </div>
+          <% end %>
+        </div>
         <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
 
         <div class="controls">

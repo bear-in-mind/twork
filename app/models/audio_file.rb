@@ -1,6 +1,7 @@
 class AudioFile < ApplicationRecord
   belongs_to :uploaded_by, class_name: 'User', foreign_key: :user_id
   belongs_to :session
+  has_many :comments
 
   validates :name, presence: true, uniqueness: true
   validates :user_id, presence: true
