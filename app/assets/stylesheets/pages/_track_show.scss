@@ -2,39 +2,50 @@
 .download {
   .group-btn button {
     border: 1px solid rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.6);
   }
 }
 .group-btn button, .group-btn a {
+  outline: none !important;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   border-radius: 4px;
-  margin-left: 3px;
+  margin: 5px;
   padding: 7px 13px 5px 8px;
   font-size: 16px;
   text-align: center;
-  color: rgba(0,0,0,0.7);
+  color: white;
   background-color: transparent;
+  a {
+    font-size: 16px;
+  }
   &:hover {
-    color: white;
-    background-color: rgba(104, 178, 223, 0.8);
+    color: $new-blue;
+    background-color: white;
     .caret {
-      border-top: 6px dashed white;
+      color: $new-blue;
+      border-top: 6px dashed $new-blue;
     }
   }
   i, .caret {
     margin-right: 4px;
   }
 }
+
+.caret {
+  transform: rotate(-90deg);
+}
+
 .controls {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 10px;
-  .caret {
-    border-top: 6px dashed rgba(0, 0, 0, 0.7);
-    border-right: 6px solid transparent;
-    border-left: 6px solid transparent;
-  }
+  // .caret {
+  //   border-top: 6px dashed rgba(0, 0, 0, 0.7);
+  //   border-right: 6px solid transparent;
+  //   border-left: 6px solid transparent;
+  // }
 }
 
 // PAGE HEAD
@@ -102,7 +113,7 @@
 // SESSIONS INDEX
 .session-index {
   margin-bottom: 32px;
-  padding: 16px;
+  padding: 16px 0px;
 
 }
 .the-box {
@@ -118,6 +129,8 @@
   border: 1px groove rgba(0,0,0, 0.2);
   background-color: white;
   margin-bottom: 3px;
+  box-shadow: 10px 4px 24px 0px #c1e2ef;
+
 }
 // Inside each session
 .img-item {
@@ -133,7 +146,7 @@
   flex-grow: 1;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  overflow: hidden;
+  // overflow: hidden;
   .player {
     height: 100%;
     .player-title {
@@ -141,6 +154,8 @@
     }
   }
 }
+
+
 
 //COMMENTS
 .comments-area {
@@ -153,4 +168,29 @@
 
 .audiofile-comments {
   width: 50vw;
+}
+
+.toolbox {
+  // background-color: rgba(80, 80, 80, 0.5);
+  background-color: $new-blue;
+  display: flex;
+  width:100%;
+  height:50%;
+  position: relative;
+  justify-content: space-between;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+// .version-button {
+//   position: absolute;
+//   right: 5px;
+// }
+
+.sessions-list {
+  width: 52vw;
 }
