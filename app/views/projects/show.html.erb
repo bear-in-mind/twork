@@ -55,9 +55,9 @@
                   <!-- TO DO les bails ne s'affichent pas -->
                 <% else %>
                   <%= image_tag "noprofilepicture.png", class: "track-avatar" %>
-                  <span class="pics-gradient visible-xs visible-sm"></span>
                 <% end %>
 
+                <span class="pics-gradient visible-xs visible-sm"></span>
               <% end %>
               <%= image_tag "noprofilepicture.png", class: "track-avatar no-one" if track.talents.empty?  %>
             </div>
