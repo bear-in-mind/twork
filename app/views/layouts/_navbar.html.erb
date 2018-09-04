@@ -1,11 +1,14 @@
 <div class="navbar-wagon">
   <!-- Left Navigation -->
   <div class="navbar-wagon-left">
-    <!-- search bar here ? -->
   </div>
 
   <!-- Central logo -->
-  <%= link_to "twork", root_path, class: "brand"%>
+  <% if user_signed_in? %>
+    <%= link_to "twork", projects_path, class: "brand"%>
+  <% else %>
+    <%= link_to "twork", root_path, class: "brand"%>
+  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

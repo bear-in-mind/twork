@@ -116,10 +116,18 @@
     }
   }
 
+.tooltip {
+  z-index: 5;
+  width: 60%;
+}
+
+.fa-calendar {
+  padding-right: 5px;
+ }
+    
   // Edit and delete
   .controls {
     flex: 0 1 auto;
     padding-right: 16px;
     flex-wrap: wrap;
   }
-}
