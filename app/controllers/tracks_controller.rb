@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+
   before_action :set_track, only: [:show, :update, :destroy]
   before_action :set_project, only: :create
 
@@ -22,6 +23,7 @@ class TracksController < ApplicationController
 
     # create audio file
     @audio_file = AudioFile.new
+    @comment = Comment.new
   end
 
   def create

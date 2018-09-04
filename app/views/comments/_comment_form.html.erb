@@ -1,0 +1,7 @@
+<%= simple_form_for [@track, session, audio_file, @comment], remote: true do |f| %>
+  <%= f.input :content, label: false,:input_html => {class: "test-width", :style => 'width: 100%', :rows => 1} %>
+  <%= f.hidden_field :audio_file_id, value: audio_file.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :id, value: params[:id] %>
+  <%= f.submit "Send a comment", class: "btn btn-success" %>
+<% end %>

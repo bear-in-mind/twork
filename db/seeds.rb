@@ -296,6 +296,7 @@ Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
 
+
 ciao_drums = AudioFile.new(name: 'Drums', user_id: max.id, session_id: drum_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536051459/audio/Ciao_BASIC_TRACK.mp3"
 ciao_drums.save!
