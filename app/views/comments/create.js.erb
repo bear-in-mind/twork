@@ -4,8 +4,6 @@ console.log(test);
 function comments(x) {
   var div = `ajax_comments${x}`;
   var element = document.getElementById(div);
-  console.log(div);
-  console.log(element);
   element.innerHTML = '<%= j  render "comments/show.html.erb", audio_file: @audiofile %>';
 };
 
@@ -13,9 +11,7 @@ comments(test);
 
 function refreshForm(x) {
   var formdiv = `new-comment${x}`;
-  console.log(formdiv);
   var newReviewForm = document.getElementById(formdiv);
-  console.log(newReviewForm)
   newReviewForm.innerHTML = '<%= j  render "comments/comment_form.html.erb", audio_file: @audiofile, comment: Comment.new %>';
 };
 

@@ -244,7 +244,7 @@
         <div class="audiofile-comments">
           <% session.audio_files.each do |audio_file| %>
             <div id="new-comment<%= audio_file.id %>">
-              <%= render '/comments/comment_form', session: session, audio_file: audio_file %>
+              <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
             </div>
             <div id="ajax_comments<%= audio_file.id %>" >
               <%= render '/comments/show', audio_file: audio_file %>
