@@ -119,26 +119,29 @@
             data-id="<%= session.id %>">
 
             <div class="the-box">
+              <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
               <h6>
-                <strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
-
                 <strong>Status: </strong>
-                <em class="text-danger"><%= "#{session.status}" %></em>
+                <em class="text-danger"><%= "#{session.status}" %></em> -
+                <!-- Edit Session status button and modal   -->
 
-                <%= link_to "#", data: {toggle: "modal", target: "#statusModal#{session.id}"} do %>
-                  <div class="btn our-cta-btn">Change status</div>
+                <div class="brief-select-button">
+                <%= link_to "#", class: "btn btn-success btn-sm request", data: {toggle: "modal", target: "#statusModal"} do %>
+                  <i class='fas fa-pencil-alt'></i>
                 <% end %>
 
-                <!-- </div> -->
-                <div class="modal fade" id="statusModal<%=session.id%>" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
+                </div>
+                <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h2 class="modal-title" id="statusModalLabel">Modify the session status</h2>
                       </div>
                       <div class="modal-body">
+                        <!-- old code start -->
                         <%= simple_form_for [@track, session], url: track_path(@track), url: track_session_path(@track, session) do |f| %>
-                          <%= f.input :status, :collection => ["In progress","Completed"] %>
+                          <%#= f.input :status, :collection => ["In progress","Completed"], input_html: { multiple: true, class: "select2" } %>
+                          <%= f.input :status, :collection => ["In progress","Completed"], input_html: { multiple: true, class: "select2" } %>
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                           <%= f.submit class: "btn btn-success" %>
                         <% end %>
@@ -146,8 +149,8 @@
                     </div>
                   </div>
                 </div>
+                <!-- End edit Session status -->
               </h6>
-              <!-- End edit Session status -->
               <div class="session-box">
                 <div class="img-item">
                   <% if session.talent.user.avatar %>
@@ -237,37 +240,11 @@
             data-id="<%= session.id %>">
 
             <div class="the-box">
+              <h6><strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %></h6>
               <h6>
-                <strong><%= "#{session.talent.skill.name}" %>:</strong> <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
-
                 <strong>Status: </strong>
                 <em class="text-success"><%= "#{session.status}" %></em>
-
-                <%= link_to "#", data: {toggle: "modal", target: "#statusModal#{session.id}"} do %>
-                  <div class="btn our-dormant-btn">Change status</div>
-                  <!-- <div class="btn our-cta-btn">Change status</div> -->
-                <% end %>
-
-                <!-- </div> -->
-                <div class="modal fade" id="statusModal<%=session.id%>" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h2 class="modal-title" id="statusModalLabel">Modify the session status</h2>
-                      </div>
-                      <div class="modal-body">
-                        <%= simple_form_for [@track, session], url: track_path(@track), url: track_session_path(@track, session) do |f| %>
-                          <%= f.input :status, :collection => ["In progress","Completed"] %>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                          <%= f.submit class: "btn btn-success" %>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </h6>
-              <!-- End edit Session status -->
-
               <div class="session-box">
                 <div class="img-item">
                   <% if session.talent.user.avatar %>

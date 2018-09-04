@@ -38,7 +38,7 @@ class TracksController < ApplicationController
   def update
     if params[:track][:brief].present?
       @track.update(brief_params)
-      # @track.updated_at = Time.now
+      @track.updated_at = Time.now
       redirect_to track_path(@track)
     else
       # Is this used anywhere ?
