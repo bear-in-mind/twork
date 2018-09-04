@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
     @session.destroy
     redirect_to track_path(@session.track)
+
   end
 
   private

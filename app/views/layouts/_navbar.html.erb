@@ -1,14 +1,15 @@
 <div class="navbar-wagon">
   <!-- Left Navigation -->
-  <div class="navbar-wagon-left">
-    <!-- search bar here ? -->
-  </div>
 
   <!-- Central logo -->
-  <%= link_to "twork", root_path, class: "brand"%>
+  <% if user_signed_in? %>
+    <%= link_to "twork", projects_path, class: "brand"%>
+  <% else %>
+    <%= link_to "twork", root_path, class: "brand"%>
+  <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-wagon-right hidden-xs hidden-sm position-right">
 
     <% if user_signed_in? %>
       <!-- Links when logged in -->
@@ -44,7 +45,7 @@
 
   <!-- Dropdown list appearing on mobile only -->
   <% if user_signed_in? %>
-    <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="navbar-wagon-item hidden-md hidden-lg position-right">
       <div class="dropdown">
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
