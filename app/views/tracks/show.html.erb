@@ -127,6 +127,7 @@
             <div class="img-item">
               <% if session.talent.user.avatar %>
                 <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
+                <div class="img-gradient"></div>
               <% else %>
                 <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
               <% end %>
