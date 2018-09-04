@@ -186,7 +186,6 @@
         </div>
 
         <!-- close the-box -->
-
         <div class="controls">
           <div class="upload-btn session-btn">
             <button type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
@@ -203,7 +202,7 @@
                     </button>
                   </div>
                   <div class="modal-body text-center">
-                    <%= simple_form_for [@track, session, @audio_file] do |f| %>
+                    <%= simple_form_for [session, @audio_file] do |f| %>
                     <%= f.input :audio, label: "Choose an audio file", required: false %>
                     <%#= f.input :audio_cache, as: :hidden %>
                     <%= f.submit "Upload file", id: "upload-submit" %>
@@ -217,7 +216,7 @@
 
           <div class="delete-btn session-btn">
             <button>
-              <%= link_to track_session_path(@track, session), method: :delete do %>
+              <%= link_to session_path(session), method: :delete do %>
                 <i class="far fa-trash-alt"></i>Delete Session
               <% end %>
             </button>

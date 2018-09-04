@@ -12,11 +12,11 @@ class AudioFilesController < ApplicationController
     @audio_file.name = "#{@audio_file.session.talent.skill.name} - #{timestamp} "
 
     if @audio_file.save
-      redirect_to track_path(params[:track_id])
+      redirect_to track_path(@audio_file.session.track)
       flash[:notice] = "File uploaded !"
     else
       # raise
-      redirect_to track_path(params[:track_id])
+      redirect_to track_path(@audio_file.session.track)
       flash[:alert] = "File upload failed !"
     end
 
