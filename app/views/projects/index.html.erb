@@ -1,77 +1,57 @@
-<div class="wrapper">
-  <div class="container">
-    <div class = "own-projects">
-      <div class="project-head">
-        <h1 class="project-name">Projects</h1>
-      </div>
-      <div class="row">
-        <% @my_projects_as_owner.each do |project| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="project-box project-detail">
-              <div class="project-main">
-                <%= link_to '', project_path(project.id), class: "project-link" %>
-                <div class="project-no-hover">
-                  <h4><%= project.name.upcase %></h4>
-                  <p class="deadline-project-card"><i class="far fa-calendar"></i> <%= " Due on #{project.deadline}" %></p>
-                  <%= link_to "#", data:{toggle:"modal", target: "#editProject#{project.id}"}, id:"edit-project" do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+<div class="container">
+  <div class="projects-list">
 
-            <div class="project-date">
-              <div class="fontawesome-buttons">
-                <div class="edit-button">
-                  <div class="modal fade" id="editProject<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog modal-sm" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header text-center">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">Edit project</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                          <%= simple_form_for project, url: project_path(project) do |f| %>
-                            <%= f.input :name, label: "Project Name", required: false %>
-                            <%= f.input :deadline, label: "Deadline", required: false, include_blank: true, as: :string, input_html: { class: "datepicker"} %>
-                            <%= f.submit "Save", class: "btn our-cta-btn" %>
-                          <% end %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <h1 class="project-head">My Projects</h1>
+
+    <div class="row">
+      <% @my_projects_as_owner.each do |project| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="project-card text-center existing-project">
+            <div class="project-details">
+              <h2 class="project-name"><%= project.name.upcase %></h2>
+              <p class="project-deadline">Due on <%= project.deadline.strftime("%d/%m/%Y") %></p>
             </div>
+            <%= link_to '', project_path(project.id), class: "project-link" %>
           </div>
-        <% end %>
-        <div class="col-xs-12 col-sm-6 col-md-4 project-box">
-          <div class="project-detail">
-            <div class="link-create-project">
-              <%= link_to '', "#", data:{toggle:"modal", target: "#addProject"}, id:"new-project"%>
-              <h1 class = "create-title"><i class="fas fa-plus"></i></h1>
-              <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-sm" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header text-center">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Create a new project</h4>
-                    </div>
-                    <div class="modal-body text-center">
-                      <%= simple_form_for [@project] do |f| %>
-                        <%= f.input :name, label: "Project Name", required: true %>
-                        <%= f.input :deadline, label: "Deadline", required: false, as: :string, input_html: { class: "datepicker"} %>
-                        <%= f.submit "Add project", class: "btn our-cta-btn" %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- close existing project card -->
         </div>
+        <!-- close col existing project -->
+      <% end %>
+      <!-- close projects iteration -->
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="project-card text-center create-project">
+
+            <i class="fas fa-plus"></i>
+            <%= link_to '', "#", data:{toggle:"modal", target: "#addProject"}, id:"new-project" %>
+            <!-- addProject modal -->
+            <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h4 class="modal-title" id="myModalLabel">Create a new project</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body text-center">
+                    <%= simple_form_for @project do |f| %>
+                    <%= f.input :name, label: "Project Name", required: true %>
+                    <%= f.input :deadline, label: "Deadline", required: false, as: :string, input_html: { class: "datepicker"} %>
+                    <%= f.submit "Add project", class: "btn our-cta-btn" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- addProject modal -->
+
+        </div>
+        <!-- close create-project card -->
       </div>
+      <!-- close bootstrap col -->
     </div>
+    <!-- close bootstrap row -->
   </div>
+  <!-- close projects-list -->
 </div>
+<!-- close bootstrap container -->
 
