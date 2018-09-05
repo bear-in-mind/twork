@@ -10,7 +10,7 @@ class TracksController < ApplicationController
     @owner = @project.project_owner
 
     # session index
-    @sessions = @track.sessions.includes(:audio_files)
+    @sessions = @track.sessions.includes(:audio_files).order(created_at: :desc)
 
     # create session
     @session = Session.new
@@ -23,7 +23,7 @@ class TracksController < ApplicationController
 
 
     # @talents = Talent.all
-    @users = Talent.all.where.not(id: current_user.id).map do |talent|
+    @users = Talent.all.where.not(user_id: current_user.id).map do |talent|
       ["#{talent.user.first_name} #{talent.user.last_name}", talent.user.id]
     end
     @users.uniq!

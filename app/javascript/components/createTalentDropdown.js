@@ -10,10 +10,13 @@ function createTalentDropdown() {
     const selectedUser = firstDropdown.value;
     const userTalents = talentsHash[selectedUser];
     const selectList = document.createElement("select");
-    selectList.id = "talents_dropdown";
+    const skillLabel = document.createElement("label");
+    skillLabel.innerText = "Choose a skill: "
+    skillLabel.id = "skill-label"
+    skillLabel.classList.add("form-control-label", "select", "optional")
     selectList.classList.add("form-control", "select", "required");
     selectList.name = "skill_id"
-    console.log(skillsDropdown);
+    skillsDropdown.appendChild(skillLabel);
     skillsDropdown.appendChild(selectList);
     //Create and append the options
     for (let i = 0; i < userTalents.length; i++) {

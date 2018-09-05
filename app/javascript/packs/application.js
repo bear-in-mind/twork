@@ -14,10 +14,8 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip({ boundary: 'viewport' })
 })
 
-initPlayers();
 
 alertFadeOut();
-
-openCloseDivs();
-
 createTalentDropdown();
+openCloseDivs();
+initPlayers();
