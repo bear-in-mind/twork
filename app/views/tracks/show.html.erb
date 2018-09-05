@@ -232,16 +232,20 @@
             <h6>Select a version: </h6>
             <div class="player-list" id="list_<%= session.id %>"></div>
           </div>
-          <div class="access-comments-btn session-btn">
-            <button>
+          <div class="access-comments-btn session-btn rv_button-<%= session.id %> closed">
+            <button class="hidden-comments-<%= session.id %>">
               <span class="caret"></span>
               <span>Show Comments</span>
+            </button>
+            <button class="comments-displayed-<%= session.id %> hidden">
+              <span class="caret caret-reversed"></span>
+              <span>Hide Comments</span>
             </button>
           </div>
         </div>
 
         <!-- @CLAIRE PUT COMMENTS HERE -->
-        <div class="audiofile-comments">
+        <div id="reveal-<%= session.id %>" class="audiofile-comments">
           <% session.audio_files.each do |audio_file| %>
             <div id="new-comment<%= audio_file.id %>">
               <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
