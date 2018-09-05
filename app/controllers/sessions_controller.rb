@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = Session.new(session_params)
+    @talent = Talent.find_by(user_id: params[:session][:talent], skill_id: params[:skill_id])
+    @session = Session.new(talent: @talent)
     @track = Track.find(params[:track_id])
     @session.track = @track # Supposes that session routes are nested in tracks
     if @session.save
@@ -26,6 +27,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:talent_id)
+    params.require(:session).permit(:talent_id, :skill_id)
   end
 end
