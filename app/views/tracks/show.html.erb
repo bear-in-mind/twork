@@ -251,13 +251,15 @@
     </div>
 
     <!-- @CLAIRE PUT COMMENTS HERE -->
-    <div id="reveal-<%= session.id %>" class="audiofile-comments">
+    <div id="reveal-<%= session.id %>">
       <% session.audio_files.each do |audio_file| %>
-        <div id="new-comment<%= audio_file.id %>">
-          <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
-        </div>
-        <div id="ajax_comments<%= audio_file.id %>" >
-          <%= render '/comments/show', audio_file: audio_file %>
+        <div id="reveal-<%= audio_file.slug %>" class="audiofile-comments">
+          <div id="new-comment<%= audio_file.id %>">
+            <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
+          </div>
+          <div id="ajax_comments<%= audio_file.id %>" >
+            <%= render '/comments/show', audio_file: audio_file %>
+          </div>
         </div>
       <% end %>
     </div>
