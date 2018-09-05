@@ -4,7 +4,6 @@ import SiriWave from './siriwave';
 function initPlayers() {
   const sessionInstances = document.querySelectorAll(".session-instances");
   if (sessionInstances) {
-    console.log(sessionInstances)
     sessionInstances.forEach((session) => {
       initPlayer(session.dataset.id);
     })
@@ -28,8 +27,6 @@ function initPlayer(sessionId) {
       });
     }
   })
-
-  console.log(sessionTracks)
 
   // Cache references to DOM elements.
   // var elms = [`track_${sessionId}`, `waveform_${sessionId}`, `timer_${sessionId}`, `duration_${sessionId}`, `playBtn_${sessionId}`, `pauseBtn_${sessionId}`, `prevBtn_${sessionId}`, `nextBtn_${sessionId}`, `playlistBtn_${sessionId}`, `volumeBtn_${sessionId}`, `progress_${sessionId}`, `bar_${sessionId}`, `wave_${sessionId}`, `loading_${sessionId}`, `playlist_${sessionId}`, `list_${sessionId}`, `volume_${sessionId}`, `barEmpty_${sessionId}`, `barFull_${sessionId}`, `sliderBtn_${sessionId}`];
@@ -322,12 +319,14 @@ function initPlayer(sessionId) {
   pauseBtn.addEventListener('click', function() {
     player.pause();
   });
-  // prevBtn.addEventListener('click', function() {
-  //   player.skip('prev');
-  // });
-  // nextBtn.addEventListener('click', function() {
-  //   player.skip('next');
-  // });
+  let prevBtn = document.getElementById(`prevBtn_${sessionId}`);
+  prevBtn.addEventListener('click', function() {
+    player.skip('prev');
+  });
+  let nextBtn = document.getElementById(`nextBtn_${sessionId}`);
+  nextBtn.addEventListener('click', function() {
+    player.skip('next');
+  });
   let waveform = document.getElementById(`waveform_${sessionId}`)
   waveform.addEventListener('click', function(event) {
     player.seek(event.clientX / window.innerWidth);
@@ -386,6 +385,7 @@ function initPlayer(sessionId) {
   volume.addEventListener('touchmove', move);
 
   // Setup the "waveform" animation.
+  // let playerContainer = document.getElementById(`player-container`)
   var wave = new SiriWave({
     container: waveform,
     width: window.innerWidth,

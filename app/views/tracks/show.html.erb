@@ -16,7 +16,7 @@
       </div>
       <div class="download">
         <!-- BUTTON FOR FILES MODAL  -->
-        <div class="dl-btn session-btn">
+        <div class="dl-btn group-btn session-btn">
           <button type="button" data-toggle="modal" data-target="#viewFiles">
             Download Files
           </button>
@@ -44,6 +44,41 @@
         <!-- END OF MODAL -->
       </div>
     </div>
+  </div>
+
+  <div class="brief-head">
+    <div class="brief-title">
+      <% if @track.brief %>
+      <h2>Brief</h2>
+      <% else %>
+      <h2>Add a brief</h2>
+      <% end %>
+
+      <button type="button" data-toggle="modal" data-target="#editBrief" class="our-dormant-btn icon-btn" >
+        <i class="far fa-edit"></i>
+      </button>
+      <!-- #editBrief modal -->
+      <div class="modal fade" id="editBrief" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header text-center">
+              <h4 class="modal-title">Edit Brief</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body text-center">
+              <%= simple_form_for @track, url: track_path(@track) do |f| %>
+              <%= f.input :brief, label: false, :input_html => { :rows => 5 }, required: true %>
+              <%= f.submit "Save changes", class: "btn our-cta-btn" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #editBrief modal -->
+    </div>
+    <p><%= @track.brief if @track.brief %></p>
   </div>
 
   <div class="sessions-head">
@@ -76,193 +111,153 @@
     <!-- #addSession modal -->
   </div>
 
-  <div class="brief-head">
-    <div class="brief-title">
-      <% if @track.brief %>
-        <h2>Brief</h2>
-      <% else %>
-        <h2>Add a brief</h2>
-      <% end %>
-
-      <button type="button" data-toggle="modal" data-target="#editBrief" class="our-dormant-btn icon-btn" >
-        <i class="far fa-edit"></i>
-      </button>
-      <!-- #editBrief modal -->
-      <div class="modal fade" id="editBrief" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header text-center">
-              <h4 class="modal-title">Edit Brief</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-
-            <div class="modal-body text-center">
-              <%= simple_form_for @track, url: track_path(@track) do |f| %>
-              <%= f.input :brief, label: false, :input_html => { :rows => 5 }, required: true %>
-              <%= f.submit "Save changes", class: "btn our-cta-btn" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- #editBrief modal -->
-    </div>
-    <p><%= @track.brief if @track.brief %></p>
-  </div>
 
   <!-- SESSIONS -->
   <div class="session-index">
 
     <% @sessions.each do |session| %>
-      <div class="session-instances session-<%= session.id %>" data-id="<%= session.id %>">
+    <div class="session-instances session-<%= session.id %>" data-id="<%= session.id %>">
 
-        <div class="the-box">
-          <h6>
-            <strong><%= "#{session.talent.skill.name}" %>:</strong>
-            <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
-          </h6>
+      <div class="the-box">
 
-          <div class="session-box">
-            <div class="img-item">
-              <% if session.talent.user.avatar %>
-                <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
-                <div class="img-gradient"></div>
-              <% else %>
-                <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
-              <% end %>
-            </div>
+        <div class="session-box">
+          <div class="img-item">
+            <% if session.talent.user.avatar %>
+              <%= cl_image_tag session.talent.user.avatar, class: 'avatar-sq' %>
+            <% else %>
+              <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
+            <% end %>
+          </div>
 
-            <div class="audio-item">
-              <div class="player">
+          <div class="audio-item">
+            <div class="player">
 
-                <% session.audio_files.order('created_at DESC').each do |file| %>
-                  <div class="file-<%= session.id %>"
-                    data-title="<%= file.name %>"
-                    data-url="<%= file.audio %>">
-                  </div>
-                <% end %>
-                <!-- close audio file iteration -->
-
-                <div id="player-container">
-                  <!-- Top Info -->
-                  <div class="player-title" id="title_<%= session.id %>">
-                    <span class="track" id="track_<%= session.id %>"></span>
-                    <div class="timer" id="timer_<%= session.id %>">0:00</div>
-                    <div class="duration" id="duration_<%= session.id %>">0:00</div>
-                  </div>
-                  <!-- Controls -->
-                  <div class="controlsOuter">
-                    <div class="controlsInner">
-                      <div class="loading" id="loading_<%= session.id %>"></div>
-                      <i class="fas fa-play btn-player playBtn" id="playBtn_<%= session.id %>"></i>
-                      <i class="fas fa-pause btn-player pauseBtn" id="pauseBtn_<%= session.id %>"></i>
-                    </div>
-                  <!-- Volume Btn -->
-                  <i class="fas fa-volume-down btn-player volumeBtn" id="volumeBtn_<%= session.id %>"></i>
-                  </div>
-                  <!-- Progress -->
-                  <div class="waveform" id="waveform_<%= session.id %>"></div>
-                  <div class="session" id="bar_<%= session.id %>"></div>
-                  <div class="progress" id="progress_<%= session.id %>"></div>
-                  <!-- Volume -->
-                  <div class="volume" id="volume_<%= session.id %>" class="fadeout">
-                    <div class="barFull" id="barFull_<%= session.id %>" class="bar"></div>
-                    <div class="barEmpty" id="barEmpty_<%= session.id %>" class="bar"></div>
-                    <div class="sliderBtn" id="sliderBtn_<%= session.id %>"></div>
-                  </div>
+              <% session.audio_files.order('created_at DESC').each do |file| %>
+                <div class="file-<%= session.id %>"
+                  data-title="<%= file.name %>"
+                  data-url="<%= file.audio %>">
                 </div>
-                <!-- close player container -->
+              <% end %>
+              <!-- close audio file iteration -->
+
+              <div id="player-container">
+                <!-- Top Info -->
+                <div class="player-title" id="title_<%= session.id %>">
+                  <span class="track">
+                    <%="#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
+                  </span>
+                  <div class="timer" id="timer_<%= session.id %>">0:00</div>
+                  <div class="duration" id="duration_<%= session.id %>">0:00</div>
+                </div>
+                <div class="button-play-pause">
+                  <i class="fas fa-play btn-player playBtn" id="playBtn_<%= session.id %>"></i>
+                  <i class="fas fa-pause btn-player pauseBtn" id="pauseBtn_<%= session.id %>"></i>
+                </div>
+                <!-- Controls -->
+                <div class="loading" id="loading_<%= session.id %>"></div>
+                <div class="prev-button">
+                  <i class="fas fa-step-backward btn-player prevBtn" id="prevBtn_<%= session.id %>"></i>
+                </div>
+                <i class="fas fa-step-forward btn-player nextBtn" id="nextBtn_<%= session.id %>"></i>
+                <!-- Volume Btn -->
+                <i class="fas fa-volume-down btn-player volumeBtn" id="volumeBtn_<%= session.id %>"></i>
+                <!-- Progress -->
+                <div class="waveform" id="waveform_<%= session.id %>"></div>
+                <div class="session" id="bar_<%= session.id %>"></div>
+                <div class="progress" id="progress_<%= session.id %>"></div>
+                <!-- Volume -->
+                <div class="volume" id="volume_<%= session.id %>" class="fadeout">
+                  <div class="barFull" id="barFull_<%= session.id %>" class="bar"></div>
+                  <div class="barEmpty" id="barEmpty_<%= session.id %>" class="bar"></div>
+                  <div class="sliderBtn" id="sliderBtn_<%= session.id %>"></div>
+                </div>
               </div>
-              <!-- close player -->
-            </div>
-            <!-- close audio-item -->
-          </div>
+              <!-- close player container -->
+              <div class="toolbox">
 
-          <div class="playlist" id="playlist_<%= session.id %>">
-            <h6>Select a version: </h6>
-            <div class="player-list" id="list_<%= session.id %>"></div>
-          </div>
-        </div>
+                <div class="talent-toolbox">
+                  <h6>
+                    <span class="track" id="track_<%= session.id %>"></span>
+                  </h6>
+                </div>
 
-        <!-- close the-box -->
-        <div class="controls">
-          <div class="upload-btn session-btn">
-            <button type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
-              <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
-            </button>
-            <!-- addFile Modal -->
-            <div class="modal fade" id="addFile<%= session.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                  <div class="modal-header text-center">
-                    <h4 class="modal-title" id="myModalLabel">Add a new file</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                <div class="controls">
+                  <div class="btn controls-btn rv_button-<%= session.id %> closed">
+                    <button class="hidden-comments-<%= session.id %>">
+                      <span class="caret"></span>
+                      <span>Show Comments</span>
+                    </button>
+                    <button class="comments-displayed-<%= session.id %> hidden">
+                      <span class="caret caret-reversed"></span>
+                      <span>Hide Comments</span>
                     </button>
                   </div>
-                  <div class="modal-body text-center">
-                    <%= simple_form_for [session, @audio_file] do |f| %>
-                    <%= f.input :audio, label: "Choose an audio file", required: false %>
-                    <%#= f.input :audio_cache, as: :hidden %>
-                    <%= f.submit "Upload file", id: "upload-submit" %>
-                    <% end %>
+
+                  <%= link_to session_path(session), method: :delete do %>
+                  <!-- <i class="far fa-trash-alt"></i>Delete -->
+                  <button class="btn controls-btn">
+                    <i class="far fa-trash-alt"></i>Delete
+                  </button>
+                  <% end %>
+
+                  <button class="btn upload-btn controls-btn" type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
+                    <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
+                  </button>
+
+                  <button class="btn playlist-btn controls-btn version-button" type="button" id="playlistBtn_<%= session.id %>">
+                    <span>View Files</span>
+                    <span class="caret" id="playlist-toggle-caret"></span>
+                  </button>
+        <!-- close control -->
+                </div>
+        <!-- close toolbox -->
+              </div>
+              <!-- addFile Modal -->
+              <div class="modal fade" id="addFile<%= session.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header text-center">
+                      <h4 class="modal-title" id="myModalLabel">Add a new file</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <%= simple_form_for [session, @audio_file] do |f| %>
+                        <%= f.input :audio, label: "Choose an audio file", required: false %>
+                        <%#= f.input :audio_cache, as: :hidden %>
+                        <%= f.submit "Upload file", id: "upload-submit" %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- addFile Modal -->
+      <!-- close audio-item -->
           </div>
-
-          <div class="delete-btn session-btn">
-            <button>
-              <%= link_to session_path(session), method: :delete do %>
-                <i class="far fa-trash-alt"></i>Delete Session
-              <% end %>
-            </button>
-          </div>
-          <div class="playlist-btn session-btn">
-            <!-- TO DO s'il y a des audio_files, alors les lister quand click ou hover sur caret -->
-            <button type="button" id="playlistBtn_<%= session.id %>">
-              <span class="caret"></span>
-              <span>See Versions</span>
-            </button>
-          </div>
-          <div class="playlist" id="playlist_<%= session.id %>">
-            <h6>Select a version: </h6>
-            <div class="player-list" id="list_<%= session.id %>"></div>
-          </div>
-          <div class="access-comments-btn session-btn rv_button-<%= session.id %> closed">
-            <button class="hidden-comments-<%= session.id %>">
-              <span class="caret"></span>
-              <span>Show Comments</span>
-            </button>
-            <button class="comments-displayed-<%= session.id %> hidden">
-              <span class="caret caret-reversed"></span>
-              <span>Hide Comments</span>
-            </button>
-          </div>
+    <!-- Close session box -->
         </div>
-
-        <!-- @CLAIRE PUT COMMENTS HERE -->
-        <div id="reveal-<%= session.id %>" class="audiofile-comments">
-          <% session.audio_files.each do |audio_file| %>
-            <div id="new-comment<%= audio_file.id %>">
-              <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
-            </div>
-            <div id="ajax_comments<%= audio_file.id %>" >
-              <%= render '/comments/show', audio_file: audio_file %>
-            </div>
-          <% end %>
-        </div>
-        <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
-
-        <!-- close controls -->
       </div>
-      <!-- close session-instances -->
-    <% end %>
-    <!-- end of session-iteration -->
+    </div>
+
+    <!-- @CLAIRE PUT COMMENTS HERE -->
+    <div id="reveal-<%= session.id %>" class="audiofile-comments">
+      <% session.audio_files.each do |audio_file| %>
+        <div id="new-comment<%= audio_file.id %>">
+          <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
+        </div>
+        <div id="ajax_comments<%= audio_file.id %>" >
+          <%= render '/comments/show', audio_file: audio_file %>
+        </div>
+      <% end %>
+    </div>
+    <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
+
+   <!-- Playlist Modal -->
+    <div class="playlist" id="playlist_<%= session.id %>">
+      <h6>Select a version: </h6>
+      <div class="player-list" id="list_<%= session.id %>"></div>
+    </div>
+
+  <% end %>
+
   </div>
-  <!-- close session-index -->
 </div>
-<!-- close session-list container -->
