@@ -13,4 +13,7 @@ class AudioFile < ApplicationRecord
     File.extname(self.audio.url)
   end
 
+  def slug
+    name.strip.gsub(' ', '')
+  end
 end
