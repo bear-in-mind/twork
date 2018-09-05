@@ -34,7 +34,7 @@
 
 .controls-btn {
   flex: 1 1 25%;
-  border: solid 1px white;
+  border-right: solid 1px white;
   outline: none !important;
   text-decoration: none;
   // border-radius: 4px;
@@ -87,6 +87,7 @@ button.controls-btn:active {
   width:100%;
   height:50%;
   position: relative;
+  overflow: hidden;
 }
 
 // PAGE HEAD
@@ -211,10 +212,9 @@ button.controls-btn:active {
   width: 50vw;
 }
 
-// .version-button {
-//   position: absolute;
-//   right: 5px;
-// }
+.version-button {
+  border-right: none;
+}
 
 .sessions-list {
   width: 52vw;
