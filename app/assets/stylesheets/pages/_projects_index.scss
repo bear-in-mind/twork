@@ -13,20 +13,17 @@ h1.project-head {
   margin-bottom: 10px;
   font-size: 40px;
   font-weight: bold;
-  color: $new-blue;
+  color: rgba(0,0,0,0.5);
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 // CARDS
 .project-card {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 296px;
   border-radius: 24px;
   margin: 16px 0;
-  padding: 0 16px;
+  padding: 16px;
   box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.1);
   a {
     position: absolute;
@@ -39,13 +36,45 @@ h1.project-head {
     opacity: 0;
   }
 }
+.wave-img {
+  border-radius: 24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  filter: hue-rotate(17deg);
+}
+#card-1 {
+  background-size: 300% 150% !important;
+  background-position: 66% -24%;
+}
+#card-2 {
+  background-size: 400% 103% !important;
+  background-position: 0% -850%;
+}
+#card-3 {
+  background-size: 200% 104% !important;
+  background-position: 100% -750%;
+}
+#card-4 {
+  background-size: 275% 125% !important;
+  background-position: 20% -50%;
+}
+#card-5 {
+  background-size: 300% 150% !important;
+  background-position: 25% -10%;
+}
+
 // Existing projects card
 .existing-project {
   background-color: white;
   .project-details {
+    margin-top: 8px;
     h2.project-name {
       margin: 0 0 6px 0;
-      color: $new-blue;
+      color: rgba(0,0,0,0.5);
       font-size: 24px;
       letter-spacing: 2px;
     }
@@ -57,7 +86,7 @@ h1.project-head {
     }
   }
   &:hover {
-    background-color: $new-blue;
+    background-color: rgba(104, 178, 223, 0.5);
     .project-details h2, .project-details p {
       color: white;
     }
@@ -67,6 +96,9 @@ h1.project-head {
 
 // Create a project card
 .create-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(104, 178, 223, 0.5);
   i.fa-plus {
     color: white;
