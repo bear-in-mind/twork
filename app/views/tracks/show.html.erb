@@ -183,8 +183,8 @@
                 </div>
 
                 <div class="controls">
-                  <div class="closed">
-                    <button class="btn controls-btn rv_button-<%= session.id %> hidden-comments-<%= session.id %>">
+                  <div class="closed rv_button-<%= session.id %> ">
+                    <button class="btn controls-btn hidden-comments-<%= session.id %>">
                       <span class="caret"></span>
                       <span>Show Comments</span>
                     </button>
@@ -194,6 +194,17 @@
                     </button>
                   </div>
 
+<!--                   <div class="btn controls-btn rv_button-<%= session.id %> closed">
+                    <button class="hidden-comments-<%= session.id %>">
+                      <span class="caret"></span>
+                      <span>Show Comments</span>
+                    </button>
+                    <button class="comments-displayed-<%= session.id %> hidden">
+                      <span class="caret caret-reversed"></span>
+                      <span>Hide Comments</span>
+                    </button>
+                  </div>
+ -->
                   <button class="btn controls-btn">
                     <%= link_to session_path(session), method: :delete do %>
                   <!-- <i class="far fa-trash-alt"></i>Delete -->
@@ -233,6 +244,10 @@
                 </div>
               </div>
             </div>
+            <div class="playlist" id="playlist_<%= session.id %>">
+              <h6>Select a version: </h6>
+              <div class="player-list" id="list_<%= session.id %>"></div>
+            </div>
       <!-- close audio-item -->
           </div>
     <!-- Close session box -->
@@ -254,10 +269,6 @@
     <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
 
    <!-- Playlist Modal -->
-    <div class="playlist" id="playlist_<%= session.id %>">
-      <h6>Select a version: </h6>
-      <div class="player-list" id="list_<%= session.id %>"></div>
-    </div>
 
   <% end %>
 
