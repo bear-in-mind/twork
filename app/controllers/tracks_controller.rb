@@ -14,9 +14,6 @@ class TracksController < ApplicationController
     # create session
     @session = Session.new
     @talents = Talent.all
-    @talents_name = User.all.map do |user|
-      "#{user.first_name.capitalize} #{user.last_name.upcase}"
-    end
     @talents_id = Talent.all.map do |talent|
       talent.id
     end
