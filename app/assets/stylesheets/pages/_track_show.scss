@@ -5,48 +5,19 @@
     color: rgba(0,0,0,0.6);
   }
 }
-// .group-btn button, .group-btn a {
-//   outline: none !important;
-//   text-decoration: none;
-//   border: 1px solid white;
-//   margin: 5px;
-//   padding: 7px 13px 5px 8px;
-//   font-size: 16px;
-//   text-align: center;
-//   color: white;
-//   background-color: transparent;
-//   a {
-//     font-size: 16px;
-//   }
-//   &:hover {
-//     color: $new-blue;
-//     background-color: white;
-//     .caret {
-//       color: $new-blue;
-//       border-top: 6px dashed $new-blue;
-//     }
-//   }
-//   i, .caret {
-//     margin-right: 4px;
-//   }
-// }
 
 #playlist-toggle-caret {
   transform: rotate(-90deg);
 }
 
-.group-btn {
+.controls-btn {
+  flex: 1 1 25%;
   border-right: solid 1px white;
-  flex-grow: 1;
-  text-align: center;
-}
-
-.group-btn button, .group-btn a{
   outline: none !important;
   text-decoration: none;
   border: none;
   // border-radius: 4px;
-  margin: 5px;
+  // margin: 5px;
   padding: 7px 13px 5px 8px;
   font-size: 16px;
   text-align: center;
