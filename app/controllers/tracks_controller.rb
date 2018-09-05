@@ -4,16 +4,29 @@ class TracksController < ApplicationController
   before_action :set_project, only: :create
 
   def show
+
     #project details
     @project = @track.project
     @owner = @project.project_owner
 
     # session index
-    @sessions = @track.sessions.includes(:audio_files)
+    @sessions = @track.sessions.includes(:audio_files).order(created_at: :desc)
 
     # create session
     @session = Session.new
-    @talents = Talent.all
+
+    #create a hash with all users and their corresponding skills
+    @talents_hash = {}
+    User.all.each do |user|
+      @talents_hash[user.id] = user.skills.pluck(:name, :id)
+    end
+
+
+    # @talents = Talent.all
+    @users = Talent.all.where.not(user_id: current_user.id).map do |talent|
+      ["#{talent.user.first_name} #{talent.user.last_name}", talent.user.id]
+    end
+    @users.uniq!
     @talents_id = Talent.all.map do |talent|
       talent.id
     end

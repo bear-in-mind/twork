@@ -99,11 +99,12 @@
           </div>
 
           <div class="modal-body text-center">
-            <%= simple_form_for [@track, @session] do |f| %>
-            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
+            <%= render 'create_session_form' %>
+            <%#= simple_form_for [@track, @session] do |f| %>
+            <%#= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
             <!-- TODO add an audio file ? -->
-            <%= f.submit "Add session", class: "btn our-cta-btn" %>
-            <% end %>
+            <%#= f.submit "Add session", class: "btn our-cta-btn" %>
+            <%# end %>
           </div>
         </div>
       </div>
@@ -200,7 +201,7 @@
                   </div>
  -->
                   <button class="btn controls-btn">
-                    <%= link_to session_path(session), method: :delete do %>
+                    <%= link_to session_path(session), method: :delete, data: {confirm: "WARNING: This session and all associated files will be deleted. Continue ?"} do %>
                   <!-- <i class="far fa-trash-alt"></i>Delete -->
                       <i class="far fa-trash-alt"></i>Delete
                     <% end %>
@@ -232,7 +233,7 @@
                         <%= f.input :audio, label: "Choose an audio file", required: false %>
                         <%= f.input :name, label: "Name", required: false %>
                         <%#= f.input :audio_cache, as: :hidden %>
-                        <%= f.submit "Upload file", id: "upload-submit", class:"btn btn-success" %>
+                        <%= f.submit "Upload file", id: "upload-submit", class:"btn our-cta-btn" %>
                       <% end %>
                     </div>
                   </div>
@@ -271,3 +272,6 @@
 
   </div>
 </div>
+
+<!-- hidden Hash -->
+<div class="talents-hash hidden" id="talentsHash" data-id="<%=@talents_hash.to_json%>"></div>
