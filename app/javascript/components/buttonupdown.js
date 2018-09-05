@@ -12,9 +12,10 @@ function openCloseDivs() {
 function openCloseDiv(sessionId) {
    $(document).ready(function() {
    // Hide the div
-    $(`#reveal-${sessionId}`).hide();
+//    $(`#reveal-${sessionId}`).hide();
     $(`.rv_button-${sessionId}`).click(function(e){
-      e.preventDefault();$(`#reveal-${sessionId}`).slideToggle();
+      e.preventDefault();
+      $(`#reveal-${sessionId}`).slideToggle();
       $(`.rv_button-${sessionId}`).toggleClass('opened closed');
       $(`.hidden-comments-${sessionId}, .comments-displayed-${sessionId}`).toggleClass('hidden')
     });
