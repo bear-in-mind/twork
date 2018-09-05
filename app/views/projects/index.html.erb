@@ -11,6 +11,7 @@
               <h2 class="project-name"><%= project.name.upcase %></h2>
               <p class="project-deadline">Due on <%= project.deadline.strftime("%d/%m/%Y") %></p>
             </div>
+            <div class="wave-img" id="card-<%= project.id %>" style="background-image: url(<%= image_path 'Abstract-Wave-PNG-Transparent.png'%>);"></div>
             <%= link_to '', project_path(project.id), class: "project-link" %>
           </div>
           <!-- close existing project card -->
