@@ -1,8 +1,7 @@
 .comment-box {
   display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
+  padding: 2px 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.8);
 }
 
 .comment-body {
@@ -13,14 +12,19 @@
 .avatar-comment {
   width: 40px;
   height: 40px;
-}
-
-.comment-body h5 {
-  margin-bottom: 1px;
+  margin-top: 10px;
 }
 
 .comment-body p {
-  font-size: 15px;
+  margin-bottom: 9px;
+  margin-top: 1px;
+  font-weight: 400;
+  word-break: break-word;
+}
+
+.comment-body h6 {
+  margin-bottom: 1px;
+  color: rgb(168,168,168);
 }
 
 .comment-flexbox-class {

@@ -6,6 +6,8 @@ import "../components/addComments";
 
 import { initPlayers } from '../plugins/init_howler';
 import { alertFadeOut } from '../components/alert';
+import { openCloseDivs } from '../components/buttonupdown';
+
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip({ boundary: 'viewport' })
@@ -14,3 +16,5 @@ $(function () {
 initPlayers();
 
 alertFadeOut();
+
+openCloseDivs();
