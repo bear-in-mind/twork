@@ -1,3 +1,8 @@
+//OVERALL CONTAINER
+.sessions-list {
+  width: 52vw;
+}
+
 // BUTTONS
 .download {
   .group-btn button {
@@ -211,8 +216,6 @@ button.controls-btn:active {
   }
 }
 
-
-
 //COMMENTS
 .comments-area {
   background-color: white;
@@ -228,10 +231,6 @@ button.controls-btn:active {
 
 .version-button {
   border-right: none;
-}
-
-.sessions-list {
-  width: 52vw;
 }
 
 .talent-toolbox {
