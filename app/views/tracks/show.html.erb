@@ -236,8 +236,9 @@
                     <div class="modal-body text-center">
                       <%= simple_form_for [session, @audio_file] do |f| %>
                         <%= f.input :audio, label: "Choose an audio file", required: false %>
+                        <%= f.input :name, label: "Name", required: false %>
                         <%#= f.input :audio_cache, as: :hidden %>
-                        <%= f.submit "Upload file", id: "upload-submit" %>
+                        <%= f.submit "Upload file", id: "upload-submit", class:"btn btn-success" %>
                       <% end %>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ class AudioFile < ApplicationRecord
   belongs_to :session
   has_many :comments, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :user_id, presence: true
   validates :session_id, presence: true
 
