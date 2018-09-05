@@ -1,13 +1,15 @@
 #player-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 50%;
   padding: 0;
   overflow: hidden;
   background-color: white;
   -webkit-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  border-bottom: 1px groove rgba(0,0,0,0.1);
+  border-radius: 6px;
 }
 
 .player-title {
@@ -17,22 +19,22 @@
   line-height: 26px;
   height: 34px;
   text-align: center;
-  font-size: 28px;
+  font-size: 22px;
   opacity: 0.9;
   font-weight: 300;
-  color: $new-blue;
+  color: black;
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 .timer {
   position: absolute;
   top: 0;
-  left: 3%;
+  right: 3%;
   text-align: left;
-  font-size: 26px;
+  font-size: 22px;
   opacity: 0.9;
   font-weight: 300;
-  color: $new-blue;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  color: black;
+  // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
 }
 
 .duration {
@@ -43,8 +45,9 @@
   font-size: 26px;
   opacity: 0.5;
   font-weight: 300;
-  color: $new-blue;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  color: black;
+  // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  display: none;
 }
 
 .controlsOuter {
@@ -53,46 +56,84 @@
   height: 70px;
   bottom: 3%;
 }
-.controlsInner {
-  position: absolute;
-  width: 340px;
-  height: 70px;
-  left: 50%;
-  margin: 0 -170px;
-}
+
 .btn-player {
   position: absolute;
-  cursor: pointer;
-  opacity: 0.9;
-  -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
-  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
+  color: white;
+  // opacity: 0.9;
+  // -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
+  // filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.33));
   -webkit-user-select: none;
   user-select: none;
-  font-size: 40px;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: $new-blue;
-  color: transparent;
-  &:hover {
-    color: $new-blue;
-  }
+  font-size: 25px;
+  // -webkit-text-stroke-width: 1px;
+  // -webkit-text-stroke-color: black;
 }
 .btn-player:hover {
   opacity: 1;
 }
 
+.button-play-pause {
+  cursor: pointer;
+  background-color: rgba(40, 40, 40, 0.7);
+  &:hover {
+    background-color: $new-blue;
+  }
+  border-radius: 50%;
+  margin: auto 42.5px;
+  top: 8px;
+  z-index: 15;
+  position: relative;
+  // position: absolute;
+  // top: -22%;
+  // left: 54%;
+  width: 50px;
+  height: 50px;
+  /* text-align: center; */
+  padding-top: 12px;
+}
+
 .playBtn {
-  top: 10%;
-  left: 50%;
-  margin: auto -34.5px;
-  z-index: 5;
+  padding-left: 17px;
+}
+
+
+.prev-button {
+  cursor: pointer;
+  background-color: rgba(150, 150, 150, 0.5);
+  &:hover {
+    background-color: $new-blue;
+  }
+  border-radius: 50%;
+  margin: auto 8.5px;
+  top: -7px;
+  z-index: 15;
+  position: relative;
+  // position: absolute;
+  // top: -22%;
+  // left: 54%;
+  width: 30px;
+  height: 30px;
+  /* text-align: center; */
+  // padding-bottom: 5px;
+}
+
+.prevBtn {
+  position: absolute;
+  left: 25%;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.nextBtn {
+  position: absolute;
+  left: 16%;
+  display: none;
 }
 
 .pauseBtn {
-  top: 40%;
-  left: 50%;
-  margin: auto -34.5px;
   display: none;
-  z-index: 3;
+  padding-left: 15px;
 }
 
 .playlistBtn {
@@ -119,8 +160,8 @@
   height: 100%;
   position: absolute;
   left: 0;
-  top: 100%;
-  margin: -15% auto;
+  top: 150px;
+  margin: 80px auto;
   display: none;
   cursor: pointer;
   opacity: 0.8;
@@ -151,7 +192,7 @@
   width: 0%;
   height: 100%;
   background-color: rgba(104, 178, 223, 0.4);
-  z-index: 0;
+  z-index: 10;
 }
 
 .loading {
@@ -221,16 +262,16 @@
 }
 .list-song {
   width: 100%;
-  height: 100%;
+  height: 50%;
   font-size: 18px;
   line-height: 5px;
   color: $new-blue;
   text-align: right;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
+  // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: solid 1px rgba(180, 180, 180, 0.6);
+  // border-bottom: solid 1px rgba(180, 180, 180, 0.6);
 }
 .list-song:hover {
   background-color: $new-blue;
@@ -295,8 +336,8 @@
   justify-self: flex-end;
   align-self: flex-end;
   background-color: white;
-  right: -172px;
-  top: 30px;
+  right: -178px;
+  top: -0px;
   position: absolute;
   webkit-animation: fadeout 0.5s;
   z-index: 5;
@@ -316,9 +357,9 @@
   background-color: white;
   z-index: 5;
   position: absolute;
-  right: -172px;
-  top: 30px;
-  border: solid 1px $new-blue;
+  right: -178px;
+  top: -0px;
+  border: 1px groove rgba(0,0,0, 0.2);
   border-radius: 6px;
   text-align: center;
     h6 {

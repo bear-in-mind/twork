@@ -1,5 +1,15 @@
 // BUTTONS
-.session-btn button {
+.download {
+  .group-btn button {
+    border: 1px solid rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.6);
+  }
+}
+
+.group-btn button, .group-btn a {
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
   margin-left: 3px;
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.2);
@@ -30,17 +40,67 @@
     }
   }
 }
+
+#playlist-toggle-caret {
+  transform: rotate(-90deg);
+}
+
+.controls-btn {
+  flex: 1 1 25%;
+  border-right: solid 1px white;
+  outline: none !important;
+  text-decoration: none;
+  // border-radius: 4px;
+  // margin: 5px;
+  padding: 7px 13px 5px 8px;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border-radius: 0px;
+  a {
+    font-size: 16px;
+  }
+  &:hover {
+    color: $new-blue;
+    background-color: white;
+    .caret {
+      color: $new-blue;
+      border-top: 6px dashed $new-blue;
+    }
+  }
+  i, .caret {
+    margin-right: 4px;
+  }
+  transition: all ease 0.2s;
+}
+
+button.controls-btn:active {
+  color: white;
+}
+
+
 .controls {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
-  margin-top: 10px;
-  .caret {
-    margin-left: 0 !important;
-    border-top: 6px dashed rgba(0, 0, 0, 0.7);
-    border-right: 6px solid transparent;
-    border-left: 6px solid transparent;
-  }
+  height: 50%;
+  // margin-top: 10px;
+  // .caret {
+  //   border-top: 6px dashed rgba(0, 0, 0, 0.7);
+  //   border-right: 6px solid transparent;
+  //   border-left: 6px solid transparent;
+  // }
+}
+
+.toolbox {
+  // background-color: rgba(80, 80, 80, 0.5);
+  background-color: $new-blue;
+  display: block;
+  width:100%;
+  height:50%;
+  position: relative;
+  overflow: hidden;
 }
 
 // PAGE HEAD
@@ -87,6 +147,10 @@
     }
   }
 }
+
+#audio_file_audio {
+  padding: 10px;
+}
 .sessions-head, .brief-title {
   display: flex;
   justify-content: space-between;
@@ -104,12 +168,13 @@
 // SESSIONS INDEX
 .session-index {
   margin-bottom: 32px;
-  padding: 16px;
+  padding: 16px 0px;
 
 }
 .the-box {
   margin: 40px 0 10px 0;
   position: relative;
+  width: 50vw;
 }
 .session-box {
   border-radius: 6px;
@@ -119,6 +184,8 @@
   border: 1px groove rgba(0,0,0, 0.2);
   background-color: white;
   margin-bottom: 3px;
+  box-shadow: 10px 4px 24px 0px #c1e2ef;
+
 }
 // Inside each session
 .img-item {
@@ -142,7 +209,7 @@
   flex-grow: 1;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  overflow: hidden;
+  // overflow: hidden;
   .player {
     height: 100%;
     .player-title {
@@ -151,6 +218,8 @@
   }
 }
 
+
+
 //COMMENTS
 .comments-area {
   background-color: white;
@@ -158,4 +227,31 @@
   box-shadow: inset 1px 1px 2px rgba(0,0,0, 0.2);
   border-radius: 4px;
   color: rgba(0,0,0, 0.2);
+}
+
+.audiofile-comments {
+  width: 50vw;
+}
+
+.version-button {
+  border-right: none;
+}
+
+.sessions-list {
+  width: 52vw;
+}
+
+.talent-toolbox {
+  h6 {
+    color: white;
+    font-size: 20px;
+    margin: 0px;
+    font-weight: 400;
+  }
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  // border-bottom: solid 1px white;
 }
