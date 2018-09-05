@@ -99,11 +99,12 @@
           </div>
 
           <div class="modal-body text-center">
-            <%= simple_form_for [@track, @session] do |f| %>
-            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
+            <%= render 'create_session_form' %>
+            <%#= simple_form_for [@track, @session] do |f| %>
+            <%#= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
             <!-- TODO add an audio file ? -->
-            <%= f.submit "Add session", class: "btn our-cta-btn" %>
-            <% end %>
+            <%#= f.submit "Add session", class: "btn our-cta-btn" %>
+            <%# end %>
           </div>
         </div>
       </div>
@@ -269,3 +270,6 @@
 
   </div>
 </div>
+
+<!-- hidden Hash -->
+<div class="talents-hash hidden" id="talentsHash" data-id="<%=@talents_hash.to_json%>"></div>

@@ -1,0 +1,6 @@
+<%= simple_form_for [@track, @session] do |f| %>
+  <%= f.input :talent, collection: @users %>
+  <div id="skills_dropdown"></div>
+  <!-- TODO add an audio file ? -->
+  <%= f.submit "Add session", class: "btn our-cta-btn" %>
+<% end %>
