@@ -4,7 +4,6 @@ import SiriWave from './siriwave';
 function initPlayers() {
   const sessionInstances = document.querySelectorAll(".session-instances");
   if (sessionInstances) {
-    console.log(sessionInstances)
     sessionInstances.forEach((session) => {
       initPlayer(session.dataset.id);
     })
@@ -28,8 +27,6 @@ function initPlayer(sessionId) {
       });
     }
   })
-
-  console.log(sessionTracks)
 
   // Cache references to DOM elements.
   // var elms = [`track_${sessionId}`, `waveform_${sessionId}`, `timer_${sessionId}`, `duration_${sessionId}`, `playBtn_${sessionId}`, `pauseBtn_${sessionId}`, `prevBtn_${sessionId}`, `nextBtn_${sessionId}`, `playlistBtn_${sessionId}`, `volumeBtn_${sessionId}`, `progress_${sessionId}`, `bar_${sessionId}`, `wave_${sessionId}`, `loading_${sessionId}`, `playlist_${sessionId}`, `list_${sessionId}`, `volume_${sessionId}`, `barEmpty_${sessionId}`, `barFull_${sessionId}`, `sliderBtn_${sessionId}`];
@@ -388,10 +385,11 @@ function initPlayer(sessionId) {
   volume.addEventListener('touchmove', move);
 
   // Setup the "waveform" animation.
+  // let playerContainer = document.getElementById(`player-container`)
   var wave = new SiriWave({
     container: waveform,
     width: window.innerWidth,
-    height: window.innerHeight * 0.3,
+    height: window.innerHeight,
     cover: true,
     speed: 0.03,
     amplitude: 0.7,
@@ -402,7 +400,7 @@ function initPlayer(sessionId) {
   // Update the height of the wave animation.
   // These are basically some hacks to get SiriWave.js to do what we want.
   var resize = function() {
-    var height = window.innerHeight * 0.3;
+    var height = window.innerHeight;
     var width = window.innerWidth;
     wave.height = height;
     wave.height_2 = height / 2;
