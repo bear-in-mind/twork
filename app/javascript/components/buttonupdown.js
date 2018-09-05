@@ -8,14 +8,21 @@ function openCloseDivs() {
   }
 }
 
+function getCurrentAudiofile(x) {
+  let audioid = document.getElementById(`track_${x}`);
+  return audioid.innerHTML;
+}
 
 function openCloseDiv(sessionId) {
-   $(document).ready(function() {
+  $(document).ready(function() {
    // Hide the div
-//    $(`#reveal-${sessionId}`).hide();
     $(`.rv_button-${sessionId}`).click(function(e){
       e.preventDefault();
-      $(`#reveal-${sessionId}`).slideToggle();
+      let audiofilename = getCurrentAudiofile(sessionId).replace(/ /g, '');
+      console.log("/" + audiofilename + "/");
+      let divtohideshow = document.getElementById(`reveal-${audiofilename}`);
+      console.log(divtohideshow);
+      $(`#reveal-${audiofilename}`).slideToggle();
       $(`.rv_button-${sessionId}`).toggleClass('opened closed');
       $(`.hidden-comments-${sessionId}, .comments-displayed-${sessionId}`).toggleClass('hidden')
     });
@@ -23,4 +30,5 @@ function openCloseDiv(sessionId) {
 }
 
 export { openCloseDivs };
+
 
