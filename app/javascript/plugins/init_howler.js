@@ -255,8 +255,12 @@ function initPlayer(sessionId) {
       // Determine our current seek position.
       var seek = sound.seek() || 0;
       let timer = document.getElementById(`timer_${sessionId}`)
+      let comment_tracks = document.querySelectorAll(`.comment_track_instant_${sessionId}`)
       let progress = document.getElementById(`progress_${sessionId}`)
       timer.innerHTML = self.formatTime(Math.round(seek));
+      comment_tracks.forEach((track) => {
+        track.value = Math.round(seek);
+      })
       progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
 
       // If the sound is still playing, continue stepping.
@@ -343,6 +347,15 @@ function initPlayer(sessionId) {
     player.togglePlaylist();
   });
 
+  let times = document.querySelectorAll(".comment-time");
+  if (times) {
+    times.forEach((time) => {
+      time.addEventListener('click', () => {
+        player.seek(time.dataset.trackId * 0.01)
+      })
+    })
+  }
+
   // VOLUME
   let volumeBtn = document.getElementById(`volumeBtn_${sessionId}`)
   volumeBtn.addEventListener('click', function() {
@@ -427,6 +440,9 @@ function initPlayer(sessionId) {
   };
   window.addEventListener('resize', resize);
   resize();
+
 }
 
-export { initPlayers };
+
+
+export { initPlayers};
