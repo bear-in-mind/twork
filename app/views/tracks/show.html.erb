@@ -143,7 +143,9 @@
               <div id="player-container">
                 <!-- Top Info -->
                 <div class="player-title" id="title_<%= session.id %>">
-                  <span class="track" id="track_<%= session.id %>"></span>
+                  <span class="track">
+                    <%="#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
+                  </span>
                   <div class="timer" id="timer_<%= session.id %>">0:00</div>
                   <div class="duration" id="duration_<%= session.id %>">0:00</div>
                 </div>
@@ -175,7 +177,7 @@
 
                 <div class="talent-toolbox">
                   <h6>
-                    <%= "#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
+                    <span class="track" id="track_<%= session.id %>"></span>
                   </h6>
                 </div>
 
