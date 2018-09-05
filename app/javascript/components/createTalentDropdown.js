@@ -11,11 +11,11 @@ function createTalentDropdown() {
     const userTalents = talentsHash[selectedUser];
     const selectList = document.createElement("select");
     const skillLabel = document.createElement("label");
-    skillLabel.innerText = "Choose a skill: "
-    skillLabel.id = "skill-label"
+    skillLabel.innerText = "Choose a skill: ";
+    skillLabel.id = "skill-label";
     skillLabel.classList.add("form-control-label", "select", "optional")
     selectList.classList.add("form-control", "select", "required");
-    selectList.name = "skill_id"
+    selectList.name = "skill_id";
     skillsDropdown.appendChild(skillLabel);
     skillsDropdown.appendChild(selectList);
     //Create and append the options
@@ -26,8 +26,6 @@ function createTalentDropdown() {
         selectList.appendChild(option);
     }
   })
-
-
   //Create and append select list
 }
 
