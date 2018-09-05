@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
+  <title>Sorry, the change you wanted was rejected (422)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+  .background_image {
+    /*background: url(./twork-full.png);*/
+     width: 100%;
+     height: 300px;
+     /*margin-left: 25%;*/
+     /*border-radius: 50%;*/
+     /*background-image: url(./twork-full.png);*/
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center;
+  }
+
   .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
@@ -23,10 +35,10 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
+    /*border-top: white solid 4px;*/
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /*background-color: white;*/
     padding: 7px 12% 0;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
@@ -58,10 +70,11 @@
   <!-- This file lives in public/422.html -->
   <div class="dialog">
     <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+      <h1>The change you attempted was rejected.</h1>
+      <p>You may have tried to change something you didn't have access to.</p>
+       <img src="/images/twork-full-public.png" alt="twork logo" class="background_image">
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>If you wish to contact us for feedback, please write to contact@twork.xyz</p>
   </div>
 </body>
 </html>
