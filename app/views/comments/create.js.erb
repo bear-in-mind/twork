@@ -1,15 +1,19 @@
 var test = "<%= @audiofileid %>";
 console.log(test);
-// var element = document.getElementById('ajax_comments');
-// element.innerHTML = '<%= j  render '/comments/show.html.erb', audio_file: @audiofile %>'
-
 
 function comments(x) {
   var div = `ajax_comments${x}`;
   var element = document.getElementById(div);
-  console.log(div);
-  console.log(element);
-  element.innerHTML = '<%= j  render '/comments/show.html.erb', audio_file: @audiofile %>'
+  element.innerHTML = '<%= j  render "comments/show.html.erb", audio_file: @audiofile %>';
 };
 
 comments(test);
+
+function refreshForm(x) {
+  var formdiv = `new-comment${x}`;
+  var newReviewForm = document.getElementById(formdiv);
+  newReviewForm.innerHTML = '<%= j  render "comments/comment_form.html.erb", audio_file: @audiofile, comment: Comment.new %>';
+};
+
+refreshForm(test);
+
