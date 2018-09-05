@@ -86,6 +86,8 @@ function initPlayer(sessionId) {
         sound = data.howl;
       } else {
         sound = data.howl = new Howl({
+          autoplay: false,
+          loop: false,
           src: [ data.url ],
           html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
           onplay: function() {

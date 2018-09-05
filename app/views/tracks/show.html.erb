@@ -143,9 +143,10 @@
               <div id="player-container">
                 <!-- Top Info -->
                 <div class="player-title" id="title_<%= session.id %>">
-                  <span class="track">
+                  <span class="artist-name">
                     <%="#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
                   </span>
+                  <span class="track" id="track_<%= session.id %>"></span>
                   <div class="timer" id="timer_<%= session.id %>">0:00</div>
                   <div class="duration" id="duration_<%= session.id %>">0:00</div>
                 </div>
@@ -175,33 +176,48 @@
               <!-- close player container -->
               <div class="toolbox">
 
-                <div class="talent-toolbox">
-                  <h6>
-                    <span class="track" id="track_<%= session.id %>"></span>
-                  </h6>
-                </div>
+<!--                 <div class="controls">
+ -->                  <div class="closed rv_button-<%= session.id %> ">
+                    <button class="btn controls-btn hidden-comments-<%= session.id %>">
+                      <span class="caret"></span>
+                      <span>Show Comments</span>
+                    </button>
+                    <button class="btn controls-btn comments-displayed-<%= session.id %> hidden">
+                      <span class="caret caret-reversed"></span>
+                      <span>Hide Comments</span>
+                    </button>
+                  </div>
 
-                <div class="controls">
-                  <button class="btn controls-btn"><span>Comments </span><span class="caret"></span></button>
-
-                  <%= link_to session_path(session), method: :delete do %>
-                  <!-- <i class="far fa-trash-alt"></i>Delete -->
+<!--                   <div class="btn controls-btn rv_button-<%= session.id %> closed">
+                    <button class="hidden-comments-<%= session.id %>">
+                      <span class="caret"></span>
+                      <span>Show Comments</span>
+                    </button>
+                    <button class="comments-displayed-<%= session.id %> hidden">
+                      <span class="caret caret-reversed"></span>
+                      <span>Hide Comments</span>
+                    </button>
+                  </div>
+ -->
                   <button class="btn controls-btn">
-                    <i class="far fa-trash-alt"></i>Delete
+                    <%= link_to session_path(session), method: :delete do %>
+                  <!-- <i class="far fa-trash-alt"></i>Delete -->
+                      <i class="far fa-trash-alt"></i>Delete
+                    <% end %>
                   </button>
-                  <% end %>
 
                   <button class="btn upload-btn controls-btn" type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
                     <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
                   </button>
 
                   <button class="btn playlist-btn controls-btn version-button" type="button" id="playlistBtn_<%= session.id %>">
-                    <span>View Files</span>
+                    <span><i class="fas fa-list-ul"></i></span>
+                    <span>Playlist</span>
                     <span class="caret" id="playlist-toggle-caret"></span>
                   </button>
         <!-- close control -->
-                </div>
-        <!-- close toolbox -->
+<!--                 </div>
+ -->        <!-- close toolbox -->
               </div>
               <!-- addFile Modal -->
               <div class="modal fade" id="addFile<%= session.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -214,21 +230,18 @@
                     <div class="modal-body text-center">
                       <%= simple_form_for [session, @audio_file] do |f| %>
                         <%= f.input :audio, label: "Choose an audio file", required: false %>
+                        <%= f.input :name, label: "Name", required: false %>
                         <%#= f.input :audio_cache, as: :hidden %>
-                        <%= f.submit "Upload file", id: "upload-submit" %>
+                        <%= f.submit "Upload file", id: "upload-submit", class:"btn btn-success" %>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
-
-            <!-- Playlist Modal -->
-              <div class="playlist" id="playlist_<%= session.id %>">
-                <h6>Select a file: </h6>
-                <div class="player-list" id="list_<%= session.id %>"></div>
-              </div>
-
-        <!-- close player -->
+            </div>
+            <div class="playlist" id="playlist_<%= session.id %>">
+              <h6>Select a version: </h6>
+              <div class="player-list" id="list_<%= session.id %>"></div>
             </div>
       <!-- close audio-item -->
           </div>
@@ -237,24 +250,22 @@
       </div>
     </div>
 
-    <div class="playlist" id="playlist_<%= session.id %>">
-      <h6>Select a version: </h6>
-      <div class="player-list" id="list_<%= session.id %>"></div>
-    </div>
     <!-- @CLAIRE PUT COMMENTS HERE -->
-    <div class="audiofile-comments">
+    <div id="reveal-<%= session.id %>" class="audiofile-comments">
       <% session.audio_files.each do |audio_file| %>
-      <div id="new-comment<%= audio_file.id %>">
-        <p><%= audio_file.name %></p>
-        <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
-      </div>
-      <div id="ajax_comments<%= audio_file.id %>" >
-        <%= render '/comments/show', audio_file: audio_file %>
-      </div>
+        <div id="new-comment<%= audio_file.id %>">
+          <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
+        </div>
+        <div id="ajax_comments<%= audio_file.id %>" >
+          <%= render '/comments/show', audio_file: audio_file %>
+        </div>
       <% end %>
     </div>
     <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
 
+   <!-- Playlist Modal -->
+
   <% end %>
+
   </div>
 </div>

@@ -1,14 +1,14 @@
 #player-container {
   position: relative;
   width: 100%;
-  height: 50%;
+  height: 75%;
   padding: 0;
   overflow: hidden;
   background-color: white;
   -webkit-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  border-bottom: 1px groove rgba(0,0,0,0.1);
+  // border-bottom: 1px groove rgba(0,0,0,0.1);
   border-radius: 6px;
 }
 
@@ -17,13 +17,20 @@
   width: 100%;
   top: 3%;
   line-height: 26px;
-  height: 34px;
-  text-align: center;
+  height: 60%;
   font-size: 22px;
-  opacity: 0.9;
+  opacity: 1;
   font-weight: 300;
   color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+}
+
+.artist-name {
+  font-weight: 400;
 }
 .timer {
   position: absolute;
@@ -80,8 +87,8 @@
     background-color: $new-blue;
   }
   border-radius: 50%;
-  margin: auto 42.5px;
-  top: 8px;
+  margin: auto 44.5px;
+  top: 18px;
   z-index: 15;
   position: relative;
   // position: absolute;
@@ -105,8 +112,8 @@
     background-color: $new-blue;
   }
   border-radius: 50%;
-  margin: auto 8.5px;
-  top: -7px;
+  margin: auto 14.5px;
+  bottom: -21px;
   z-index: 15;
   position: relative;
   // position: absolute;
