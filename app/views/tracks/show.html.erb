@@ -183,10 +183,16 @@
                 </div>
 
                 <div class="controls">
-                  <button class="btn controls-btn">
-                    <span><i class="far fa-comment"></i></span>
-                    <span>Comments </span><span class="caret"></span>
-                  </button>
+                  <div class="closed">
+                    <button class="btn controls-btn rv_button-<%= session.id %> hidden-comments-<%= session.id %>">
+                      <span class="caret"></span>
+                      <span>Show Comments</span>
+                    </button>
+                    <button class="btn controls-btn comments-displayed-<%= session.id %> hidden">
+                      <span class="caret caret-reversed"></span>
+                      <span>Hide Comments</span>
+                    </button>
+                  </div>
 
                   <button class="btn controls-btn">
                     <%= link_to session_path(session), method: :delete do %>
@@ -226,14 +232,6 @@
                   </div>
                 </div>
               </div>
-
-            <!-- Playlist Modal -->
-              <div class="playlist" id="playlist_<%= session.id %>">
-                <h6>Select a file: </h6>
-                <div class="player-list" id="list_<%= session.id %>"></div>
-              </div>
-
-        <!-- close player -->
             </div>
       <!-- close audio-item -->
           </div>
@@ -242,24 +240,26 @@
       </div>
     </div>
 
-    <div class="playlist" id="playlist_<%= session.id %>">
-      <h6>Select a version: </h6>
-      <div class="player-list" id="list_<%= session.id %>"></div>
-    </div>
     <!-- @CLAIRE PUT COMMENTS HERE -->
-    <div class="audiofile-comments">
+    <div id="reveal-<%= session.id %>" class="audiofile-comments">
       <% session.audio_files.each do |audio_file| %>
-      <div id="new-comment<%= audio_file.id %>">
-        <p><%= audio_file.name %></p>
-        <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
-      </div>
-      <div id="ajax_comments<%= audio_file.id %>" >
-        <%= render '/comments/show', audio_file: audio_file %>
-      </div>
+        <div id="new-comment<%= audio_file.id %>">
+          <%= render '/comments/comment_form', session: session, audio_file: audio_file, comment: @comment %>
+        </div>
+        <div id="ajax_comments<%= audio_file.id %>" >
+          <%= render '/comments/show', audio_file: audio_file %>
+        </div>
       <% end %>
     </div>
     <!-- @CLAIRE CLOSE COMMENTS SECTION HERE -->
 
+   <!-- Playlist Modal -->
+    <div class="playlist" id="playlist_<%= session.id %>">
+      <h6>Select a version: </h6>
+      <div class="player-list" id="list_<%= session.id %>"></div>
+    </div>
+
   <% end %>
+
   </div>
 </div>

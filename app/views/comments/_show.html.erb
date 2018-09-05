@@ -1,6 +1,6 @@
 <div id="index-comments">
   <div class="comments-text">
-    <% audio_file.comments.each do |comment| %>
+    <% audio_file.comments.order(created_at: :desc).each do |comment| %>
       <div class="comment-box">
         <% if comment.author.avatar.nil? %>
           <%= image_tag "noprofilepicture.png", height: 85, width: 85, crop: :fill, class: "avatar avatar-comment" %>
@@ -8,9 +8,9 @@
           <%= cl_image_tag comment.author.avatar, height: 85, width: 85, crop: :fill, class: "avatar avatar-comment" %>
         <% end %>
         <div class="comment-body">
-          <h5 class="comment-header">
+          <h6 class="comment-header">
             <strong><%= "#{comment.author.first_name} #{comment.author.last_name[0,1]}." %></strong> - <%= comment.created_at.in_time_zone('Paris').strftime("%e %b %Y %H:%M %p") %>
-          </h5>
+          </h6>
           <p>
             <%= comment.content %>
           </p>
