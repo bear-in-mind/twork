@@ -262,7 +262,7 @@
 }
 .list-song {
   width: 100%;
-  height: 100%;
+  height: 50%;
   font-size: 18px;
   line-height: 5px;
   color: $new-blue;
@@ -271,7 +271,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: solid 1px rgba(180, 180, 180, 0.6);
+  // border-bottom: solid 1px rgba(180, 180, 180, 0.6);
 }
 .list-song:hover {
   background-color: $new-blue;
@@ -337,7 +337,7 @@
   align-self: flex-end;
   background-color: white;
   right: -178px;
-  top: -81px;
+  top: -0px;
   position: absolute;
   webkit-animation: fadeout 0.5s;
   z-index: 5;
@@ -358,7 +358,7 @@
   z-index: 5;
   position: absolute;
   right: -178px;
-  top: -81px;
+  top: -0px;
   border: 1px groove rgba(0,0,0, 0.2);
   border-radius: 6px;
   text-align: center;

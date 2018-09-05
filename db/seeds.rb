@@ -296,11 +296,11 @@ Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
 
-ciao_drums = AudioFile.new(name: 'Drums v1', user_id: max.id, session_id: drum_rec.id)
+ciao_drums = AudioFile.new(name: 'Ciao - Drums (OK)', user_id: max.id, session_id: drum_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536051459/audio/Ciao_BASIC_TRACK.mp3"
 ciao_drums.save!
 
-ciao_drums = AudioFile.new(name: 'Guitar v1', user_id: nico.id, session_id: gtr_rec.id)
+ciao_drums = AudioFile.new(name: 'Ciao - Guitar intro v1', user_id: nico.id, session_id: gtr_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536051344/audio/GTR_Ciao.wav"
 ciao_drums.save!
 
