@@ -143,9 +143,10 @@
               <div id="player-container">
                 <!-- Top Info -->
                 <div class="player-title" id="title_<%= session.id %>">
-                  <span class="track">
+                  <span class="artist-name">
                     <%="#{session.talent.user.first_name} #{session.talent.user.last_name}" %>
                   </span>
+                  <span class="track" id="track_<%= session.id %>"></span>
                   <div class="timer" id="timer_<%= session.id %>">0:00</div>
                   <div class="duration" id="duration_<%= session.id %>">0:00</div>
                 </div>
@@ -182,21 +183,25 @@
                 </div>
 
                 <div class="controls">
-                  <button class="btn controls-btn"><span>Comments </span><span class="caret"></span></button>
-
-                  <%= link_to session_path(session), method: :delete do %>
-                  <!-- <i class="far fa-trash-alt"></i>Delete -->
                   <button class="btn controls-btn">
-                    <i class="far fa-trash-alt"></i>Delete
+                    <span><i class="far fa-comment"></i></span>
+                    <span>Comments </span><span class="caret"></span>
                   </button>
-                  <% end %>
+
+                  <button class="btn controls-btn">
+                    <%= link_to session_path(session), method: :delete do %>
+                  <!-- <i class="far fa-trash-alt"></i>Delete -->
+                      <i class="far fa-trash-alt"></i>Delete
+                    <% end %>
+                  </button>
 
                   <button class="btn upload-btn controls-btn" type="button" data-toggle="modal" data-target="#addFile<%=session.id%>">
                     <i class="fas fa-upload" title="Upload an audio file"></i>Upload File
                   </button>
 
                   <button class="btn playlist-btn controls-btn version-button" type="button" id="playlistBtn_<%= session.id %>">
-                    <span>View Files</span>
+                    <span><i class="fas fa-list-ul"></i></span>
+                    <span>Playlist</span>
                     <span class="caret" id="playlist-toggle-caret"></span>
                   </button>
         <!-- close control -->
