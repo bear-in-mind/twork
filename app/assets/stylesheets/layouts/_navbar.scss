@@ -6,7 +6,7 @@
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: linear-gradient(150deg, $our-blue, $our-turquoise);
   transition: all 0.3s ease;
-  height: 70px;
+  height: 80px;
   padding: 0px 30px;
   a:hover, a:focus {
     color: white;
@@ -15,33 +15,33 @@
 }
 
 .logo-bim {
-  height: 50px;
+  height: 44px;
   text-align: center;
 }
 
 .frame-logo {
-  border-radius: 50%;
+  border-radius: 31%;
   text-align: center;
   width: 60px;
   height: 60px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: 3px;
-  margin-left: 10px;
+  padding: 7px;
+  margin-right: 10px;
 }
 
 .brand {
   color: white;
-  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.5);
-  font-weight: bolder;
+  font-family: 'Fugaz One';
   font-size: 24px;
   text-decoration: none;
   flex: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   p {
-    margin: 0px;
+    font-size: 40px;
+    margin: 0;
+    margin-left: 4px;
   }
   // text-align: center;
 }
