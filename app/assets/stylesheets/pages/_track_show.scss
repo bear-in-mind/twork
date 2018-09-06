@@ -324,3 +324,19 @@ button.controls-btn:active {
     margin-bottom: 5px;
   }
 }
+
+input[type=checkbox]{
+ display: none;
+}
+
+input[type=checkbox] + label:hover {
+  cursor: pointer;
+}
+
+input[type=checkbox] + label{
+ color: red;
+}
+
+input[type=checkbox]:checked + label{
+ color: green;
+}
