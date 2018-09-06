@@ -201,13 +201,28 @@ f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1535386159
 f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/seb_banner.jpg"
 f.save!
 
+g = User.new(
+  first_name: "Maxime",
+  last_name: "Delpierre",
+  city: "Paris",
+  email: "delpierre@twork.xyz",
+  password: "123456",
+  main_occupation: "Guitarist",
+  genres: ["Pop", "Jazz", "Electronic", "Rock"],
+)
+
+f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1536216922/profile_pictures/delpierre.jpg"
+f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/seb_banner.jpg"
+f.save!
+
 # Talents
 louis = User.find_by(first_name: "Louis")
-max = User.find_by(first_name: "Maxime")
+max = User.find_by(last_name: "Garoute")
 nico = User.find_by(first_name: "Nicolas")
 johann = User.find_by(first_name: "Johann")
 benj = User.find_by(first_name: "Benjamin")
 seb = User.find_by(first_name: "Sebastien")
+delpierre = User.find_by(last_name: "Delpierre")
 
 Talent.create!(skill: Skill.find_by(name: "Bass"), user: louis)
 louis_bass = Talent.last
@@ -234,6 +249,8 @@ Talent.create!(skill: Skill.find_by(name: "Producer"), user: benj)
 Talent.create!(skill: Skill.find_by(name: "FOH Engineer"), user: seb)
 seb_mix = Talent.last
 Talent.create!(skill: Skill.find_by(name: "Recording Engineer"), user: seb)
+Talent.create!(skill: Skill.find_by(name: "Producer"), user: delpierre)
+Talent.create!(skill: Skill.find_by(name: "Electric Guitar"), user: delpierre)
 
 
 # Projects
@@ -296,17 +313,14 @@ Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
 
-ciao_drums = AudioFile.new(name: 'Ciao - Drums (OK)', user_id: max.id, session_id: drum_rec.id)
-ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536051459/audio/Ciao_BASIC_TRACK.mp3"
+ciao_drums = AudioFile.new(name: 'Ciao - Drums OK (solo)', user_id: max.id, session_id: drum_rec.id)
+ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536219385/twork%20audio%20def/Ciao_DRUMS_ONLY.m4a"
 ciao_drums.save!
 
-ciao_drums = AudioFile.new(name: 'Ciao - Guitar intro v1', user_id: nico.id, session_id: gtr_rec.id)
-ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536051344/audio/GTR_Ciao.wav"
+ciao_drums = AudioFile.new(name: 'Ciao - Basic Track + DMS', user_id: max.id, session_id: drum_rec.id)
+ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536219385/twork%20audio%20def/Ciao_BASIC_TRACK.m4a"
 ciao_drums.save!
 
-ciao_drums = AudioFile.new(name: 'Keyboards V1', user_id: johann.id, session_id: keys_rec.id)
-ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536051345/audio/Synth_Ciao.wav"
-ciao_drums.save!
 
 # Brief for Ciao
 ciao.update!(brief: "Sunny, summer vibe with strong Italo-Disco references. Overall feel is bright, funny, with a real feel-good vibe and should have a solid groove. \n References : MJ (Off the Wall period), late 70s Italian pop, Giorgio Moroder...")
