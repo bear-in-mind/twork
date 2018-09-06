@@ -1,6 +1,246 @@
-//OVERALL CONTAINER
-.sessions-list {
+//BANNER
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 40px 0 50px;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center;
+  filter: hue-rotate(17deg);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.3);
+  .banner-glass {
+    padding: 1px 40px 24px;
+    background: linear-gradient(150deg, #3b7380, #9dced6);
+    box-shadow: 0 8px 32px fade-out(#3b7380, .3);
+    border-radius: 20px;
+  }
+}
+.banner-content {
+  width: 50vw;
+  margin: auto;
+  padding: 0;
+  h1 {
+    font-size: 40px;
+    color: white;
+  }
+  .track-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
+
+// Inside the two flexboxes:
+.banner-track-card {
+  margin-bottom: 16px;
+  border-radius: 6px;
+  padding: 20px;
+  background: white;
+  h2, p, dt, dd {
+    color: rgba(0,0,0,0.7);
+    margin: 0;
+  }
+  h2, dt {
+    font-size: 16px;
+  }
+  p, dd {
+    font-size: 20px;
+  }
+  dt {
+    margin-bottom: -4px;
+  }
+  dd {
+    margin-bottom: 6px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+.track-details, .track-sessions {
+  flex: 1 0 auto;
+  p {
+    white-space: nowrap;
+  }
+}
+.track-details {
+  margin-right: 16px;
+}
+.track-brief {
+  flex: 0 1 auto;
+}
+.brief-title, .track-sessions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.track-sessions {
+  .talents-pics {
+    flex: 0 0 auto;
+    padding: 0 0 0 16px;
+  }
+}
+.banner-controls {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 20px;
+  }
+}
+button.banner-btn {
+  border: none;
+  border-radius: 4px;
+  height: 39px;
+  width: 172px;
+  background: rgb(65, 65, 65);
+  color: white;
+  font-size: 16px;
+  line-height: 1;
+  padding: 1px 1px 1px 1px;
+  i {
+    margin-right: 6px;
+  }
+  &:first-child {
+    margin-bottom: 4px;
+  }
+}
+// Modals
+#modalDownload {
+  ul {
+    list-style: none;
+    padding-left: 5px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.3);
+    font-style: italic;
+    font-size: 14px;
+  }
+  span {
+    font-style: normal;
+    color: black;
+    font-size: 16px;
+    & a:hover {
+      color: $new-blue;
+    }
+  }
+}
+#audio_file_audio {
+  padding: 10px;
+  margin: auto;
+  input {
+    &:focus-within {
+      background-color: $new-blue;
+    }
+  }
+}
+.sessions-head, .brief-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: normal;
+  }
+}
+#editBrief .modal-body {
+  height: 256px;
+}
+
+// SESSIONS INDEX
+.session-index {
+  margin: 0 auto 25px auto;
+  padding: 16px 0px;
   width: 52vw;
+}
+.session-instances {
+  display: flex;
+  justify-content: center;
+}
+.the-box {
+  margin: 20px 0 10px 0;
+  position: relative;
+  width: 50vw;
+  padding: 15px 0px;
+}
+.session-box {
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  // border: 1px groove rgba(0,0,0, 0.2);
+  background-color: white;
+  box-shadow: 10px 10px 24px 0px #c1e2ef;
+  overflow: hidden;
+}
+// Inside each session
+.img-item {
+  position: relative;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  overflow: hidden;
+  .avatar-sq, .img-gradient {
+    height: 160px;
+    width: 160px;
+  }
+  .img-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(-225deg, rgba(104, 178, 223,0.6) 0%, rgba(0, 45, 76,0.2) 95%);
+    z-index: 10;
+  }
+}
+.audio-item {
+  flex-grow: 1;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  // overflow: hidden;
+  .player {
+    height: 100%;
+    .player-title {
+      margin-top: 14px;
+    }
+  }
+}
+
+//COMMENTS
+.comments-area {
+  background-color: white;
+  padding: 5px 0 3px 14px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0, 0.2);
+  border-radius: 4px;
+  color: rgba(0,0,0, 0.2);
+}
+
+.audiofile-comments {
+  width: 50vw;
+}
+
+.version-button {
+  border-right: none;
+}
+
+.talent-toolbox {
+  h6 {
+    color: white;
+    font-size: 20px;
+    margin: 0px;
+    font-weight: 400;
+  }
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  // border-bottom: solid 1px white;
+}
+
+.owner-and-dates {
+  p {
+    margin-bottom: 5px;
+  }
 }
 
 // BUTTONS
@@ -128,219 +368,22 @@ button.controls-btn:active {
   position: relative;
   overflow: hidden;
 }
-
-// PAGE HEAD
-.all-headers {
-  background-color: white;
-  padding: 0 24px;
-  border-radius: 6px;
-}
-.track-head, .brief-head {
-  border-bottom: 1px groove rgba(0,0,0,0.3);
-  padding: 16px;
-  p {
-    margin-right: 50px ;
-    color: rgba(0,0,0,0.6);
-    text-align: justify;
-  }
-}
-.track-head {
-  padding-top: 24px;
-  margin-top: 32px;
-}
-.sessions-head {
-  padding: 16px;
-  p {
-    margin-right: 50px ;
-    color: rgba(0,0,0,0.6);
-    text-align: justify;
-  }
-}
-
-.track-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  a {
-    color: $new-blue;
-    text-decoration: none;
-    opacity: 0.9;
-    &:hover {
-      opacity: 1;
-      color: rgba(0,0,0,0.6);
-    }
-  }
-  h3 {
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 20px;
-    margin-top: 0px;
-    font-weight: 400;
-  }
-}
-
-.track-details {
-  display: flex;
-  justify-content: space-between;
-  // align-items: flex-end;
-}
-.track-name {
-  margin-top: 0;
-  font-size: 40px;
-  font-weight: bold;
-  color: $new-blue;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-
-}
-
-#modalDownload {
-  ul {
-    list-style: none;
-    padding-left: 5px;
-    text-align: left;
-    color: rgba(0, 0, 0, 0.3);
-    font-style: italic;
-    font-size: 14px;
-  }
-  span {
-    font-style: normal;
-    color: black;
-    font-size: 16px;
-    & a:hover {
-      color: $new-blue;
-    }
-  }
-}
-
-#audio_file_audio {
-  padding: 10px;
-  margin: auto;
-  input {
-    &:focus-within {
-      background-color: $new-blue;
-    }
-  }
-}
-.sessions-head, .brief-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h2 {
-    font-size: 18px;
-    margin: 0;
-    font-weight: normal;
-  }
-}
-#editBrief .modal-body {
-  height: 256px;
-}
-
-// SESSIONS INDEX
-.session-index {
-  margin-bottom: 25px;
-  padding: 16px 0px;
-
-}
-.the-box {
-  margin: 20px 0 10px 0;
-  position: relative;
-  width: 50vw;
-  padding: 15px 0px;
-}
-.session-box {
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  // border: 1px groove rgba(0,0,0, 0.2);
-  background-color: white;
-  box-shadow: 10px 10px 24px 0px #c1e2ef;
-  overflow: hidden;
-}
-// Inside each session
-.img-item {
-  position: relative;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  overflow: hidden;
-  .avatar-sq, .img-gradient {
-    height: 160px;
-    width: 160px;
-  }
-  .img-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(-225deg, rgba(104, 178, 223,0.6) 0%, rgba(0, 45, 76,0.2) 95%);
-    z-index: 10;
-  }
-}
-.audio-item {
-  flex-grow: 1;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  // overflow: hidden;
-  .player {
-    height: 100%;
-    .player-title {
-      margin-top: 14px;
-    }
-  }
-}
-
-//COMMENTS
-.comments-area {
-  background-color: white;
-  padding: 5px 0 3px 14px;
-  box-shadow: inset 1px 1px 2px rgba(0,0,0, 0.2);
-  border-radius: 4px;
-  color: rgba(0,0,0, 0.2);
-}
-
-.audiofile-comments {
-  width: 50vw;
-}
-
-.version-button {
-  border-right: none;
-}
-
-.talent-toolbox {
-  h6 {
-    color: white;
-    font-size: 20px;
-    margin: 0px;
-    font-weight: 400;
-  }
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  // border-bottom: solid 1px white;
-}
-
-.owner-and-dates {
-  p {
-    margin-bottom: 5px;
-  }
-}
-
 .edit_session {
   input[type=checkbox]{
    display: none;
-  }
-  input[type=checkbox] + label:hover {
-    cursor: pointer;
-  }
+ }
+ input[type=checkbox] + label:hover {
+  cursor: pointer;
+}
 
-  input[type=checkbox] + label{
-   color: $new-blue;
-   font-weight: 400;
-  }
+input[type=checkbox] + label{
+ color: $new-blue;
+ font-weight: 400;
+}
 
-  input[type=checkbox]:checked + label{
-   color: white;
-   font-weight: 400;
-  }
+input[type=checkbox]:checked + label{
+ color: white;
+ font-weight: 400;
+}
 }
 
