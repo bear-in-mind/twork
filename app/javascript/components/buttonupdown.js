@@ -20,6 +20,8 @@ function openCloseDiv(sessionId) {
       let audiofilename = getCurrentAudiofile(sessionId).replace(/ /g, '');
       let divtohideshow = document.getElementById(`reveal-${audiofilename}`);
       $(divtohideshow).slideToggle();
+      let commentDiv = document.getElementById('comment_content');
+      commentDiv.focus();
       $(`.rv_button-${sessionId}`).toggleClass('opened closed');
       $(`.hidden-comments-${sessionId}, .comments-displayed-${sessionId}`).toggleClass('hidden')
     });
