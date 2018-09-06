@@ -117,6 +117,14 @@
 
       <div class="the-box">
 
+        <div class="text-inline">
+          <%= form_for session do |f| %>
+          <strong>Session status: </strong>
+            <%= f.check_box :completed, {id: "session_completed_#{session.id}"} %>
+            <%= f.label "completed_#{session.id}", session.completed ? "completed" : "in progress", {class: "completed-label", "data-completed" => session.completed} %>
+          <% end %>
+        </div>
+
         <div class="session-box">
           <div class="img-item">
             <% if session.talent.user.avatar %>

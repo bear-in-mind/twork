@@ -15,6 +15,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def update
+
+    # @track = Track.find(params[:track_id])
+    @session = Session.find(params[:id])
+    @track = @session.track
+    @session.update(completed: session_status_params[:completed] == "1")
+    redirect_to track_path(@track)
+  end
+
   def destroy
     @session = Session.find(params[:id])
     @track = @session.track
@@ -28,5 +37,9 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:session).permit(:talent_id, :skill_id)
+  end
+
+  def session_status_params
+    params.require(:session).permit(:completed)
   end
 end
