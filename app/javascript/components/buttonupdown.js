@@ -22,7 +22,7 @@ function openCloseDiv(sessionId) {
       console.log("/" + audiofilename + "/");
       let divtohideshow = document.getElementById(`reveal-${audiofilename}`);
       console.log(divtohideshow);
-      $(`#reveal-${audiofilename}`).slideToggle();
+      $(divtohideshow).slideToggle();
       $(`.rv_button-${sessionId}`).toggleClass('opened closed');
       $(`.hidden-comments-${sessionId}, .comments-displayed-${sessionId}`).toggleClass('hidden')
     });
