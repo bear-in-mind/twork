@@ -5,13 +5,13 @@
 
     <div class="row">
       <% @projects.each do |project| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-4 wave-wrapper">
           <div class="project-card text-center existing-project">
             <div class="project-details">
               <h2 class="project-name"><%= project.name.upcase %></h2>
               <p class="project-deadline">Due on <%= project.deadline.strftime("%d/%m/%Y") %></p>
             </div>
-            <div class="wave-img" id="card-<%= project.id %>" style="background-image: url(<%= image_path 'Abstract-Wave-PNG-Transparent.png'%>);"></div>
+            <div class="wave-img" style="background-image: url(<%= image_path 'Abstract-Wave-PNG-Transparent.png'%>);"></div>
             <%= link_to '', project_path(project.id), class: "project-link" %>
           </div>
           <!-- close existing project card -->

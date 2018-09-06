@@ -46,25 +46,27 @@ h1.project-head {
   background-repeat: no-repeat;
   filter: hue-rotate(17deg);
 }
-#card-39 {
-  background-size: 300% 150% !important;
-  background-position: 66% -24%;
-}
-#card-40 {
-  background-size: 400% 103% !important;
-  background-position: 0% -850%;
-}
-#card-41 {
-  background-size: 200% 104% !important;
-  background-position: 100% -750%;
-}
-#card-42 {
-  background-size: 275% 125% !important;
-  background-position: 20% -50%;
-}
-#card-43 {
-  background-size: 300% 150% !important;
-  background-position: 25% -10%;
+.wave-wrapper {
+  &:nth-of-type(5n+1) .wave-img {
+    background-size: 275% 125% !important;
+    background-position: 20% -50%;
+  }
+  &:nth-of-type(5n+2) .wave-img {
+    background-size: 300% 150% !important;
+    background-position: 66% -24%;
+  }
+  &:nth-of-type(5n+3) .wave-img {
+    background-size: 200% 104% !important;
+    background-position: 100% -750%;
+  }
+  &:nth-of-type(5n+4) .wave-img {
+    background-size: 400% 103% !important;
+    background-position: 0% -850%;
+  }
+  &:nth-of-type(5n) .wave-img {
+    background-size: 300% 150% !important;
+    background-position: 25% -10%;
+  }
 }
 
 // Existing projects card
