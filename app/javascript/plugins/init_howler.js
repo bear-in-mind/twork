@@ -21,6 +21,7 @@ function initPlayer(sessionId) {
   audioFromHtml.forEach((track) => {
     if (track.dataset.title) {
       sessionTracks.push({
+        playlist_id: sessionId,
         title: track.dataset.title,
         howl: null,
         url: track.dataset.url
@@ -257,8 +258,12 @@ function initPlayer(sessionId) {
       // Determine our current seek position.
       var seek = sound.seek() || 0;
       let timer = document.getElementById(`timer_${sessionId}`)
+      let comment_tracks = document.querySelectorAll(`.comment_track_instant_${sessionId}`)
       let progress = document.getElementById(`progress_${sessionId}`)
       timer.innerHTML = self.formatTime(Math.round(seek));
+      comment_tracks.forEach((track) => {
+        track.value = Math.round(seek);
+      })
       progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
 
       // If the sound is still playing, continue stepping.
@@ -345,6 +350,25 @@ function initPlayer(sessionId) {
     player.togglePlaylist();
   });
 
+  let times = document.querySelectorAll(".comment-time");
+  if (times) {
+    times.forEach((time) => {
+      time.addEventListener('click', () => {
+        // let tduration = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.childNodes[1].childNodes[1].childNodes[1].childNodes[3].childNodes[1].childNodes[5].childNodes[3].childNodes[7];
+        let tduration = document.getElementById(`duration_${sessionId}`)
+        let tdurationsplit = tduration.innerHTML.split(':')
+        let tdurationinseconds = (parseInt(tdurationsplit[0], 10) * 60) + (parseInt(tdurationsplit[1], 10))
+        player.seek(time.dataset.instant / tdurationinseconds)
+        var playlist = player.playlist[player.index]
+        var playertoplay = Player
+        if (playlist.playlist_id === sessionId) {
+          var sound = player.playlist[player.index].howl;
+          sound.play()
+        }
+      })
+    })
+  }
+
   // VOLUME
   let volumeBtn = document.getElementById(`volumeBtn_${sessionId}`)
   volumeBtn.addEventListener('click', function() {
@@ -429,6 +453,9 @@ function initPlayer(sessionId) {
   };
   window.addEventListener('resize', resize);
   resize();
+
 }
 
-export { initPlayers };
+
+
+export { initPlayers};
