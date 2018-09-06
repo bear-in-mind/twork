@@ -10,7 +10,6 @@ import { openCloseDivs } from '../components/buttonupdown';
 import { createTalentDropdown } from '../components/createTalentDropdown';
 import { submitCompletedFormOnClick } from '../components/submit_completed_form_on_click';
 
-
 $(function () {
   $('[data-toggle="tooltip"]').tooltip({ boundary: 'viewport' })
 })

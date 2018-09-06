@@ -21,7 +21,11 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
     @track = @session.track
     @session.update(completed: session_status_params[:completed] == "1")
-    redirect_to track_path(@track)
+    # redirect_to track_path(@track) # replaced by AJAX
+    respond_to do |format|
+      format.html { redirect_to track_path(@track) }
+      format.js  # <-- will render `app/views/tracks/update.js.erb`
+    end
   end
 
   def destroy
