@@ -6,14 +6,23 @@
   }
 }
 
+
 // PAGE HEAD
 .project-head, .tracks-head {
-  border-bottom: 1px groove rgba(0,0,0,0.1);
+  // border-bottom: 1px groove rgba(0,0,0,0.1);
   padding: 16px;
 }
+
+#edit-project {
+  position: absolute;
+  right: 39px;
+  top: 31px;
+}
+
+
 .project-head {
   margin-top: 32px;
-  border-top: 1px groove rgba(0,0,0,0.1);
+  border-bottom: 1px groove rgba(0,0,0,0.3);
   h1.project-name {
     margin-bottom: 10px;
     font-size: 40px;
@@ -26,6 +35,13 @@
     padding-right: 5px;
   }
 }
+
+.project-header {
+  position: relative;
+  background-color: white;
+  padding: 0 24px;
+  border-radius: 6px;
+}
 .tracks-head {
   display: flex;
   justify-content: space-between;
@@ -34,7 +50,6 @@
     font-weight: normal;
   }
 }
-
 // TRACK INDEX
 .tracks-list {
   list-style: none;
@@ -107,6 +122,9 @@
   .track-title {
     flex: 0 0 20%;
     font-weight: normal;
+    a {
+      color: black;
+    }
   }
   .track-start-date {
     flex: 0 0 20%;
@@ -129,4 +147,8 @@
     padding-right: 16px;
     flex-wrap: wrap;
   }
+}
+
+#add-track-btn {
+  margin: 0px;
 }

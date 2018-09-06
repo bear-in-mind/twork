@@ -16,6 +16,7 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
       end
     end
     @my_projects_as_owner = with_deadline.sort_by {|project| project.deadline} + no_deadline
+    @projects = Project.all
     @my_sessions = []
     @my_tracks = []
     @my_talents = current_user.talents

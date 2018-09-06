@@ -11,6 +11,8 @@
           <h6 class="comment-header">
             <strong><%= "#{comment.author.first_name} #{comment.author.last_name[0,1]}." %></strong> - <%= comment.created_at.in_time_zone('Paris').strftime("%e %b %Y %H:%M %p") %>
           </h6>
+          <h6 class="comment-time" data-track-id="<%= comment.audio_file.id %>" data-instant="<%= comment.track_instant %>"><%= comment.track_instant %>
+          </h6>
           <p>
             <%= comment.content %>
           </p>

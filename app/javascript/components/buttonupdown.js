@@ -2,7 +2,6 @@ function openCloseDivs() {
   const sessionInstances = document.querySelectorAll(".session-instances");
   if (sessionInstances) {
     sessionInstances.forEach((session) => {
-      console.log(session.dataset.id);
       openCloseDiv(session.dataset.id);
     })
   }
@@ -19,10 +18,8 @@ function openCloseDiv(sessionId) {
     $(`.rv_button-${sessionId}`).click(function(e){
       e.preventDefault();
       let audiofilename = getCurrentAudiofile(sessionId).replace(/ /g, '');
-      console.log("/" + audiofilename + "/");
       let divtohideshow = document.getElementById(`reveal-${audiofilename}`);
-      console.log(divtohideshow);
-      $(`#reveal-${audiofilename}`).slideToggle();
+      $(divtohideshow).slideToggle();
       $(`.rv_button-${sessionId}`).toggleClass('opened closed');
       $(`.hidden-comments-${sessionId}, .comments-displayed-${sessionId}`).toggleClass('hidden')
     });
