@@ -417,7 +417,7 @@ function initPlayer(sessionId) {
   var wave = new SiriWave({
     container: waveform,
     width: window.innerWidth,
-    height: window.innerHeight * 0.3,
+    height: 1600 * 0.3,
     cover: true,
     speed: 0.03,
     amplitude: 0.7,
