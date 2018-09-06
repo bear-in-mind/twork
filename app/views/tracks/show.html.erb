@@ -122,15 +122,38 @@
 
         <div class="the-box">
           <!-- Start - add status -->
-          <div class="text-right">
+          <div id="session#<%= session.id %>" class="text-right">
+
+            <button type="button" id="myStateButton" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
+              p
+            </button>
+
+            <script>
+              $('#myStateButton').on('click', function () {
+                $(this).button('complete') // button text will be "finished!"
+              })
+            </script>
+
             <strong>Status: </strong>
-            <em class="text-<%= session.status.downcase == "completed" ? "success" : "danger" %>"><%= "#{session.status}" %></em>
+
+            <button type="button"  class="text-<%= session.status.downcase == "completed" ? "success" : "danger" %>"><%= session.status.downcase == "completed" ? "Completed" : "In progress" %></button>
 
             <%= link_to "#", data: {toggle: "modal", target: "#statusModal#{session.id}"} do %>
               <div class="btn our-cta-btn btn-sm">Change status</div>
             <% end %>
 
           </div>
+
+
+          <!-- test toggle start -->
+<!--           <input id="toggle-one" checked type="checkbox">
+          <script>
+            $(function() {
+              $('#toggle-one').bootstrapToggle();
+            })
+          </script> -->
+          <input type="checkbox" checked data-toggle="toggle">
+          <!-- test toggle ends -->
           <!-- Start edit Session status modal -->
           <div class="modal fade" id="statusModal<%=session.id%>" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
