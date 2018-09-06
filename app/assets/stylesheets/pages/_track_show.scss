@@ -335,10 +335,12 @@ button.controls-btn:active {
 
   input[type=checkbox] + label{
    color: $new-blue;
+   font-weight: 400;
   }
 
   input[type=checkbox]:checked + label{
    color: white;
+   font-weight: 400;
   }
 }
 

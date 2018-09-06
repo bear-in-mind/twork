@@ -298,13 +298,13 @@ Session.create!(track: sequoias, talent: louis_bass)
 bass_rec = Session.last
 Session.create!(track: slow_down, talent: max_drums)
 Session.create!(track: if_you, talent: max_drums)
-Session.create!(track: aveou, talent: seb_mix)
+Session.create!(track: ilot, talent: seb_mix)
 Session.create!(track: aveou, talent: max_drums)
 Session.create!(track: casa, talent: seb_mix)
 Session.create!(track: ivory, talent: seb_mix)
 Session.create!(track: sandy, talent: benj_vox)
 Session.create!(track: sandy, talent: seb_mix)
-Session.create!(track: if_you, talent: benj_vox)
+Session.create!(track: vague, talent: benj_vox)
 Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
