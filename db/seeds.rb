@@ -262,8 +262,6 @@ Project.create!(project_owner: louis, name: "Malca", deadline: Date.new(2018,11,
 malca = Project.last
 Project.create!(project_owner: louis, name: "Remix JC Naimro", deadline: Date.new(2018,9,15))
 remix = Project.last
-Project.create!(project_owner: johann, name: "Aske Jacoby", deadline: Date.new(2018,9,15))
-aske = Project.last
 
 # Tracks
 Track.create!(project: venice, name: "Sandy")
@@ -298,13 +296,13 @@ Session.create!(track: sequoias, talent: louis_bass)
 bass_rec = Session.last
 Session.create!(track: slow_down, talent: max_drums)
 Session.create!(track: if_you, talent: max_drums)
-Session.create!(track: aveou, talent: seb_mix)
+Session.create!(track: ilot, talent: seb_mix)
 Session.create!(track: aveou, talent: max_drums)
 Session.create!(track: casa, talent: seb_mix)
 Session.create!(track: ivory, talent: seb_mix)
 Session.create!(track: sandy, talent: benj_vox)
 Session.create!(track: sandy, talent: seb_mix)
-Session.create!(track: if_you, talent: benj_vox)
+Session.create!(track: vague, talent: benj_vox)
 Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
