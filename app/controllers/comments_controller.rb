@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.html {redirect_to track_path(params[:comment][:id])}
         format.js
+
       end
     else
       redirect_to track_path(params[:comment][:id])

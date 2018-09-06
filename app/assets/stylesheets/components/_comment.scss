@@ -17,12 +17,13 @@
 
 .comment-body p {
   margin-bottom: 9px;
-  margin-top: 1px;
+  margin-top: 6px;
   font-weight: 400;
   word-break: break-word;
 }
 
 .comment-body h6 {
+  margin-top: 6px;
   margin-bottom: 1px;
   color: rgb(168,168,168);
 }
@@ -39,4 +40,9 @@
 .send-comment {
   height: 39px;
   margin-left: 10px;
+}
+
+.comment-time:hover {
+  color: #424242;
+  cursor: pointer;
 }

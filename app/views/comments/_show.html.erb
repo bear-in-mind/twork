@@ -1,5 +1,5 @@
 <div id="index-comments">
-  <div class="comments-text">
+  <div class="comments-text all-headers div-transparent" style="background-color: rgba(255, 255, 255, 0.5) !important">
     <% audio_file.comments.order(created_at: :desc).each do |comment| %>
       <div class="comment-box">
         <% if comment.author.avatar.nil? %>
@@ -11,8 +11,13 @@
           <h6 class="comment-header">
             <strong><%= "#{comment.author.first_name} #{comment.author.last_name[0,1]}." %></strong> - <%= comment.created_at.in_time_zone('Paris').strftime("%e %b %Y %H:%M %p") %>
           </h6>
-          <h6 class="comment-time" data-track-id="<%= comment.audio_file.id %>" data-instant="<%= comment.track_instant %>"><%= comment.track_instant %>
-          </h6>
+          <% if comment.track_instant != nil %>
+            <% minutes = comment.track_instant / 60 %>
+            <% seconds = comment.track_instant - (minutes * 60) %>
+            <h6 class="comment-time" data-track-id="<%= comment.audio_file.id %>" data-instant="<%= comment.track_instant %>">
+            <%= minutes.to_s.rjust(2,'0') %>:<%= seconds.to_s.rjust(2,'0') %>
+            </h6>
+          <% end %>
           <p>
             <%= comment.content %>
           </p>
