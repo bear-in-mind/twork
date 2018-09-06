@@ -313,14 +313,21 @@ Session.create!(track: slow_down, talent: benj_vox)
 
 # Audio_files
 
-ciao_drums = AudioFile.new(name: 'Ciao - Drums OK (solo)', user_id: max.id, session_id: drum_rec.id)
+ciao_drums = AudioFile.new(name: 'Drums t2 (solo)', user_id: max.id, session_id: drum_rec.id)
 ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536219385/twork%20audio%20def/Ciao_DRUMS_ONLY.m4a"
 ciao_drums.save!
+drum = AudioFile.last
 
-ciao_drums = AudioFile.new(name: 'Ciao - Basic Track + DMS', user_id: max.id, session_id: drum_rec.id)
-ciao_drums.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536219385/twork%20audio%20def/Ciao_BASIC_TRACK.m4a"
-ciao_drums.save!
+ciao_track = AudioFile.new(name: 'Basic Track DMS', user_id: max.id, session_id: drum_rec.id)
+ciao_track.remote_audio_url = "https://res.cloudinary.com/twerk/video/upload/v1536219385/twork%20audio%20def/Ciao_BASIC_TRACK.m4a"
+ciao_track.save!
+track = AudioFile.last
 
+# Comments
+
+Comment.new(audio_file: drum, content: "Perfect break on exit !", uploaded_by: louis, track_instant: 15)
+Comment.new(audio_file: track, content: "Awesome work bro !", uploaded_by: max, track_instant: 7)
+Comment.new(audio_file: track, content: "Perfect, sending you the solo track right away", uploaded_by: max)
 
 # Brief for Ciao
 ciao.update!(brief: "Sunny, summer vibe with strong Italo-Disco references. Overall feel is bright, funny, with a real feel-good vibe and should have a solid groove. \n References : MJ (Off the Wall period), late 70s Italian pop, Giorgio Moroder...")
