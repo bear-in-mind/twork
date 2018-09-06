@@ -120,7 +120,15 @@
     <div class="session-instances session-<%= session.id %>" data-id="<%= session.id %>">
 
       <div class="the-box">
-
+        <!-- Session status display and change - Start -->
+        <%= form_for(session, remote: true) do |f| %>
+        <%#= form_for session do |f| %>
+        <span>Session status: </span>
+          <%= f.check_box :completed, {id: "session_completed_#{session.id}"} %>
+          <%= f.label "completed_#{session.id}", session.completed ? "completed" : "in progress", {class: "completed-label", "data-session" => session.id} %>
+          <%= f.button :submit, {id: "submit-#{session.id}", class: "hidden"} %>
+        <% end %>
+        <!-- Session status display and change - End -->
         <div class="session-box">
           <div class="img-item">
             <% if session.talent.user.avatar %>
