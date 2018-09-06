@@ -130,7 +130,12 @@ button.controls-btn:active {
 }
 
 // PAGE HEAD
-.track-head, .sessions-head, .brief-head {
+.all-headers {
+  background-color: white;
+  padding: 0 24px;
+  border-radius: 6px;
+}
+.track-head, .brief-head {
   border-bottom: 1px groove rgba(0,0,0,0.1);
   padding: 16px;
   p {
@@ -140,8 +145,16 @@ button.controls-btn:active {
   }
 }
 .track-head {
+  padding-top: 24px;
   margin-top: 32px;
-  border-top: 1px groove rgba(0,0,0,0.1);
+}
+.sessions-head {
+  padding: 16px;
+  p {
+    margin-right: 50px ;
+    color: rgba(0,0,0,0.6);
+    text-align: justify;
+  }
 }
 
 .track-header {
