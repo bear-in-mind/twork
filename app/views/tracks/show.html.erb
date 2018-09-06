@@ -3,12 +3,23 @@
   <!-- BANNER -->
   <div class="banner" style="background-image: url(<%= image_path 'Abstract-Wave-PNG-Transparent.png'%>);">
     <div class="banner-content">
+      <div class="track-headers">
+        <h1 class="track-title"></h1>
+        <div class="grid">
+          <div class="grid-element track-details">
+            <p>From: <%= @owner.first_name.capitalize %> <%= @owner.last_name.upcase %></p>
+            <p>Album: <%= @project.name.capitalize %></p>
+            <p>Due on: <%= @project.deadline.strftime("%d/%m/%Y") if @project.deadline %></p>
+          </div>
+          <div class="grid-element track-brief">
 
-
+          </div>
+          <div class="grid-element track-sessions"></div>
+          <div class="grid-element track-dl"></div>
+        </div>
+      </div>
     </div>
   </div>
-
-
 
 
   <div class="track-head">
@@ -64,7 +75,6 @@
       <% else %>
         <h2>No brief yet !</h2>
       <% end %>
-
       <button type="button" data-toggle="modal" data-target="#editBrief" class="our-dormant-btn icon-btn" >
         <i class="far fa-edit"></i>
       </button>
