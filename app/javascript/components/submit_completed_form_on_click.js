@@ -5,10 +5,10 @@ function submitCompletedFormOnClick() {
       // console.log(event.currentTarget.closest("form"));
       const label = document.querySelector("#" + event.currentTarget.closest("form").id + " label")
       const sessionId = label.dataset.session;
-      if (label.innerHTML === "completed") {
-        label.innerHTML = "in progress";
+      if (label.innerHTML === "Completed") {
+        label.innerHTML = "In progress";
       } else {
-        label.innerHTML = "completed";
+        label.innerHTML = "Completed";
       }
       const buttonId = "submit-" + sessionId;
       document.getElementById(buttonId).click();
