@@ -13,6 +13,12 @@
   padding: 16px;
 }
 
+#edit-project {
+  position: absolute;
+  right: 39px;
+  top: 31px;
+}
+
 
 .project-head {
   margin-top: 32px;
@@ -31,6 +37,7 @@
 }
 
 .project-header {
+  position: relative;
   background-color: white;
   padding: 0 24px;
   border-radius: 6px;
