@@ -22,7 +22,7 @@
             <h2>Add a brief</h2>
             <% end %>
 
-            <!-- #editBrief btn & modal -->
+            <!-- #editBrief btn to modal -->
             <button type="button" data-toggle="modal" data-target="#editBrief" class="our-dormant-btn icon-btn" >
               <i class="far fa-edit"></i>
             </button>
@@ -33,9 +33,8 @@
         </div>
         <!-- close track-brief card -->
       </div>
+
       <!-- close track-details flexbox -->
-
-
       <div class="banner-track-card track-sessions">
         <div class="talents-pics">
           <% @track.talents.each do |talent| %>
@@ -49,11 +48,11 @@
         </div>
         <h2><%= pluralize(@sessions.count, "session").upcase unless @sessions.nil? %></h2>
         <div class="banner-controls">
-          <!-- #addSession btn & modal -->
+          <!-- #addSession btn to modal -->
           <button type="button" data-toggle="modal" data-target="#addSession" class="banner-btn">
             <i class="fas fa-plus"></i>Invite a Talent
           </button>
-          <!-- #viewFiles btn & modal  -->
+          <!-- #viewFiles btn to modal  -->
           <button type="button" class="banner-btn" data-toggle="modal" data-target="#viewFiles">
             <i class="fas fa-download"></i>Download Files
           </button>
@@ -66,7 +65,6 @@
     <!-- close banner-content -->
   </div>
   <!-- END OF BANNER -->
-
 </div>
 
 
@@ -78,7 +76,14 @@
     <div class="session-instances session-<%= session.id %>" data-id="<%= session.id %>">
 
       <div class="the-box">
-
+        <!-- Session status display and change - Start -->
+        <%= form_for(session, remote: true) do |f| %>
+        <%#= form_for session do |f| %>
+          <%= f.check_box :completed, {id: "session_completed_#{session.id}"} %>
+          <%= f.label "completed_#{session.id}", session.completed ? "Completed" : "In progress", {class: "completed-label", "data-session" => session.id} %>
+          <%= f.button :submit, {id: "submit-#{session.id}", class: "hidden"} %>
+        <% end %>
+        <!-- Session status display and change - End -->
         <div class="session-box">
           <div class="img-item">
             <% if session.talent.user.avatar %>
@@ -162,11 +167,10 @@
                   <span>Playlist</span>
                   <span class="caret" id="playlist-toggle-caret"></span>
                 </button>
-
               </div>
               <!-- addFile Modal -->
               <div class="modal fade" id="addFile<%= session.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header text-center">
                       <h4 class="modal-title" id="myModalLabel">Add a new file</h4>

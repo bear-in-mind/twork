@@ -18,12 +18,14 @@ class CommentsController < ApplicationController
     @session = @audiofile.session
     @comment.audio_file_id = params[:comment][:audio_file_id]
     @comment.user_id = params[:comment][:user_id]
+    @comment.track_instant = params[:comment][:track_instant]
     # @comment.track_instant = ??
     @audiofileid = params[:comment][:audio_file_id]
     if @comment.save
       respond_to do |format|
         format.html {redirect_to track_path(params[:comment][:id])}
         format.js
+
       end
     else
       redirect_to track_path(params[:comment][:id])
