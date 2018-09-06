@@ -21,6 +21,7 @@ function initPlayer(sessionId) {
   audioFromHtml.forEach((track) => {
     if (track.dataset.title) {
       sessionTracks.push({
+        playlist_id: sessionId,
         title: track.dataset.title,
         howl: null,
         url: track.dataset.url
@@ -353,11 +354,17 @@ function initPlayer(sessionId) {
   if (times) {
     times.forEach((time) => {
       time.addEventListener('click', () => {
-        console.log(time.dataset.instant)
+        // let tduration = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.childNodes[1].childNodes[1].childNodes[1].childNodes[3].childNodes[1].childNodes[5].childNodes[3].childNodes[7];
         let tduration = document.getElementById(`duration_${sessionId}`)
         let tdurationsplit = tduration.innerHTML.split(':')
         let tdurationinseconds = (parseInt(tdurationsplit[0], 10) * 60) + (parseInt(tdurationsplit[1], 10))
         player.seek(time.dataset.instant / tdurationinseconds)
+        var playlist = player.playlist[player.index]
+        var playertoplay = Player
+        if (playlist.playlist_id === sessionId) {
+          var sound = player.playlist[player.index].howl;
+          sound.play()
+        }
       })
     })
   }
