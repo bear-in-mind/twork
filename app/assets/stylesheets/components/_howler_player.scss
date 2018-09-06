@@ -245,30 +245,32 @@
 }
 
 .player-list {
-  width: 10vw;
+  width: 15vw;
   text-align: center;
-  height: 10vh;
+  height: 110px;
+  margin-bottom: 8px;
   // position: absolute;
   // top: 0;
   // left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
 
 }
 .list-song {
-  width: 100%;
-  height: 50%;
+  width: 90%;
+  height: 27%;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+
+  // padding-bottom: 18px;
   font-size: 18px;
   line-height: 5px;
   color: $new-blue;
@@ -276,7 +278,7 @@
   // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.33);
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   // border-bottom: solid 1px rgba(180, 180, 180, 0.6);
 }
 .list-song:hover {
@@ -342,7 +344,7 @@
   justify-self: flex-end;
   align-self: flex-end;
   background-color: white;
-  right: -21%;
+  right: -31%;
   top: 8%;
   position: absolute;
   webkit-animation: fadeout 0.5s;
@@ -351,7 +353,6 @@
   animation: fadeout 0.5s;
   text-align: center;
   border-radius: 6px;
-  border: solid 1px $new-blue;
   h6 {
     color: rgba(180, 180, 180, 0.6);
     font-weight: 400;
@@ -363,9 +364,8 @@
   background-color: white;
   z-index: 5;
   position: absolute;
-  right: -21%;
+  right: -31%;
   top: 8%;
-  border: 1px groove rgba(0,0,0, 0.2);
   border-radius: 6px;
   text-align: center;
     h6 {
