@@ -2,7 +2,10 @@
 
   <!-- HEADER -->
   <div class="track-head">
-    <h1 class="track-name"><%= @project.name.capitalize %>  -  <%= @track.name.capitalize %></h1>
+    <div class="track-header">
+      <h1 class="track-name"><%= @track.name.capitalize %></h1>
+      <h3>Project: <%= link_to @project.name.capitalize, project_path(@project) %></h3>
+    </div>
     <div class="track-details">
       <div class="owner-and-dates">
         <p class="owner-name">
@@ -16,11 +19,9 @@
       </div>
       <div class="download">
         <!-- BUTTON FOR FILES MODAL  -->
-        <div class="dl-btn group-btn session-btn">
-          <button type="button" data-toggle="modal" data-target="#viewFiles">
-            Download Files
-          </button>
-        </div>
+        <button type="button" class="our-cta-btn download-btn" data-toggle="modal" data-target="#viewFiles">
+          Download Files
+        </button>
         <!-- FILES MODAL -->
         <div class="modal fade" id="viewFiles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-sm" role="document">
@@ -49,9 +50,9 @@
   <div class="brief-head">
     <div class="brief-title">
       <% if @track.brief %>
-      <h2>Brief</h2>
+        <h2><strong>Brief</strong></h2>
       <% else %>
-      <h2>Add a brief</h2>
+        <h2>No brief yet !</h2>
       <% end %>
 
       <button type="button" data-toggle="modal" data-target="#editBrief" class="our-dormant-btn icon-btn" >
@@ -99,11 +100,7 @@
           </div>
 
           <div class="modal-body text-center">
-            <%= simple_form_for [@track, @session] do |f| %>
-            <%= f.association :talent, collection: Talent.where.not(user_id: current_user.id), as: :select, label_method: :talent_name, label: "Collaborator", required: false %>
-            <!-- TODO add an audio file ? -->
-            <%= f.submit "Add session", class: "btn our-cta-btn" %>
-            <% end %>
+            <%= render 'create_session_form' %>
           </div>
         </div>
       </div>
@@ -200,7 +197,7 @@
                   </div>
  -->
                   <button class="btn controls-btn">
-                    <%= link_to session_path(session), method: :delete do %>
+                    <%= link_to session_path(session), method: :delete, data: {confirm: "WARNING: This session and all associated files will be deleted. Continue ?"} do %>
                   <!-- <i class="far fa-trash-alt"></i>Delete -->
                       <i class="far fa-trash-alt"></i>Delete
                     <% end %>
@@ -232,7 +229,7 @@
                         <%= f.input :audio, label: "Choose an audio file", required: false %>
                         <%= f.input :name, label: "Name", required: false %>
                         <%#= f.input :audio_cache, as: :hidden %>
-                        <%= f.submit "Upload file", id: "upload-submit", class:"btn btn-success" %>
+                        <%= f.submit "Upload file", id: "upload-submit", class:"btn our-cta-btn" %>
                       <% end %>
                     </div>
                   </div>
@@ -271,3 +268,6 @@
 
   </div>
 </div>
+
+<!-- hidden Hash -->
+<div class="talents-hash hidden" id="talentsHash" data-id="<%=@talents_hash.to_json%>"></div>

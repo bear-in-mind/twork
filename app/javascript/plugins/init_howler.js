@@ -46,7 +46,9 @@ function initPlayer(sessionId) {
       //  choper tous les elms dont .id commence par track_
       // iterer dessus pour refinir innerHTML
       // elms.    .id = `track_${sessionId}`
-      track.innerHTML = playlist[0].title;
+      if (playlist[0]) {
+        track.innerHTML = playlist[0].title;
+      }
 
     // }
 

@@ -46,8 +46,23 @@
   }
 }
 
+.download-btn {
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: $dark-gray;
+  box-shadow: 4px 4px 8px rgba(110, 110, 110, 0.5);
+  &:hover {
+    background-color: $new-blue;
+    box-shadow: 4px 4px 16px rgba(104, 178, 223, 0.5);
+  }
+}
+
 #playlist-toggle-caret {
   transform: rotate(-90deg);
+}
+
+#talents_dropdown {
+  padding-bottom: 15px;
 }
 
 .controls-btn {
@@ -63,6 +78,11 @@
   color: white;
   background-color: transparent;
   border-radius: 0px;
+
+  &:focus {
+    color: white;
+  }
+
   a {
     font-size: 16px;
     text-decoration: none;
@@ -86,6 +106,13 @@
   transition: all ease 0.2s;
 }
 
+.owner-name {
+  a {
+    text-decoration: none;
+    color: $new-blue;
+  }
+}
+
 button.controls-btn:active {
   color: white;
 }
@@ -107,18 +134,40 @@ button.controls-btn:active {
   border-bottom: 1px groove rgba(0,0,0,0.1);
   padding: 16px;
   p {
-    margin: 0;
-    color: rgba(0,0,0,0.8);
+    margin-right: 50px ;
+    color: rgba(0,0,0,0.6);
+    text-align: justify;
   }
 }
 .track-head {
   margin-top: 32px;
   border-top: 1px groove rgba(0,0,0,0.1);
 }
+
+.track-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a {
+    color: $new-blue;
+    text-decoration: none;
+    opacity: 0.9;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  h3 {
+    color: rgba(180, 180, 180, 0.9);
+    font-size: 20px;
+    margin-top: 0px;
+    font-weight: 400;
+  }
+}
+
 .track-details {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  // align-items: flex-end;
 }
 .track-name {
   margin-top: 0;
@@ -166,15 +215,15 @@ button.controls-btn:active {
 
 // SESSIONS INDEX
 .session-index {
-  margin-bottom: 32px;
+  margin-bottom: 25px;
   padding: 16px 0px;
 
 }
 .the-box {
-  margin: 40px 0 10px 0;
+  margin: 20px 0 10px 0;
   position: relative;
   width: 50vw;
-  padding: 30px 0px;
+  padding: 15px 0px;
 }
 .session-box {
   border-radius: 6px;
@@ -183,7 +232,8 @@ button.controls-btn:active {
   align-items: stretch;
   border: 1px groove rgba(0,0,0, 0.2);
   background-color: white;
-  box-shadow: 10px 4px 24px 0px #c1e2ef;
+  box-shadow: 10px 10px 24px 0px #c1e2ef;
+  overflow: hidden;
 }
 // Inside each session
 .img-item {
@@ -246,4 +296,10 @@ button.controls-btn:active {
   justify-content: center;
   overflow: hidden;
   // border-bottom: solid 1px white;
+}
+
+.owner-and-dates {
+  p {
+    margin-bottom: 5px;
+  }
 }
