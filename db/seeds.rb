@@ -262,8 +262,6 @@ Project.create!(project_owner: louis, name: "Malca", deadline: Date.new(2018,11,
 malca = Project.last
 Project.create!(project_owner: louis, name: "Remix JC Naimro", deadline: Date.new(2018,9,15))
 remix = Project.last
-Project.create!(project_owner: johann, name: "Aske Jacoby", deadline: Date.new(2018,9,15))
-aske = Project.last
 
 # Tracks
 Track.create!(project: venice, name: "Sandy")
