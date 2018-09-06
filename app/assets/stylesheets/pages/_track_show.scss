@@ -1,6 +1,18 @@
+//BANNER
+border-radius: 24px;
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+width: 100%;
+background-repeat: no-repeat;
+filter: hue-rotate(17deg);
+background-size: cover;
+background-position: center;
+
+
 //OVERALL CONTAINER
 .sessions-list {
-  width: 52vw;
 }
 
 // BUTTONS
@@ -215,9 +227,9 @@ button.controls-btn:active {
 
 // SESSIONS INDEX
 .session-index {
-  margin-bottom: 25px;
+  margin: 0 auto 25px auto;
   padding: 16px 0px;
-
+  width: 52vw;
 }
 .the-box {
   margin: 20px 0 10px 0;
