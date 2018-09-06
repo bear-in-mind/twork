@@ -10,7 +10,12 @@
       <p>twork</p>
     <% end %>
   <% else %>
-    <%= link_to "twork", root_path, class: "brand"%>
+    <%= link_to root_path, class: "brand" do %>
+      <div class="frame-logo">
+        <%= image_tag "Logo_BIM_black.png", class: "logo-bim" %>
+      </div>
+      <p>twork</p>
+    <% end %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -18,7 +23,7 @@
 
     <% if user_signed_in? %>
       <!-- Links when logged in -->
-      <%= link_to "Projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%#= link_to "Projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">

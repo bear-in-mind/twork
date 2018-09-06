@@ -28,11 +28,17 @@
   overflow: hidden;
   padding: 7px;
   margin-right: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .brand {
   color: white;
-  font-family: 'Fugaz One';
+  font-family: 'Oleo Script';
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
   font-size: 24px;
   text-decoration: none;
   flex: 100%;
