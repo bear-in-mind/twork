@@ -3,7 +3,12 @@
 
   <!-- Central logo -->
   <% if user_signed_in? %>
-    <%= link_to "twork", projects_path, class: "brand"%>
+    <%= link_to projects_path, class: "brand" do %>
+      <p>twerk</p>
+      <div class="frame-logo">
+        <%= image_tag "Logo_BIM_black.png", class: "logo-bim" %>
+      </div>
+    <% end %>
   <% else %>
     <%= link_to "twork", root_path, class: "brand"%>
   <% end %>
