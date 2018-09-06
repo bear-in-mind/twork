@@ -325,18 +325,20 @@ button.controls-btn:active {
   }
 }
 
-input[type=checkbox]{
- display: none;
+.edit_session {
+  input[type=checkbox]{
+   display: none;
+  }
+  input[type=checkbox] + label:hover {
+    cursor: pointer;
+  }
+
+  input[type=checkbox] + label{
+   color: $new-blue;
+  }
+
+  input[type=checkbox]:checked + label{
+   color: white;
+  }
 }
 
-input[type=checkbox] + label:hover {
-  cursor: pointer;
-}
-
-input[type=checkbox] + label{
- color: red;
-}
-
-input[type=checkbox]:checked + label{
- color: green;
-}
