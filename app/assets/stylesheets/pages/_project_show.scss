@@ -107,6 +107,9 @@
   .track-title {
     flex: 0 0 20%;
     font-weight: normal;
+    a {
+      color: black;
+    }
   }
   .track-start-date {
     flex: 0 0 20%;
