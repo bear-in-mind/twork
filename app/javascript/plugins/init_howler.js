@@ -351,7 +351,11 @@ function initPlayer(sessionId) {
   if (times) {
     times.forEach((time) => {
       time.addEventListener('click', () => {
-        player.seek(time.dataset.trackId * 0.01)
+        console.log(time.dataset.instant)
+        let tduration = document.getElementById(`duration_${sessionId}`)
+        let tdurationsplit = tduration.innerHTML.split(':')
+        let tdurationinseconds = (parseInt(tdurationsplit[0], 10) * 60) + (parseInt(tdurationsplit[1], 10))
+        player.seek(time.dataset.instant / tdurationinseconds)
       })
     })
   }
