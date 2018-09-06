@@ -211,9 +211,9 @@ g = User.new(
   genres: ["Pop", "Jazz", "Electronic", "Rock"],
 )
 
-f.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1536216922/profile_pictures/delpierre.jpg"
-f.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/seb_banner.jpg"
-f.save!
+g.remote_avatar_url = "https://res.cloudinary.com/twerk/image/upload/v1536216922/profile_pictures/delpierre.jpg"
+g.remote_banner_url = "https://res.cloudinary.com/twerk/image/upload/v1535386502/banner_images/seb_banner.jpg"
+g.save!
 
 # Talents
 louis = User.find_by(first_name: "Louis")
