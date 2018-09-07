@@ -88,7 +88,7 @@
             <%= form_for(session, remote: true) do |f| %>
             <%#= form_for session do |f| %>
               <%= f.check_box :completed, {id: "session_completed_#{session.id}"} %>
-              <%= f.label "completed_#{session.id}", session.completed ? "Completed" : "In Progess", {class: "completed-label", "data-session" => session.id} %>
+              <%= f.label "completed_#{session.id}", session.completed ? "Completed" : "In Progress", {class: "completed-label", "data-session" => session.id} %>
               <%= f.button :submit, {id: "submit-#{session.id}", class: "hidden"} %>
             <% end %>
             <!-- Session status display and change - End -->
@@ -165,7 +165,7 @@
 
                 <button class="btn playlist-btn controls-btn version-button" type="button" id="playlistBtn_<%= session.id %>">
                   <span><i class="fas fa-list-ul"></i></span>
-                  <span>Playlist</span>
+                  <span>Files</span>
                   <span class="caret" id="playlist-toggle-caret"></span>
                 </button>
               </div>

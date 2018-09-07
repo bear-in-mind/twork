@@ -6,7 +6,7 @@ function submitCompletedFormOnClick() {
       const label = document.querySelector("#" + event.currentTarget.closest("form").id + " label")
       const sessionId = label.dataset.session;
       if (label.innerHTML === "Completed") {
-        label.innerHTML = "In Progess";
+        label.innerHTML = "In Progress";
       } else {
         label.innerHTML = "Completed";
       }
