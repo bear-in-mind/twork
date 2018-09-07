@@ -58,6 +58,11 @@
       margin-bottom: 0;
     }
   }
+  .tooltip {
+    z-index: 5;
+    // background-color: rgba(104, 178, 223, 0.7);
+    width: 100%;
+  }
 }
 .track-details, .track-sessions {
   flex: 1 0 auto;
@@ -386,4 +391,3 @@ input[type=checkbox]:checked + label{
  font-weight: 400;
 }
 }
-
