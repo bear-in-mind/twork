@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: linear-gradient(150deg, $our-blue, $our-turquoise);
+  background-color: #368abd;
   transition: all 0.3s ease;
   height: 80px;
   padding: 0px 30px;
@@ -36,8 +36,7 @@
 
 .brand {
   color: white;
-  font-family: 'Oleo Script';
-  letter-spacing: 1px;
+  font-family: 'Roboto';
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
   font-size: 24px;
   text-decoration: none;

@@ -1,5 +1,5 @@
 <!-- BANNER -->
-<div class="banner" style="background-image: url(<%= image_path 'Abstract-Wave-PNG-Transparent.png'%>);">
+<div class="banner">
   <div class="banner-glass">
     <div class="banner-content">
       <h1 class="track-title"><%= @track.name.capitalize %></h1>
@@ -76,14 +76,6 @@
     <div class="session-instances session-<%= session.id %>" data-id="<%= session.id %>">
 
       <div class="the-box">
-        <!-- Session status display and change - Start -->
-        <%= form_for(session, remote: true) do |f| %>
-        <%#= form_for session do |f| %>
-          <%= f.check_box :completed, {id: "session_completed_#{session.id}"} %>
-          <%= f.label "completed_#{session.id}", session.completed ? "Completed" : "In progress", {class: "completed-label", "data-session" => session.id} %>
-          <%= f.button :submit, {id: "submit-#{session.id}", class: "hidden"} %>
-        <% end %>
-        <!-- Session status display and change - End -->
         <div class="session-box">
           <div class="img-item">
             <% if session.talent.user.avatar %>
@@ -91,6 +83,15 @@
             <% else %>
             <%= image_tag "noprofilepicture.png", class: 'avatar-sq' %>
             <% end %>
+
+            <!-- Session status display and change - Start -->
+            <%= form_for(session, remote: true) do |f| %>
+            <%#= form_for session do |f| %>
+              <%= f.check_box :completed, {id: "session_completed_#{session.id}"} %>
+              <%= f.label "completed_#{session.id}", session.completed ? "Completed" : "In Progess", {class: "completed-label", "data-session" => session.id} %>
+              <%= f.button :submit, {id: "submit-#{session.id}", class: "hidden"} %>
+            <% end %>
+            <!-- Session status display and change - End -->
           </div>
 
           <div class="audio-item">

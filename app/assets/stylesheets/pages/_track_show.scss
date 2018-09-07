@@ -4,25 +4,20 @@
   align-items: center;
   justify-content: center;
   height: auto;
-  padding: 40px 0 50px;
-  background-repeat: no-repeat;
-  background-size: cover !important;
-  background-position: center;
-  filter: hue-rotate(17deg);
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.3);
+  padding-top: 32px;
   .banner-glass {
     padding: 1px 40px 24px;
-    background: linear-gradient(150deg, #3b7380, #9dced6);
-    box-shadow: 0 8px 32px fade-out(#3b7380, .3);
+    background: linear-gradient(150deg,  #368abd, #b8d6e8);
+    box-shadow: 0 4px 32px rgba(59, 115, 128, 0.5);
     border-radius: 20px;
+    width: 50vw;
   }
 }
 .banner-content {
-  width: 50vw;
   margin: auto;
   padding: 0;
   h1 {
+    text-shadow: 1px 1px rgb(65,65,65);
     font-size: 40px;
     color: white;
   }
@@ -47,7 +42,7 @@
     font-size: 16px;
   }
   p, dd {
-    font-size: 20px;
+    font-size: 18px;
   }
   dt {
     margin-bottom: -4px;
@@ -109,6 +104,10 @@ button.banner-btn {
   }
   &:first-child {
     margin-bottom: 4px;
+  }
+  &:hover {
+    background: $new-blue;
+    transition: all ease 0.2s;
   }
 }
 // Modals
@@ -176,25 +175,47 @@ button.banner-btn {
   align-items: stretch;
   // border: 1px groove rgba(0,0,0, 0.2);
   background-color: white;
-  box-shadow: 10px 10px 24px 0px #c1e2ef;
+  box-shadow: 0 4px 32px rgba(59, 115, 128, 0.5);
   overflow: hidden;
 }
 // Inside each session
 .img-item {
   position: relative;
+  // display: flex;
+  // flex-direction: column;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   overflow: hidden;
-  .avatar-sq, .img-gradient {
+  .avatar-sq {
     height: 160px;
     width: 160px;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
-  .img-gradient {
+  // .img-gradient {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   background: linear-gradient(-225deg, rgba(104, 178, 223,0.6) 0%, rgba(0, 45, 76,0.2) 95%);
+  //   z-index: 10;
+  // }
+  form {
     position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(-225deg, rgba(104, 178, 223,0.6) 0%, rgba(0, 45, 76,0.2) 95%);
-    z-index: 10;
+    width: 100%;
+    bottom: 0;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    display: none;
+    background: rgba(255,255,255,0.9);
+    // flex: 0 0 44px;
+  }
+  &:hover {
+    form {
+      display: block;
+    }
   }
 }
 .audio-item {
@@ -221,6 +242,7 @@ button.banner-btn {
 
 .audiofile-comments {
   width: 50vw;
+  margin: auto;
 }
 
 .version-button {
@@ -323,6 +345,9 @@ button.banner-btn {
   color: white;
   background-color: transparent;
   border-radius: 0px;
+  &:last-of-type {
+    border-right: none;
+  }
 
   &:focus {
     color: white;
@@ -373,21 +398,19 @@ button.controls-btn:active {
   position: relative;
   overflow: hidden;
 }
+
 .edit_session {
-  input[type=checkbox]{
-   display: none;
- }
- input[type=checkbox] + label:hover {
-  cursor: pointer;
-}
+  input[type=checkbox] {
+    display: none;
+  }
+  input[type=checkbox] + label:hover {
+    cursor: pointer;
+  }
+  input[type=checkbox] + label {
+    color: rgb(65,65,65);
+  }
 
-input[type=checkbox] + label{
- color: $new-blue;
- font-weight: 400;
-}
-
-input[type=checkbox]:checked + label{
- color: white;
- font-weight: 400;
-}
+  input[type=checkbox]:checked + label {
+    color: $new-blue;
+  }
 }
