@@ -15,6 +15,7 @@
   display: inline-block;
   text-align: left;
   vertical-align: middle;
+  width: 30vw;
 }
 
 .modal.fade .modal-dialog {
@@ -29,12 +30,11 @@
   position: relative;
   background-color: $new-blue;
   color: white;
-  height: 40px;
+  height: 60px;
   align-items: center;
   h4 {
-    font-size: 18px;
+    font-size: 22px;
   }
-  padding: 10px;
   span {
     position: absolute;
     right: 5px;
@@ -46,4 +46,5 @@
   .form-group {
     padding-top: 7px 0px;
   }
+  padding: 27px;
 }
